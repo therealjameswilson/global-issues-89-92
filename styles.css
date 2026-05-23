@@ -430,6 +430,7 @@ dd {
 
 .panel,
 .lane-card,
+.attention-card,
 .record-card,
 .person-card,
 .source-card,
@@ -483,6 +484,7 @@ dd {
 }
 
 .lane-grid,
+.attention-grid,
 .person-grid,
 .source-grid,
 .gap-grid,
@@ -499,6 +501,17 @@ dd {
 
 .lane-card {
   border-top: 6px solid var(--green);
+  padding: 1rem;
+}
+
+.attention-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.attention-card {
+  border-top: 6px solid var(--green);
+  display: grid;
+  gap: 0.6rem;
   padding: 1rem;
 }
 
@@ -692,6 +705,7 @@ dd {
 }
 
 .person-card p,
+.attention-card p,
 .source-card p,
 .gap-card p,
 .reference-card p,
@@ -874,6 +888,7 @@ dd {
   }
 
   .lane-grid,
+  .attention-grid,
   .source-grid,
   .gap-grid,
   .reference-grid,
@@ -955,6 +970,7 @@ dd {
   .metric-list,
   .tools,
   .lane-grid,
+  .attention-grid,
   .person-grid,
   .source-grid,
   .gap-grid,

@@ -21,6 +21,8 @@ published-volume mirror.
 - source-pool queue
 - compiler gap tracker
 - public-reference and precedent layer
+- Bush Public Papers presidential-attention audit for the working chapters
+- NARA Scout query pack for archival follow-up
 - review queue with local browser state
 - CSV exports for visible records, gaps, source pools, persons, references, and review items
 - local ingest scratchpad for query packs and archival notes
@@ -34,6 +36,14 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
+
+## Research reports
+
+- `reports/bush-public-statements-topic-audit.md` summarizes whether the working
+  chapter topics received presidential public attention in the Bush Public
+  Papers.
+- `reports/nara-scout-topic-pass.md` records the NARA Scout query pass and the
+  API-key limit encountered on May 23, 2026.
 
 ## Source caveat
 

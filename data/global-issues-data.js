@@ -175,6 +175,143 @@ window.GLOBAL_ISSUES_DATA = {
       searchTerms: ["whaling", "International Whaling Commission", "biodiversity", "wildlife", "conservation", "endangered species"]
     }
   ],
+  publicAttention: [
+    {
+      laneId: "un-governance",
+      attention: "Yes - high",
+      hitDocuments: 331,
+      strongHits: 148,
+      directness: "Direct presidential attention",
+      evidenceDate: "1992-09-21",
+      evidenceTitle: "Address to the United Nations General Assembly in New York City",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg1598",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=%22United%20Nations%22%20OR%20%22Security%20Council%22%20OR%20peacekeeping%20OR%20UNGA&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "UN, Security Council, peacekeeping, and Secretary-General topics recur in Bush public statements and are suitable public-line anchors for internal IO and NSC files."
+    },
+    {
+      laneId: "environment-science",
+      attention: "Yes - high",
+      hitDocuments: 38,
+      strongHits: 20,
+      directness: "Direct presidential attention",
+      evidenceDate: "1992-10-13",
+      evidenceTitle: "Statement on Signing the Instrument of Ratification for the United Nations Framework Convention on Climate Change",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg1818",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=%22climate%20change%22%20OR%20%22global%20warming%22%20OR%20UNCED%20OR%20%22Rio%20de%20Janeiro%22%20OR%20%22Framework%20Convention%22&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "The Rio Summit and climate convention received explicit presidential statements, messages, and summit remarks; this chapter has a clear public decision trail."
+    },
+    {
+      laneId: "rights-democracy",
+      attention: "Yes - high",
+      hitDocuments: 310,
+      strongHits: 67,
+      directness: "Direct but cross-regional",
+      evidenceDate: "1992-01-22",
+      evidenceTitle: "Remarks to the Citizens Democracy Corps Conference",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book1/PPP-1992-book1-doc-pg129",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=%22human%20rights%22%20OR%20democracy%20OR%20%22free%20elections%22%20OR%20%22civil%20society%22&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Human rights and democracy were prominent presidential themes; compiler work should separate global doctrine from country-specific transitions."
+    },
+    {
+      laneId: "commons-law",
+      attention: "Yes - narrower",
+      hitDocuments: 75,
+      strongHits: 9,
+      directness: "Direct but narrower than the raw count",
+      evidenceDate: "1992-02-14",
+      evidenceTitle: "Message to the Senate Transmitting the Antarctic Treaty Protocol on Environmental Protection",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book1/PPP-1992-book1-doc-pg244-2",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=%22Law%20of%20the%20Sea%22%20OR%20Antarctica%20OR%20Antarctic%20OR%20oceans%20OR%20maritime&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Antarctic Treaty and oceans material received presidential attention. Broad ocean and maritime hits need statement-level review before promotion."
+    },
+    {
+      laneId: "refugees-relief",
+      attention: "Yes - high",
+      hitDocuments: 302,
+      strongHits: 111,
+      directness: "Direct, with broad humanitarian overlap",
+      evidenceDate: "1992-12-04",
+      evidenceTitle: "Address to the Nation on the Situation in Somalia",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg2174-3",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=Somalia%20OR%20%22African%20famine%22%20OR%20refugees%20OR%20humanitarian%20OR%20%22food%20aid%22%20OR%20drought&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Bush gave direct attention to Somalia, famine, refugees, and humanitarian relief. The public corpus also catches many non-African relief contexts, so regional boundary review is essential."
+    },
+    {
+      laneId: "health-population",
+      attention: "Yes - high for AIDS",
+      hitDocuments: 56,
+      strongHits: 14,
+      directness: "Direct for AIDS; narrower for international health",
+      evidenceDate: "1992-10-11",
+      evidenceTitle: "Presidential Debate in St. Louis",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg1786-3",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=AIDS%20OR%20HIV%20OR%20%22World%20Health%20Organization%22%20OR%20%22global%20health%22&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "AIDS received presidential attention, especially in 1991-1992. International-health evidence is thinner in public statements and needs HHS, USAID, WHO, and State files."
+    },
+    {
+      laneId: "population-policy",
+      attention: "Yes - narrower",
+      hitDocuments: 74,
+      strongHits: 10,
+      directness: "Direct but narrower than the raw count",
+      evidenceDate: "1992-09-25",
+      evidenceTitle: "Message to the Senate Returning Without Approval the Family Planning Amendments Act of 1992",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg1655",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=%22population%20policy%22%20OR%20population%20OR%20%22family%20planning%22%20OR%20UNFPA%20OR%20%22Mexico%20City%20policy%22&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Family planning and population policy appear in presidential materials, but generic population hits need filtering for international policy relevance."
+    },
+    {
+      laneId: "ozone-layer",
+      attention: "Yes - high",
+      hitDocuments: 59,
+      strongHits: 16,
+      directness: "Direct presidential attention",
+      evidenceDate: "1991-05-14",
+      evidenceTitle: "Message to the Senate Transmitting an Amendment to the Montreal Protocol on Substances that Deplete the Ozone Layer",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1991-book1/PPP-1991-book1-doc-pg509-2",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=ozone%20OR%20%22Montreal%20Protocol%22%20OR%20chlorofluorocarbon%20OR%20CFC&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Ozone and Montreal Protocol implementation have clear presidential messages and statements, making this one of the cleaner public-line chapters."
+    },
+    {
+      laneId: "whaling-biodiversity",
+      attention: "Yes - high",
+      hitDocuments: 111,
+      strongHits: 35,
+      directness: "Direct, with domestic conservation overlap",
+      evidenceDate: "1992-12-23",
+      evidenceTitle: "Letter to Congressional Leaders Reporting on Whaling Activities of Norway",
+      evidenceUrl: "https://www.govinfo.gov/app/details/PPP-1992-book2/PPP-1992-book2-doc-pg2213-2",
+      reportUrl: "reports/bush-public-statements-topic-audit.md",
+      naraScoutUrl:
+        "https://therealjameswilson.github.io/nara-scout/#q=whaling%20OR%20whales%20OR%20biodiversity%20OR%20wildlife%20OR%20%22endangered%20species%22%20OR%20conservation&from=1989&to=1993&scope=bush41&perColl=25&perPage=50",
+      note:
+        "Whaling, biodiversity, wildlife, and endangered-species issues reached the presidential public record, but conservation hits require domestic/international sorting."
+    }
+  ],
   records: [
     {
       id: "rec-1989-un-perez-de-cuellar",
@@ -1128,9 +1265,24 @@ window.GLOBAL_ISSUES_DATA = {
       note: "Catalog target for item, file-unit, and series searches."
     },
     {
+      label: "NARA Scout",
+      url: "https://therealjameswilson.github.io/nara-scout/",
+      note: "FRUS compiler search tool used for Bush Library catalog query links."
+    },
+    {
       label: "GovInfo Public Papers",
       url: "https://www.govinfo.gov/app/collection/ppp",
       note: "Official public speeches, statements, and messages."
+    },
+    {
+      label: "Bush Public Statements Topic Audit",
+      url: "reports/bush-public-statements-topic-audit.md",
+      note: "Generated GovInfo audit showing presidential public attention by working chapter."
+    },
+    {
+      label: "NARA Scout Topic Pass",
+      url: "reports/nara-scout-topic-pass.md",
+      note: "Prepared Scout searches and records the shared API-key limit encountered during live execution."
     },
     {
       label: "HistoryAtState Developer Resources",

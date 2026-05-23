@@ -366,6 +366,41 @@ function renderLanes() {
   root.replaceChildren(...cards);
 }
 
+function renderAttention() {
+  const root = qs("#attention-root");
+  if (!root) return;
+  const rows = data.publicAttention || [];
+  if (!rows.length) {
+    root.replaceChildren(make("p", { className: "empty", text: "No public-attention audit data is loaded." }));
+    return;
+  }
+
+  root.replaceChildren(
+    ...rows.map((row) => {
+      const lane = laneFor(row.laneId);
+      return make("article", { className: "attention-card", style: `border-top-color: ${lane.color}` }, [
+        make("p", { className: "meta-line", text: `${lane.number} - ${row.directness}` }),
+        make("h3", { text: lane.name }),
+        make("div", { className: "tag-list" }, [
+          statusPill(row.attention),
+          pill(`${row.hitDocuments} hits`),
+          pill(`${row.strongHits} strong`)
+        ]),
+        make("p", { className: "attention-note", text: row.note }),
+        make("p", {}, [
+          make("strong", { text: "Best public evidence: " }),
+          `${formatDate(row.evidenceDate)} - ${row.evidenceTitle}`
+        ]),
+        make("div", { className: "small-actions" }, [
+          make("a", { className: "button ghost", href: row.evidenceUrl, rel: "noreferrer" }, "Evidence"),
+          make("a", { className: "button ghost", href: row.reportUrl, rel: "noreferrer" }, "Report"),
+          make("a", { className: "button ghost", href: row.naraScoutUrl, rel: "noreferrer" }, "NARA Scout")
+        ])
+      ]);
+    })
+  );
+}
+
 function setupFilters() {
   populateSelect(
     qs("#record-lane"),
@@ -949,6 +984,7 @@ function init() {
   initStats();
   renderWorkbench();
   renderLanes();
+  renderAttention();
   setupFilters();
   renderRecords();
   renderPersons();
