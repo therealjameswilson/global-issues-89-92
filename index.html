@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FRUS 1989-1992 Volume XXIX Global Issues Assistant</title>
+    <meta
+      name="description"
+      content="A compiler-facing research assistant for Foreign Relations of the United States, 1989-1992, Volume XXIX, Global Issues."
+    />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="FRUS Volume XXIX Global Issues home">
+        <span class="brand-mark">XXIX</span>
+        <span>Global Issues Desk</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#workbench">Workbench</a>
+        <a href="#lanes">Lanes</a>
+        <a href="#records">Records</a>
+        <a href="#persons">Persons</a>
+        <a href="#source-pools">Source Pools</a>
+        <a href="#gaps">Gaps</a>
+        <a href="#references">References</a>
+        <a href="#review">Review</a>
+        <a href="#ingest">Ingest</a>
+        <a href="#sources">Sources</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker">FRUS 1989-1992, Volume XXIX</p>
+          <h1 id="hero-title">Global Issues Compiler Assistant</h1>
+          <p class="lede">
+            A starter workbench for a planned FRUS volume: issue lanes, source-pool
+            queues, public-line anchors, persons, gaps, and review controls for global
+            subjects that cut across geographic and functional volumes.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#workbench">Open Workbench</a>
+            <a class="button secondary" href="#records">Browse Records</a>
+            <a class="button ghost" href="https://history.state.gov/historicaldocuments/frus1989-92v29" rel="noreferrer">
+              Official Volume Page
+            </a>
+          </div>
+        </div>
+        <aside class="brief visual-brief" aria-label="Archive scope">
+          <img
+            class="archive-map"
+            src="assets/global-issues-source-map.svg"
+            alt="Source map showing Volume XXIX global issues lanes and source pools"
+          />
+          <p class="brief-label">Compiler Scope</p>
+          <dl id="volume-scope"></dl>
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="Volume summary">
+        <div>
+          <span id="stat-lanes">0</span>
+          <p>issue lanes</p>
+        </div>
+        <div>
+          <span id="stat-records">0</span>
+          <p>seed records</p>
+        </div>
+        <div>
+          <span id="stat-sources">0</span>
+          <p>source pools</p>
+        </div>
+        <div>
+          <span id="stat-gaps">0</span>
+          <p>compiler gaps</p>
+        </div>
+        <div>
+          <span id="stat-persons">0</span>
+          <p>persons</p>
+        </div>
+        <div>
+          <span id="stat-references">0</span>
+          <p>public anchors</p>
+        </div>
+      </section>
+
+      <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Compiler Workbench</p>
+            <h2 id="workbench-title">Selection Readiness Console</h2>
+          </div>
+          <a class="section-link" href="https://history.state.gov/historicaldocuments/status-of-the-series" rel="noreferrer">
+            FRUS status page
+          </a>
+        </div>
+        <div id="workbench-root" class="workbench-root" aria-live="polite">
+          <p class="loading">Loading workbench...</p>
+        </div>
+      </section>
+
+      <section class="section" id="lanes" aria-labelledby="lanes-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Chapter Planning</p>
+            <h2 id="lanes-title">Global Issues Working Lanes</h2>
+          </div>
+          <p class="section-note">
+            The volume is still planned, so these lanes are scaffolding for archival
+            research and boundary testing.
+          </p>
+        </div>
+        <div id="lane-grid" class="lane-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section records-section" id="records" aria-labelledby="records-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Candidate Register</p>
+            <h2 id="records-title">Records and Source Leads</h2>
+          </div>
+          <p class="section-note">
+            Search, filter, copy source notes, and export the visible working set.
+          </p>
+        </div>
+        <div class="tools" role="search" aria-label="Filter records">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="record-search" type="search" placeholder="Search title, people, terms, source notes" />
+          </label>
+          <label>
+            <span>Lane</span>
+            <select id="record-lane"></select>
+          </label>
+          <label>
+            <span>Type</span>
+            <select id="record-type"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="record-priority"></select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="record-status"></select>
+          </label>
+          <label>
+            <span>Sort</span>
+            <select id="record-sort">
+              <option value="date">Chronology</option>
+              <option value="priority">Priority</option>
+              <option value="lane">Lane</option>
+              <option value="type">Type</option>
+            </select>
+          </label>
+          <button id="record-reset" type="button">Reset</button>
+          <button id="record-export" type="button">CSV</button>
+          <p id="record-summary" class="summary">Loading records...</p>
+        </div>
+        <div id="record-root" class="record-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section" id="persons" aria-labelledby="persons-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Editorial Front Matter</p>
+            <h2 id="persons-title">Persons Starter List</h2>
+          </div>
+          <p class="section-note">
+            Names likely to recur in global-issues files, with role and lane checks.
+          </p>
+        </div>
+        <div class="tools" role="search" aria-label="Filter persons">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="person-search" type="search" placeholder="Search names, roles, terms" />
+          </label>
+          <label>
+            <span>Lane</span>
+            <select id="person-lane"></select>
+          </label>
+          <button id="person-reset" type="button">Reset</button>
+          <button id="person-export" type="button">CSV</button>
+          <p id="person-summary" class="summary">Loading persons...</p>
+        </div>
+        <div id="person-root" class="person-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section source-pool-section" id="source-pools" aria-labelledby="source-pools-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Source Pools</p>
+            <h2 id="source-pools-title">Next Harvest Queue</h2>
+          </div>
+          <p class="section-note">
+            Source lanes for the first archival pass, including official pages,
+            NARA catalog targets, and precedent FRUS volumes.
+          </p>
+        </div>
+        <div class="tools" role="search" aria-label="Filter source pools">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="pool-search" type="search" placeholder="Search repositories, terms, actions" />
+          </label>
+          <label>
+            <span>Lane</span>
+            <select id="pool-lane"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="pool-priority"></select>
+          </label>
+          <button id="pool-reset" type="button">Reset</button>
+          <button id="pool-export" type="button">CSV</button>
+          <p id="pool-summary" class="summary">Loading source pools...</p>
+        </div>
+        <div id="pool-root" class="source-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section gap-section" id="gaps" aria-labelledby="gaps-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Gap Tracker</p>
+            <h2 id="gaps-title">Compiler Risks to Resolve</h2>
+          </div>
+          <p class="section-note">
+            Open questions that need source work before the volume plan is stable.
+          </p>
+        </div>
+        <div class="tools" role="search" aria-label="Filter compiler gaps">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="gap-search" type="search" placeholder="Search problem, action, evidence, boundary notes" />
+          </label>
+          <label>
+            <span>Lane</span>
+            <select id="gap-lane"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="gap-priority"></select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="gap-status"></select>
+          </label>
+          <button id="gap-reset" type="button">Reset</button>
+          <button id="gap-export" type="button">CSV</button>
+          <p id="gap-summary" class="summary">Loading gaps...</p>
+        </div>
+        <div id="gap-root" class="gap-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="section" id="references" aria-labelledby="references-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Public and Precedent Layer</p>
+            <h2 id="references-title">Public-Line Anchors</h2>
+          </div>
+          <p class="section-note">
+            Public statements and adjacent FRUS volumes for scope control.
+          </p>
+        </div>
+        <div class="tools" role="search" aria-label="Filter public references">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="reference-search" type="search" placeholder="Search titles, terms, compiler use" />
+          </label>
+          <label>
+            <span>Lane</span>
+            <select id="reference-lane"></select>
+          </label>
+          <label>
+            <span>Kind</span>
+            <select id="reference-kind"></select>
+          </label>
+          <button id="reference-reset" type="button">Reset</button>
+          <button id="reference-export" type="button">CSV</button>
+          <p id="reference-summary" class="summary">Loading references...</p>
+        </div>
+        <div id="reference-root" class="reference-grid" aria-live="polite"></div>
+        <div class="precedent-panel">
+          <h3>FRUS Precedent Volumes</h3>
+          <div id="precedent-root" class="precedent-grid"></div>
+        </div>
+      </section>
+
+      <section class="section review-section" id="review" aria-labelledby="review-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Review Queue</p>
+            <h2 id="review-title">Compiler Action Board</h2>
+          </div>
+          <p class="section-note">
+            Review state is stored only in this browser so the static site remains
+            source-controlled and auditable.
+          </p>
+        </div>
+        <div id="review-root" class="review-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section ingest-section" id="ingest" aria-labelledby="ingest-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Ingest Scratchpad</p>
+            <h2 id="ingest-title">Local Notes and Query Pack</h2>
+          </div>
+          <p class="section-note">
+            Use this for temporary harvest notes, catalog IDs, and search strings.
+          </p>
+        </div>
+        <div class="ingest-grid">
+          <div class="scratchpad">
+            <label for="scratchpad">Local scratchpad</label>
+            <textarea id="scratchpad" rows="12" placeholder="Paste catalog URLs, NAIDs, file-unit titles, source-note corrections, and next queries here."></textarea>
+            <div class="button-row">
+              <button id="scratchpad-save" type="button">Save Local</button>
+              <button id="scratchpad-export" type="button">Export TXT</button>
+              <button id="scratchpad-clear" type="button">Clear</button>
+            </div>
+          </div>
+          <div class="query-pack">
+            <h3>Query Pack</h3>
+            <div id="query-pack-root" class="query-pack-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section sources-section" id="sources" aria-labelledby="sources-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Source Control</p>
+            <h2 id="sources-title">Official Anchors and Methods</h2>
+          </div>
+          <p class="section-note">
+            Keep official status separate from inferred compiler leads.
+          </p>
+        </div>
+        <div id="source-link-root" class="source-link-grid"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="data/global-issues-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
