@@ -12,7 +12,10 @@ published-volume mirror.
 ## What is included
 
 - volume status and source links
-- chapter-lane planning for global issues topics
+- working chapter planning for global issues topics
+- Volume XLI-inspired chapters for United Nations, Global Climate Change and
+  the Rio Summit, Human Rights, Law of the Sea, African Famine and relief,
+  AIDS Policy, International Population Policy, Ozone, and Whaling/Biodiversity
 - candidate record/source-lead browser
 - persons list starter
 - source-pool queue

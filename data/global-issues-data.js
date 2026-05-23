@@ -9,17 +9,17 @@ window.GLOBAL_ISSUES_DATA = {
     statusChecked: "May 23, 2026",
     compilerMode: "Starter research workbench",
     caution:
-      "Official HistoryAtState pages provide the volume title and status. Lane structure and source leads on this page are compiler-facing research scaffolding."
+      "Official HistoryAtState pages provide the volume title and status. Chapter structure and source leads on this page are compiler-facing research scaffolding."
   },
   lanes: [
     {
       id: "un-governance",
-      number: "Lane 1",
-      name: "United Nations and Multilateral Governance",
-      shortName: "UN Governance",
+      number: "Chapter 1",
+      name: "United Nations",
+      shortName: "United Nations",
       color: "#2f6f73",
       description:
-        "UN reform, Security Council practice, peacekeeping doctrine, sanctions administration, and the post-Cold War multilateral frame.",
+        "UN reform, Security Council practice, peacekeeping doctrine, sanctions administration, and the post-Cold War multilateral order.",
       boundary:
         "Keep case-specific peacekeeping records with Somalia, Yugoslavia, Iraq, or regional volumes unless the document is principally about global UN doctrine.",
       sourceTargets: [
@@ -31,10 +31,28 @@ window.GLOBAL_ISSUES_DATA = {
       searchTerms: ["United Nations", "UNGA", "Security Council", "peacekeeping", "collective security", "sanctions"]
     },
     {
+      id: "environment-science",
+      number: "Chapter 2",
+      name: "Global Climate Change and the Rio Summit",
+      shortName: "Climate/Rio",
+      color: "#c18a2b",
+      description:
+        "Global warming, climate convention negotiations, forests, biodiversity diplomacy, and the road to the 1992 Rio Earth Summit.",
+      boundary:
+        "Keep ozone implementation, whaling, and technical oceans records in their own chapters unless they directly shaped climate or Rio decisions.",
+      sourceTargets: [
+        "Council on Environmental Quality files",
+        "State OES files",
+        "NSC environment files",
+        "G7 and UNCED summit files"
+      ],
+      searchTerms: ["global warming", "climate", "UNCED", "Rio", "framework convention", "biodiversity", "forests"]
+    },
+    {
       id: "rights-democracy",
-      number: "Lane 2",
-      name: "Human Rights and Democracy",
-      shortName: "Rights",
+      number: "Chapter 3",
+      name: "Human Rights",
+      shortName: "Human Rights",
       color: "#4d7c3f",
       description:
         "Human rights policy, democratization, election observation, sanctions linked to governance, and cross-regional rights diplomacy.",
@@ -49,67 +67,13 @@ window.GLOBAL_ISSUES_DATA = {
       searchTerms: ["human rights", "democracy", "election observers", "rule of law", "political reform", "civil society"]
     },
     {
-      id: "refugees-relief",
-      number: "Lane 3",
-      name: "Refugees, Migration, and Humanitarian Relief",
-      shortName: "Relief",
-      color: "#7c5b9b",
-      description:
-        "Refugee policy, emergency relief, migration diplomacy, asylum pressure, and humanitarian operations that cross regional assignments.",
-      boundary:
-        "Separate broad refugee and humanitarian doctrine from crisis-specific records in Persian Gulf, Somalia, Haiti, Cuba, and Balkans files.",
-      sourceTargets: [
-        "State refugee bureau files",
-        "NSC humanitarian files",
-        "USAID disaster assistance files",
-        "UNHCR and ICRC meeting files"
-      ],
-      searchTerms: ["refugees", "migration", "humanitarian", "UNHCR", "relief", "asylum", "displaced persons"]
-    },
-    {
-      id: "environment-science",
-      number: "Lane 4",
-      name: "Environment, Climate, and Science Diplomacy",
-      shortName: "Environment",
-      color: "#c18a2b",
-      description:
-        "Global warming, ozone, biodiversity, forests, oceans, science cooperation, and the road to the 1992 Rio Earth Summit.",
-      boundary:
-        "Trade-specific environmental disputes should be checked against Foreign Economic Policy and regional volumes.",
-      sourceTargets: [
-        "Council on Environmental Quality files",
-        "State OES files",
-        "NSC environment files",
-        "G7 and UNCED summit files"
-      ],
-      searchTerms: ["global warming", "climate", "ozone", "biodiversity", "UNCED", "Rio", "forests", "oceans"]
-    },
-    {
-      id: "health-population",
-      number: "Lane 5",
-      name: "Global Health, Population, and Social Policy",
-      shortName: "Health",
-      color: "#d54f38",
-      description:
-        "AIDS/HIV diplomacy, population policy, health assistance, food security, and social-policy issues treated as foreign policy.",
-      boundary:
-        "Keep domestic implementation files out unless they explain U.S. international posture or multilateral negotiations.",
-      sourceTargets: [
-        "State global health files",
-        "HHS international files",
-        "USAID population and health files",
-        "WHO and population conference files"
-      ],
-      searchTerms: ["AIDS", "HIV", "population", "health", "WHO", "food security", "family planning"]
-    },
-    {
       id: "commons-law",
-      number: "Lane 6",
-      name: "Transnational Commons and International Law",
-      shortName: "Commons",
+      number: "Chapter 4",
+      name: "Law of the Sea, Oceans, and Antarctica",
+      shortName: "Law of Sea",
       color: "#5f6f3a",
       description:
-        "Antarctica, oceans, law of the sea, outer space, aviation, sanctions law, treaties, and other commons questions.",
+        "Law of the Sea, Antarctica, oceans, polar affairs, outer space, aviation, treaties, and other commons questions.",
       boundary:
         "Arms-control legal questions belong with arms-control volumes unless the document is about general international legal architecture.",
       sourceTargets: [
@@ -118,7 +82,97 @@ window.GLOBAL_ISSUES_DATA = {
         "NSC legal and treaty files",
         "ICAO and space-policy records"
       ],
-      searchTerms: ["Antarctica", "Law of the Sea", "oceans", "outer space", "ICAO", "international law", "treaty"]
+      searchTerms: ["Law of the Sea", "Antarctica", "oceans", "outer space", "ICAO", "international law", "treaty"]
+    },
+    {
+      id: "refugees-relief",
+      number: "Chapter 5",
+      name: "African Famine, Refugees, and Humanitarian Relief",
+      shortName: "Famine/Relief",
+      color: "#7c5b9b",
+      description:
+        "African famine, emergency relief, refugee policy, migration diplomacy, asylum pressure, and humanitarian operations that cross regional assignments.",
+      boundary:
+        "Separate broad famine, refugee, and humanitarian doctrine from crisis-specific records in Persian Gulf, Somalia, Haiti, Cuba, and Balkans files.",
+      sourceTargets: [
+        "State refugee bureau files",
+        "NSC humanitarian files",
+        "USAID disaster assistance files",
+        "UNHCR and ICRC meeting files"
+      ],
+      searchTerms: ["African famine", "refugees", "migration", "humanitarian", "UNHCR", "relief", "asylum"]
+    },
+    {
+      id: "health-population",
+      number: "Chapter 6",
+      name: "AIDS Policy and International Health",
+      shortName: "AIDS/Health",
+      color: "#d54f38",
+      description:
+        "AIDS/HIV diplomacy, WHO engagement, health assistance, and global health questions treated as foreign policy.",
+      boundary:
+        "Keep domestic health implementation files out unless they explain U.S. international posture or multilateral negotiations.",
+      sourceTargets: [
+        "State global health files",
+        "HHS international files",
+        "USAID health files",
+        "WHO files"
+      ],
+      searchTerms: ["AIDS", "HIV", "health", "WHO", "global health", "health assistance"]
+    },
+    {
+      id: "population-policy",
+      number: "Chapter 7",
+      name: "International Population Policy",
+      shortName: "Population",
+      color: "#8b6f2f",
+      description:
+        "Population diplomacy, family planning, UNFPA, development assistance, and multilateral population-policy disputes.",
+      boundary:
+        "Domestic social-policy material is out of scope unless it shaped international assistance or multilateral negotiations.",
+      sourceTargets: [
+        "USAID population files",
+        "State global programs files",
+        "HHS international files",
+        "UNFPA and population conference files"
+      ],
+      searchTerms: ["population", "family planning", "UNFPA", "development assistance", "Mexico City policy"]
+    },
+    {
+      id: "ozone-layer",
+      number: "Chapter 8",
+      name: "Protection of the Ozone Layer",
+      shortName: "Ozone",
+      color: "#668b3f",
+      description:
+        "Montreal Protocol implementation, ozone depletion, atmospheric science, chlorofluorocarbons, and related international environmental diplomacy.",
+      boundary:
+        "Climate-change decisions belong in the Rio chapter unless the document is principally about ozone or Montreal Protocol implementation.",
+      sourceTargets: [
+        "State OES atmospheric files",
+        "EPA international files",
+        "CEQ files",
+        "NSC environment files"
+      ],
+      searchTerms: ["ozone", "Montreal Protocol", "chlorofluorocarbons", "CFC", "atmospheric", "stratospheric ozone"]
+    },
+    {
+      id: "whaling-biodiversity",
+      number: "Chapter 9",
+      name: "International Whaling, Biodiversity, and Wildlife Protection",
+      shortName: "Wildlife",
+      color: "#9b5b43",
+      description:
+        "International whaling regulation, wildlife protection, biodiversity negotiations, and conservation diplomacy adjacent to the Rio process.",
+      boundary:
+        "Rio biodiversity convention files stay with the climate/Rio chapter when they are part of summit decision-making; technical conservation disputes remain here.",
+      sourceTargets: [
+        "State OES conservation files",
+        "NOAA and Interior international files",
+        "International Whaling Commission files",
+        "Biodiversity convention files"
+      ],
+      searchTerms: ["whaling", "International Whaling Commission", "biodiversity", "wildlife", "conservation", "endangered species"]
     }
   ],
   records: [
@@ -193,7 +247,7 @@ window.GLOBAL_ISSUES_DATA = {
       date: "1990-04-01",
       title: "Ozone and atmospheric policy follow-up after Montreal Protocol implementation",
       type: "Policy source lead",
-      laneId: "environment-science",
+      laneId: "ozone-layer",
       priority: "Medium",
       status: "Source lead",
       people: ["William Reilly", "Robert Kimmitt", "Brent Scowcroft"],
@@ -209,6 +263,28 @@ window.GLOBAL_ISSUES_DATA = {
         "Exclude domestic Clean Air Act implementation unless it drove U.S. negotiating posture.",
       tags: ["ozone", "Montreal Protocol", "environment", "EPA"],
       verification: ["Search OES file units", "Search CEQ files", "Check public signing statements"]
+    },
+    {
+      id: "rec-1990-african-famine-relief",
+      date: "1990-08-01",
+      title: "African famine, food aid, and emergency relief policy file search",
+      type: "Policy source lead",
+      laneId: "refugees-relief",
+      priority: "High",
+      status: "Source lead",
+      people: ["James A. Baker III", "Andrew Natsios", "Brent Scowcroft"],
+      organizations: ["USAID", "State", "NSC", "United Nations"],
+      repository: "USAID disaster assistance / State Africa and refugee files / NSC humanitarian files",
+      sourcePool: "African famine and humanitarian assistance files",
+      sourceUrl: "https://catalog.archives.gov/search?q=African%20famine%20food%20aid%20Bush%201990",
+      sourceNote:
+        "Source lead: Search African famine, food aid, disaster assistance, Horn of Africa, Sudan, Ethiopia, Somalia relief, USAID, State, and NSC humanitarian files for 1989-1992 policy decisions.",
+      compilerUse:
+        "Adapts the Volume XLI African Famine chapter precedent to the Bush-era humanitarian relief and famine-policy file search.",
+      boundaryNotes:
+        "Operational Somalia relief should be checked against the Somalia volume; retain broad famine, food aid, and humanitarian doctrine here.",
+      tags: ["African famine", "food aid", "USAID", "humanitarian"],
+      verification: ["Search USAID disaster assistance files", "Check State Africa records", "Separate Somalia operational files"]
     },
     {
       id: "rec-1990-refugee-policy-review",
@@ -248,7 +324,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourceNote:
         "Boundary lead: Search Charter of Paris, CSCE, democracy, and election-observer files for documents that frame global democracy policy rather than European security only.",
       compilerUse:
-        "Tests whether democratic norms deserve a global-issues lane document or belong exclusively in Europe/Eastern Europe volumes.",
+        "Tests whether democratic norms deserve a global-issues chapter document or belong exclusively in Europe/Eastern Europe volumes.",
       boundaryNotes:
         "Likely overlaps European Security and Eastern Europe volumes; keep only cross-regional conceptual documents.",
       tags: ["democracy", "CSCE", "human rights", "boundary"],
@@ -272,7 +348,7 @@ window.GLOBAL_ISSUES_DATA = {
       compilerUse:
         "Important test case for the volume's refugee/humanitarian boundaries.",
       boundaryNotes:
-        "Most operational documents probably belong in Persian Gulf or Iraq files; keep global doctrine and UN/UNHCR policy records for this lane.",
+        "Most operational documents probably belong in Persian Gulf or Iraq files; keep global doctrine and UN/UNHCR policy records for this chapter.",
       tags: ["Kurdish refugees", "humanitarian", "UNHCR", "Gulf War"],
       verification: ["Compare with Gulf volumes", "Identify doctrine memos", "Separate operational orders"]
     },
@@ -292,7 +368,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourceNote:
         "Source lead: Search UNCED, climate convention, biodiversity, forests, and global warming files for 1991 policy memoranda and interagency decision papers.",
       compilerUse:
-        "Core lane for the Rio Earth Summit preparation chronology.",
+        "Core chapter for the Rio Earth Summit preparation chronology.",
       boundaryNotes:
         "Coordinate with economic files if the decision is about financing or trade effects.",
       tags: ["UNCED", "climate", "biodiversity", "Rio"],
@@ -358,7 +434,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourceNote:
         "Core source lead: Search Rio Earth Summit, UNCED, Framework Convention on Climate Change, biodiversity, forests, and President Bush June 1992 files across Bush Library, State OES, CEQ, and EPA holdings.",
       compilerUse:
-        "Likely anchor chapter document set for the environment and science lane.",
+        "Likely anchor document set for the Global Climate Change and the Rio Summit chapter.",
       boundaryNotes:
         "Keep financing disputes with Foreign Economic Policy unless the decision is chiefly environmental diplomacy.",
       tags: ["Rio", "UNCED", "climate", "biodiversity", "forests"],
@@ -391,7 +467,7 @@ window.GLOBAL_ISSUES_DATA = {
       date: "1992-10-01",
       title: "Population, family planning, and development assistance policy file search",
       type: "Policy source lead",
-      laneId: "health-population",
+      laneId: "population-policy",
       priority: "Medium",
       status: "Source lead",
       people: ["James A. Baker III", "Andrew Natsios", "Louis Sullivan"],
@@ -409,6 +485,28 @@ window.GLOBAL_ISSUES_DATA = {
       verification: ["Search USAID file units", "Check UNFPA references", "Find policy decision memos"]
     },
     {
+      id: "rec-1992-whaling-biodiversity",
+      date: "1992-10-15",
+      title: "International whaling, biodiversity, and wildlife protection file search",
+      type: "Source lead",
+      laneId: "whaling-biodiversity",
+      priority: "Medium",
+      status: "Source lead",
+      people: ["William Reilly", "James A. Baker III", "State OES"],
+      organizations: ["State OES", "NOAA", "Department of the Interior", "International Whaling Commission"],
+      repository: "State OES conservation / NOAA / Interior international files",
+      sourcePool: "Whaling, biodiversity, and wildlife protection files",
+      sourceUrl: "https://catalog.archives.gov/search?q=whaling%20biodiversity%20Bush%201992",
+      sourceNote:
+        "Source lead: Search whaling, International Whaling Commission, biodiversity, wildlife protection, conservation, NOAA, Interior, and State OES file units for 1989-1992 policy decisions.",
+      compilerUse:
+        "Carries forward the Volume XLI whaling-regulation precedent while testing whether Bush-era biodiversity files belong here or with the Rio chapter.",
+      boundaryNotes:
+        "Rio biodiversity convention decision memoranda should remain with the Global Climate Change and Rio Summit chapter when tied to summit negotiations.",
+      tags: ["whaling", "biodiversity", "wildlife", "conservation"],
+      verification: ["Search IWC references", "Check State OES conservation files", "Separate Rio summit decisions"]
+    },
+    {
       id: "rec-1992-antarctica-oceans",
       date: "1992-11-01",
       title: "Antarctica, oceans, and law-of-the-sea source review",
@@ -424,7 +522,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourceNote:
         "Source lead: Search Antarctica, oceans, Law of the Sea, polar affairs, NOAA, and OES file units for 1989-1992 international-law decisions.",
       compilerUse:
-        "Populates commons and international-law lane if the volume extends beyond UN, environment, and humanitarian issues.",
+        "Populates the commons and international-law chapter if the volume extends beyond UN, environment, and humanitarian issues.",
       boundaryNotes:
         "Separate fisheries or bilateral maritime disputes that belong in regional volumes.",
       tags: ["Antarctica", "oceans", "Law of the Sea", "international law"],
@@ -440,7 +538,7 @@ window.GLOBAL_ISSUES_DATA = {
       priority: "High",
       coverage: "Declassified conversations and contact markers with UN officials, summit partners, and leaders discussing global issues.",
       nextAction:
-        "Search table and NARA series for UN, environment, refugees, human rights, climate, health, and Rio terms; export NAIDs with no-document markers separately.",
+        "Search table and NARA series for UN, climate, Rio, ozone, famine, human rights, health, population, and whaling terms; export NAIDs with no-document markers separately.",
       terms: ["UN", "Perez de Cuellar", "environment", "refugees", "human rights", "climate"],
       url: "https://www.bush41library.gov/digital-research-room/about-textual-collections/memcons-and-telcons"
     },
@@ -462,23 +560,35 @@ window.GLOBAL_ISSUES_DATA = {
       name: "State OES, CEQ, EPA, and UNCED Files",
       repository: "State OES / CEQ / EPA / Bush Library",
       priority: "Critical",
-      coverage: "Global warming, ozone, biodiversity, forests, oceans, and Rio Earth Summit negotiations.",
+      coverage: "Global warming, climate convention, forests, biodiversity diplomacy, and Rio Earth Summit negotiations.",
       nextAction:
-        "Harvest UNCED, climate convention, biodiversity, forests, ozone, and G7 environment file titles; flag documents with decision recommendations.",
-      terms: ["OES", "CEQ", "EPA", "UNCED", "Rio", "climate", "biodiversity", "ozone"],
+        "Harvest UNCED, climate convention, biodiversity, forests, and G7 environment file titles; flag documents with decision recommendations.",
+      terms: ["OES", "CEQ", "EPA", "UNCED", "Rio", "climate", "biodiversity"],
       url: "https://catalog.archives.gov/search?q=UNCED%20climate%20Bush%20OES%20CEQ"
+    },
+    {
+      id: "pool-ozone-layer",
+      laneId: "ozone-layer",
+      name: "Ozone Layer and Montreal Protocol Files",
+      repository: "State OES / EPA / CEQ / NSC",
+      priority: "High",
+      coverage: "Ozone depletion, Montreal Protocol implementation, CFC controls, atmospheric science, and international environmental negotiations.",
+      nextAction:
+        "Harvest ozone, Montreal Protocol, CFC, atmospheric, and EPA international file titles; separate them from climate convention records.",
+      terms: ["ozone", "Montreal Protocol", "CFC", "chlorofluorocarbons", "atmospheric", "EPA"],
+      url: "https://catalog.archives.gov/search?q=ozone%20Montreal%20Protocol%20Bush%201989%201992"
     },
     {
       id: "pool-refugee",
       laneId: "refugees-relief",
-      name: "Refugee and Humanitarian Assistance Files",
+      name: "African Famine, Refugee, and Humanitarian Assistance Files",
       repository: "State refugee bureau / USAID / NSC",
       priority: "High",
-      coverage: "Refugee admissions, humanitarian relief doctrine, UNHCR contacts, and crisis-boundary records.",
+      coverage: "African famine, food aid, refugee admissions, humanitarian relief doctrine, UNHCR contacts, and crisis-boundary records.",
       nextAction:
-        "Separate general refugee policy from crisis records in Persian Gulf, Somalia, Haiti, Cuba, and Balkan lanes.",
-      terms: ["refugee", "UNHCR", "humanitarian", "asylum", "migration", "displaced persons"],
-      url: "https://catalog.archives.gov/search?q=refugee%20UNHCR%20Bush%201989%201992"
+        "Separate general refugee policy from crisis records in Persian Gulf, Somalia, Haiti, Cuba, and Balkan chapters.",
+      terms: ["African famine", "food aid", "refugee", "UNHCR", "humanitarian", "asylum", "migration"],
+      url: "https://catalog.archives.gov/search?q=African%20famine%20refugee%20UNHCR%20Bush%201989%201992"
     },
     {
       id: "pool-rights-democracy",
@@ -498,11 +608,23 @@ window.GLOBAL_ISSUES_DATA = {
       name: "Global Health and Population Files",
       repository: "HHS / USAID / State / WHO-facing files",
       priority: "Medium",
-      coverage: "International AIDS/HIV, WHO engagement, population policy, food security, and health assistance.",
+      coverage: "International AIDS/HIV, WHO engagement, global health, and health assistance.",
       nextAction:
         "Identify whether files contain foreign-policy decision memoranda or only program administration.",
-      terms: ["AIDS", "HIV", "WHO", "population", "UNFPA", "food security", "health assistance"],
-      url: "https://catalog.archives.gov/search?q=AIDS%20population%20WHO%20Bush%201989%201992"
+      terms: ["AIDS", "HIV", "WHO", "global health", "health assistance"],
+      url: "https://catalog.archives.gov/search?q=AIDS%20WHO%20global%20health%20Bush%201989%201992"
+    },
+    {
+      id: "pool-population-policy",
+      laneId: "population-policy",
+      name: "International Population Policy Files",
+      repository: "USAID / State / HHS / UNFPA-facing files",
+      priority: "Medium",
+      coverage: "Population policy, family planning, UNFPA, development assistance, and multilateral population-policy disputes.",
+      nextAction:
+        "Separate population-policy decisions from health-program administration and domestic social-policy material.",
+      terms: ["population", "family planning", "UNFPA", "Mexico City policy", "development assistance"],
+      url: "https://catalog.archives.gov/search?q=population%20family%20planning%20UNFPA%20Bush%201989%201992"
     },
     {
       id: "pool-commons-law",
@@ -512,9 +634,21 @@ window.GLOBAL_ISSUES_DATA = {
       priority: "Medium",
       coverage: "Antarctica, oceans, Law of the Sea, civil aviation, outer space, treaties, and sanctions law.",
       nextAction:
-        "Search terms first, then decide whether the volume needs a standalone commons lane or only support references.",
+        "Search terms first, then decide whether the volume needs a standalone commons chapter or only support references.",
       terms: ["Antarctica", "oceans", "Law of the Sea", "outer space", "ICAO", "international law"],
       url: "https://catalog.archives.gov/search?q=Antarctica%20Law%20of%20the%20Sea%20Bush"
+    },
+    {
+      id: "pool-whaling-biodiversity",
+      laneId: "whaling-biodiversity",
+      name: "Whaling, Biodiversity, and Wildlife Protection Files",
+      repository: "State OES / NOAA / Interior",
+      priority: "Medium",
+      coverage: "International whaling regulation, biodiversity negotiations, wildlife protection, conservation diplomacy, and related Rio boundary files.",
+      nextAction:
+        "Search IWC, whaling, biodiversity, wildlife, conservation, and endangered species terms; separate technical conservation records from Rio summit decisions.",
+      terms: ["whaling", "International Whaling Commission", "biodiversity", "wildlife", "conservation"],
+      url: "https://catalog.archives.gov/search?q=whaling%20biodiversity%20wildlife%20Bush%201989%201992"
     },
     {
       id: "pool-public-papers",
@@ -534,26 +668,26 @@ window.GLOBAL_ISSUES_DATA = {
       name: "Adjacent FRUS Precedent Volumes",
       repository: "Office of the Historian",
       priority: "High",
-      coverage: "Prior and later Global Issues volumes used for source-note, chapter, and boundary models.",
+      coverage: "Prior and later Global Issues volumes used for source-note, chapter, and boundary models, especially Volume XLI, Global Issues II.",
       nextAction:
-        "Compare 1977-1980, 1981-1988, and planned 1993-2000 global-issues volume structures before freezing lanes.",
-      terms: ["FRUS Global Issues", "United Nations", "transnational commons", "global programs"],
-      url: "https://history.state.gov/historicaldocuments/status-of-the-series"
+        "Compare Volume XLI chapters for AIDS Policy, Human Rights, Law of the Sea, African Famine, International Population Policy, Whaling, and Ozone before freezing chapters.",
+      terms: ["FRUS Global Issues", "AIDS Policy", "Law of the Sea", "African Famine", "Ozone Layer"],
+      url: "https://history.state.gov/historicaldocuments/frus1981-88v41"
     }
   ],
   gaps: [
     {
-      id: "gap-lane-structure",
+      id: "gap-chapter-structure",
       laneId: "un-governance",
       priority: "Critical",
       status: "Open",
       problem: "Volume XXIX has an official title and planned status, but no published chapter structure.",
       evidence:
-        "HistoryAtState volume page lists Global Issues; status page lists the volume under Planned.",
+        "HistoryAtState volume page lists Global Issues; status page lists the volume under Planned. Volume XLI provides a published Global Issues II precedent with chapters on AIDS Policy, Human Rights, Law of the Sea, African Famine, International Population Policy, International Regulation of Whaling Practices, and Protection of the Ozone Layer.",
       action:
-        "Use predecessor and successor global-issues volumes plus first archival hits to validate lane order before numbering documents.",
+        "Use Volume XLI, predecessor and successor global-issues volumes, and first archival hits to validate chapter order before numbering documents.",
       sourcePools: ["pool-precedents", "pool-state-io"],
-      risk: "Premature lane choices could misroute regional or functional records."
+      risk: "Premature chapter choices could misroute regional or functional records."
     },
     {
       id: "gap-un-vs-crisis",
@@ -580,6 +714,19 @@ window.GLOBAL_ISSUES_DATA = {
         "Create a Rio chronology from briefing books, interagency options, speech drafts, and treaty/signing files before selecting representative documents.",
       sourcePools: ["pool-state-oes", "pool-public-papers"],
       risk: "A public-speech-only account would miss internal U.S. negotiating choices."
+    },
+    {
+      id: "gap-ozone-continuity",
+      laneId: "ozone-layer",
+      priority: "High",
+      status: "Open",
+      problem: "Ozone-layer files need to be separated from climate-change and Rio records.",
+      evidence:
+        "Volume XLI uses Protection of the Ozone Layer as a separate chapter; Bush-era files may mix Montreal Protocol implementation with climate diplomacy.",
+      action:
+        "Tag OES, EPA, CEQ, and NSC environment hits as ozone, climate/Rio, whaling/biodiversity, or mixed before selection.",
+      sourcePools: ["pool-ozone-layer", "pool-state-oes"],
+      risk: "Ozone diplomacy could be buried inside a broad environment chapter."
     },
     {
       id: "gap-human-rights-country-boundaries",
@@ -612,26 +759,52 @@ window.GLOBAL_ISSUES_DATA = {
       laneId: "health-population",
       priority: "Medium",
       status: "Open",
-      problem: "It is unclear how much global health and population policy belongs in Volume XXIX.",
+      problem: "It is unclear how much AIDS and global health policy belongs in Volume XXIX.",
       evidence:
-        "Health records may be programmatic or domestic unless linked to foreign-policy decisions.",
+        "Volume XLI includes AIDS Policy as a chapter, but Bush-era health records may be programmatic or domestic unless linked to foreign-policy decisions.",
       action:
-        "Sample AIDS/HIV, WHO, population, UNFPA, and food-security files for foreign-policy decision content.",
+        "Sample AIDS/HIV, WHO, HHS international, USAID health, and State health files for foreign-policy decision content.",
       sourcePools: ["pool-health-population"],
-      risk: "A viable lane may be missed because sources sit outside traditional State files."
+      risk: "A viable chapter may be missed because sources sit outside traditional State files."
+    },
+    {
+      id: "gap-population-policy",
+      laneId: "population-policy",
+      priority: "Medium",
+      status: "Open",
+      problem: "Population-policy files need to be split from AIDS and health assistance records.",
+      evidence:
+        "Volume XLI treats International Population Policy separately from AIDS Policy; the Bush-era file search should preserve that distinction.",
+      action:
+        "Sample USAID, State, HHS, UNFPA, and family-planning files and tag each hit as population policy, health assistance, domestic policy, or development programming.",
+      sourcePools: ["pool-population-policy", "pool-health-population"],
+      risk: "Population-policy decisions could be hidden inside a broad health chapter."
     },
     {
       id: "gap-commons-fit",
       laneId: "commons-law",
       priority: "Medium",
       status: "Open",
-      problem: "Transnational commons and international law may be a support lane rather than a chapter lane.",
+      problem: "Law of the Sea, oceans, and Antarctica files may be a support chapter rather than a full chapter.",
       evidence:
         "Topics such as oceans, Antarctica, outer space, aviation, and treaties can be narrow, technical, or spread across agencies.",
       action:
-        "Run a source-pool sample and decide whether to keep a full lane, merge into environment/science, or preserve as a reference queue.",
+        "Run a source-pool sample and decide whether to keep a full chapter, merge technical items into climate/Rio, or preserve them as a reference queue.",
       sourcePools: ["pool-commons-law"],
       risk: "Too much technical material could dilute high-policy coverage."
+    },
+    {
+      id: "gap-whaling-biodiversity",
+      laneId: "whaling-biodiversity",
+      priority: "Medium",
+      status: "Open",
+      problem: "Whaling, biodiversity, and wildlife protection files need a boundary rule against the Rio chapter.",
+      evidence:
+        "Volume XLI includes International Regulation of Whaling Practices as a chapter; Bush-era biodiversity files may also be part of Rio summit negotiations.",
+      action:
+        "Separate technical conservation and IWC files from Rio biodiversity convention decision memoranda.",
+      sourcePools: ["pool-whaling-biodiversity", "pool-state-oes"],
+      risk: "The chapter could either duplicate Rio records or omit conservation diplomacy."
     },
     {
       id: "gap-source-note-standard",
@@ -664,21 +837,21 @@ window.GLOBAL_ISSUES_DATA = {
     {
       name: "George H. W. Bush",
       role: "President of the United States",
-      lanes: ["un-governance", "environment-science", "refugees-relief", "rights-democracy"],
-      terms: ["UNGA", "Rio", "collective security", "humanitarian relief"],
+      lanes: ["un-governance", "environment-science", "ozone-layer", "refugees-relief", "rights-democracy"],
+      terms: ["UNGA", "Rio", "collective security", "humanitarian relief", "ozone"],
       compilerCheck: "Confirm whether each public-line anchor has internal decision files."
     },
     {
       name: "James A. Baker III",
       role: "Secretary of State",
-      lanes: ["un-governance", "rights-democracy", "environment-science", "refugees-relief"],
-      terms: ["State", "UN", "human rights", "environment"],
+      lanes: ["un-governance", "rights-democracy", "environment-science", "refugees-relief", "population-policy"],
+      terms: ["State", "UN", "human rights", "environment", "population"],
       compilerCheck: "Search both State principal files and speech/briefing books."
     },
     {
       name: "Brent Scowcroft",
       role: "Assistant to the President for National Security Affairs",
-      lanes: ["un-governance", "environment-science", "refugees-relief", "commons-law"],
+      lanes: ["un-governance", "environment-science", "ozone-layer", "refugees-relief", "commons-law", "whaling-biodiversity"],
       terms: ["NSC", "interagency", "decision memo"],
       compilerCheck: "Use NSC file-unit trails to find decision memoranda behind public statements."
     },
@@ -725,10 +898,24 @@ window.GLOBAL_ISSUES_DATA = {
       compilerCheck: "Search 1992 UN peacekeeping doctrine and meeting records."
     },
     {
+      name: "John R. Bolton",
+      role: "Assistant Secretary of State for International Organization Affairs",
+      lanes: ["un-governance"],
+      terms: ["State IO", "UN", "Security Council", "peacekeeping"],
+      compilerCheck: "Search IO files for UN reform, peacekeeping, sanctions, and collective-security records."
+    },
+    {
+      name: "Richard Schifter",
+      role: "Assistant Secretary of State for Human Rights and Humanitarian Affairs",
+      lanes: ["rights-democracy", "refugees-relief"],
+      terms: ["human rights", "humanitarian", "refugees", "democracy"],
+      compilerCheck: "Separate cross-regional rights and humanitarian policy from country-specific files."
+    },
+    {
       name: "William K. Reilly",
       role: "Administrator of the Environmental Protection Agency",
-      lanes: ["environment-science"],
-      terms: ["EPA", "climate", "Rio", "ozone"],
+      lanes: ["environment-science", "ozone-layer", "whaling-biodiversity"],
+      terms: ["EPA", "climate", "Rio", "ozone", "biodiversity"],
       compilerCheck: "Tie EPA files to State/NSC decision records before selection."
     },
     {
@@ -748,8 +935,8 @@ window.GLOBAL_ISSUES_DATA = {
     {
       name: "Andrew S. Natsios",
       role: "USAID official and humanitarian assistance lead",
-      lanes: ["refugees-relief", "health-population"],
-      terms: ["USAID", "humanitarian", "relief", "food security"],
+      lanes: ["refugees-relief", "health-population", "population-policy"],
+      terms: ["USAID", "humanitarian", "relief", "food security", "population"],
       compilerCheck: "Use USAID files for implementation context, but select high-policy records."
     },
     {
@@ -780,6 +967,16 @@ window.GLOBAL_ISSUES_DATA = {
       url: "https://history.state.gov/historicaldocuments/status-of-the-series",
       compilerUse:
         "Confirms production-stage vocabulary and lists Volume XXIX, Global Issues, under Planned."
+    },
+    {
+      id: "ref-frus-v41",
+      date: "2017-01-01",
+      title: "FRUS 1981-1988, Volume XLI, Global Issues II",
+      kind: "Precedent volume",
+      laneId: "environment-science",
+      url: "https://history.state.gov/historicaldocuments/frus1981-88v41",
+      compilerUse:
+        "Published precedent for chapters on AIDS Policy, Human Rights, Law of the Sea, African Famine, International Population Policy, International Regulation of Whaling Practices, and Protection of the Ozone Layer."
     },
     {
       id: "ref-bush-memcons",
@@ -832,6 +1029,16 @@ window.GLOBAL_ISSUES_DATA = {
         "Use Rio remarks, signing statements, and communiques to locate OES, CEQ, EPA, and NSC decision records."
     },
     {
+      id: "ref-ozone-precedent",
+      date: "2017-01-01",
+      title: "Volume XLI Protection of the Ozone Layer chapter precedent",
+      kind: "Precedent chapter",
+      laneId: "ozone-layer",
+      url: "https://history.state.gov/historicaldocuments/frus1981-88v41",
+      compilerUse:
+        "Use the Reagan-era ozone chapter as a structural precedent for Bush-era Montreal Protocol and atmospheric-policy files."
+    },
+    {
       id: "ref-nara-catalog",
       date: "2026-05-23",
       title: "National Archives Catalog",
@@ -854,6 +1061,12 @@ window.GLOBAL_ISSUES_DATA = {
       url: "https://history.state.gov/historicaldocuments/frus1981-88v40",
       status: "Being Cleared",
       use: "Reagan-era continuity check for environment, rights, humanitarian, and UN files."
+    },
+    {
+      volume: "FRUS 1981-1988, Volume XLI, Global Issues II",
+      url: "https://history.state.gov/historicaldocuments/frus1981-88v41",
+      status: "Published",
+      use: "Direct model for AIDS Policy, Human Rights, Law of the Sea, African Famine, International Population Policy, Whaling Practices, and Ozone chapters."
     },
     {
       volume: "FRUS 1993-2000, Volume X, Global Issues: Transnational Security; United Nations; Multilateral Peacekeeping",
@@ -883,7 +1096,7 @@ window.GLOBAL_ISSUES_DATA = {
   reviewChecklist: [
     "Promote only records with repository, collection, series, file-unit, item title, date, and persistent URL.",
     "Separate public-line anchors from internal decision records.",
-    "Tag every regional overlap before assigning a Volume XXIX lane.",
+    "Tag every regional overlap before assigning a Volume XXIX chapter.",
     "Record no-document contact markers separately from candidate documents.",
     "Pair each major public statement with drafts, clearance memoranda, or briefing books.",
     "Normalize source-note language before exporting to compiler notes."
@@ -898,6 +1111,11 @@ window.GLOBAL_ISSUES_DATA = {
       label: "Status of the FRUS Series",
       url: "https://history.state.gov/historicaldocuments/status-of-the-series",
       note: "Production-stage definitions and current status table."
+    },
+    {
+      label: "FRUS 1981-1988 Volume XLI",
+      url: "https://history.state.gov/historicaldocuments/frus1981-88v41",
+      note: "Published Global Issues II chapter precedent."
     },
     {
       label: "Bush Library Memcons and Telcons",

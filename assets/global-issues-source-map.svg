@@ -32,7 +32,7 @@
     <g>
       <circle cx="596" cy="324" r="54" fill="#c18a2b"/>
       <text x="596" y="318" text-anchor="middle" fill="#fff">Climate</text>
-      <text x="596" y="339" text-anchor="middle" fill="#fff">Science</text>
+      <text x="596" y="339" text-anchor="middle" fill="#fff">Rio</text>
     </g>
   </g>
   <g stroke="#253331" stroke-width="3" fill="none" stroke-linecap="round" opacity=".42">
@@ -42,7 +42,8 @@
     <path d="M542 309 L458 279"/>
   </g>
   <g font-family="Arial, sans-serif" font-size="13" fill="#253331">
-    <rect x="88" y="420" width="584" height="38" rx="19" fill="#eadfce"/>
-    <text x="380" y="444" text-anchor="middle">Bush Library memcons/telcons - NARA Catalog - State central and IO files - Public Papers - precedent FRUS volumes</text>
+    <rect x="78" y="410" width="604" height="58" rx="20" fill="#eadfce"/>
+    <text x="380" y="434" text-anchor="middle">9 chapter plan: United Nations - Climate/Rio - Human Rights - Law of Sea - Famine/Relief</text>
+    <text x="380" y="454" text-anchor="middle">AIDS/Health - Population - Ozone - Whaling/Biodiversity</text>
   </g>
 </svg>

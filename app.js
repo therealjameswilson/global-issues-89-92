@@ -293,7 +293,7 @@ function renderWorkbench() {
         make("h3", { text: "Planned-volume control" }),
         make("p", {
           text:
-            "The assistant treats Volume XXIX as a planned workbench. It keeps official status, source leads, public anchors, and inferred lane structure visibly separate."
+            "The assistant treats Volume XXIX as a planned workbench. It keeps official status, source leads, public anchors, and inferred chapter structure visibly separate."
         }),
         make("dl", { className: "metric-list" }, [
           make("div", {}, [make("dt", { text: "Official title" }), make("dd", { text: "Global Issues" })]),
@@ -314,7 +314,7 @@ function renderWorkbench() {
       ]),
       make("article", { className: "panel" }, [
         make("p", { className: "kicker", text: "Quick Filters" }),
-        make("h3", { text: "Open lane records" }),
+        make("h3", { text: "Open chapter records" }),
         make("div", { className: "quick-filter-grid" }, quickButtons)
       ]),
       make("article", { className: "panel panel-wide" }, [
@@ -370,7 +370,7 @@ function setupFilters() {
   populateSelect(
     qs("#record-lane"),
     data.lanes.map((lane) => lane.id),
-    "All lanes",
+    "All chapters",
     laneName
   );
   populateSelect(qs("#record-type"), uniqueValues(data.records, "type"), "All types");
@@ -380,14 +380,14 @@ function setupFilters() {
   populateSelect(
     qs("#person-lane"),
     data.lanes.map((lane) => lane.id),
-    "All lanes",
+    "All chapters",
     laneName
   );
 
   populateSelect(
     qs("#pool-lane"),
     data.lanes.map((lane) => lane.id),
-    "All lanes",
+    "All chapters",
     laneName
   );
   populateSelect(qs("#pool-priority"), uniqueValues(data.sourcePools, "priority"), "All priorities");
@@ -395,7 +395,7 @@ function setupFilters() {
   populateSelect(
     qs("#gap-lane"),
     data.lanes.map((lane) => lane.id),
-    "All lanes",
+    "All chapters",
     laneName
   );
   populateSelect(qs("#gap-priority"), uniqueValues(data.gaps, "priority"), "All priorities");
@@ -404,7 +404,7 @@ function setupFilters() {
   populateSelect(
     qs("#reference-lane"),
     data.lanes.map((lane) => lane.id),
-    "All lanes",
+    "All chapters",
     laneName
   );
   populateSelect(qs("#reference-kind"), uniqueValues(data.references, "kind"), "All kinds");
@@ -473,8 +473,8 @@ function renderRecords() {
 
   const summary = qs("#record-summary");
   if (summary) {
-    const laneText = filters.lane ? ` in ${laneName(filters.lane)}` : "";
-    summary.textContent = `Showing ${rows.length} of ${data.records.length} records${laneText}.`;
+    const chapterText = filters.lane ? ` in ${laneName(filters.lane)}` : "";
+    summary.textContent = `Showing ${rows.length} of ${data.records.length} records${chapterText}.`;
   }
 
   const root = qs("#record-root");
@@ -869,7 +869,7 @@ function exportRecords() {
     { label: "id", value: (row) => row.id },
     { label: "date", value: (row) => row.date },
     { label: "title", value: (row) => row.title },
-    { label: "lane", value: (row) => laneName(row.laneId) },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
     { label: "type", value: (row) => row.type },
     { label: "priority", value: (row) => row.priority },
     { label: "status", value: (row) => row.status },
@@ -885,7 +885,7 @@ function exportPersons() {
   downloadCsv("frus-v29-persons.csv", state.visiblePersons, [
     { label: "name", value: (row) => row.name },
     { label: "role", value: (row) => row.role },
-    { label: "lanes", value: (row) => row.lanes.map(laneName) },
+    { label: "chapters", value: (row) => row.lanes.map(laneName) },
     { label: "terms", value: (row) => row.terms },
     { label: "compiler_check", value: (row) => row.compilerCheck }
   ]);
@@ -895,7 +895,7 @@ function exportPools() {
   downloadCsv("frus-v29-source-pools.csv", state.visiblePools, [
     { label: "id", value: (row) => row.id },
     { label: "name", value: (row) => row.name },
-    { label: "lane", value: (row) => laneName(row.laneId) },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
     { label: "repository", value: (row) => row.repository },
     { label: "priority", value: (row) => row.priority },
     { label: "coverage", value: (row) => row.coverage },
@@ -908,7 +908,7 @@ function exportPools() {
 function exportGaps() {
   downloadCsv("frus-v29-compiler-gaps.csv", state.visibleGaps, [
     { label: "id", value: (row) => row.id },
-    { label: "lane", value: (row) => laneName(row.laneId) },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
     { label: "priority", value: (row) => row.priority },
     { label: "status", value: (row) => row.status },
     { label: "problem", value: (row) => row.problem },
@@ -925,7 +925,7 @@ function exportReferences() {
     { label: "date", value: (row) => row.date },
     { label: "title", value: (row) => row.title },
     { label: "kind", value: (row) => row.kind },
-    { label: "lane", value: (row) => laneName(row.laneId) },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
     { label: "url", value: (row) => row.url },
     { label: "compiler_use", value: (row) => row.compilerUse }
   ]);
@@ -936,7 +936,7 @@ function exportReview() {
   downloadCsv("frus-v29-review-queue.csv", buildReviewItems(), [
     { label: "id", value: (row) => row.id },
     { label: "kind", value: (row) => row.kind },
-    { label: "lane", value: (row) => laneName(row.laneId) },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
     { label: "priority", value: (row) => row.priority },
     { label: "state", value: (row) => (reviewed.has(row.id) ? "done" : "open") },
     { label: "title", value: (row) => row.title },

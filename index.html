@@ -19,7 +19,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#workbench">Workbench</a>
-        <a href="#lanes">Lanes</a>
+        <a href="#lanes">Chapters</a>
         <a href="#records">Records</a>
         <a href="#persons">Persons</a>
         <a href="#source-pools">Source Pools</a>
@@ -37,7 +37,7 @@
           <p class="kicker">FRUS 1989-1992, Volume XXIX</p>
           <h1 id="hero-title">Global Issues Compiler Assistant</h1>
           <p class="lede">
-            A starter workbench for a planned FRUS volume: issue lanes, source-pool
+            A starter workbench for a planned FRUS volume: working chapters, source-pool
             queues, public-line anchors, persons, gaps, and review controls for global
             subjects that cut across geographic and functional volumes.
           </p>
@@ -53,7 +53,7 @@
           <img
             class="archive-map"
             src="assets/global-issues-source-map.svg"
-            alt="Source map showing Volume XXIX global issues lanes and source pools"
+            alt="Source map showing Volume XXIX global issues chapters and source pools"
           />
           <p class="brief-label">Compiler Scope</p>
           <dl id="volume-scope"></dl>
@@ -63,7 +63,7 @@
       <section class="stats" aria-label="Volume summary">
         <div>
           <span id="stat-lanes">0</span>
-          <p>issue lanes</p>
+          <p>working chapters</p>
         </div>
         <div>
           <span id="stat-records">0</span>
@@ -106,11 +106,12 @@
         <div class="section-heading">
           <div>
             <p class="kicker">Chapter Planning</p>
-            <h2 id="lanes-title">Global Issues Working Lanes</h2>
+            <h2 id="lanes-title">Global Issues Working Chapters</h2>
           </div>
           <p class="section-note">
-            The volume is still planned, so these lanes are scaffolding for archival
-            research and boundary testing.
+            The volume is still planned, so these chapters are scaffolding for
+            archival research and boundary testing, modeled on the published
+            Global Issues II precedent.
           </p>
         </div>
         <div id="lane-grid" class="lane-grid" aria-live="polite"></div>
@@ -132,7 +133,7 @@
             <input id="record-search" type="search" placeholder="Search title, people, terms, source notes" />
           </label>
           <label>
-            <span>Lane</span>
+            <span>Chapter</span>
             <select id="record-lane"></select>
           </label>
           <label>
@@ -152,7 +153,7 @@
             <select id="record-sort">
               <option value="date">Chronology</option>
               <option value="priority">Priority</option>
-              <option value="lane">Lane</option>
+              <option value="lane">Chapter</option>
               <option value="type">Type</option>
             </select>
           </label>
@@ -170,7 +171,7 @@
             <h2 id="persons-title">Persons Starter List</h2>
           </div>
           <p class="section-note">
-            Names likely to recur in global-issues files, with role and lane checks.
+            Names likely to recur in global-issues files, with role and chapter checks.
           </p>
         </div>
         <div class="tools" role="search" aria-label="Filter persons">
@@ -179,7 +180,7 @@
             <input id="person-search" type="search" placeholder="Search names, roles, terms" />
           </label>
           <label>
-            <span>Lane</span>
+            <span>Chapter</span>
             <select id="person-lane"></select>
           </label>
           <button id="person-reset" type="button">Reset</button>
@@ -196,7 +197,7 @@
             <h2 id="source-pools-title">Next Harvest Queue</h2>
           </div>
           <p class="section-note">
-            Source lanes for the first archival pass, including official pages,
+            Source chapters for the first archival pass, including official pages,
             NARA catalog targets, and precedent FRUS volumes.
           </p>
         </div>
@@ -206,7 +207,7 @@
             <input id="pool-search" type="search" placeholder="Search repositories, terms, actions" />
           </label>
           <label>
-            <span>Lane</span>
+            <span>Chapter</span>
             <select id="pool-lane"></select>
           </label>
           <label>
@@ -236,7 +237,7 @@
             <input id="gap-search" type="search" placeholder="Search problem, action, evidence, boundary notes" />
           </label>
           <label>
-            <span>Lane</span>
+            <span>Chapter</span>
             <select id="gap-lane"></select>
           </label>
           <label>
@@ -270,7 +271,7 @@
             <input id="reference-search" type="search" placeholder="Search titles, terms, compiler use" />
           </label>
           <label>
-            <span>Lane</span>
+            <span>Chapter</span>
             <select id="reference-lane"></select>
           </label>
           <label>
