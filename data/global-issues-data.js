@@ -327,7 +327,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Presidential Memcon and Telcon Files",
       sourceUrl: "https://www.bush41library.gov/digital-research-room/about-textual-collections/memcons-and-telcons",
       sourceNote:
-        "Source lead: George H.W. Bush Presidential Library and Museum, Memcons and Telcons table, January 24, 1989 row for Perez de Cuellar, Javier, country UN, status No Memcon, NAID 428079887. Verify whether briefing, schedule, or follow-up files exist outside the memcon/telcon series.",
+        "Source: George H.W. Bush Presidential Library and Museum, Memcons and Telcons table, January 24, 1989 entry for Javier Perez de Cuellar, country UN, status No Memcon, NAID 428079887. No memorandum of conversation is listed; related briefing, schedule, or follow-up files remain to be located.",
       compilerUse:
         "Early UN relationship marker and control item for deciding whether the volume needs a UN leadership opening document.",
       boundaryNotes:
@@ -349,7 +349,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Public Papers and speech drafts",
       sourceUrl: "https://www.govinfo.gov/app/collection/ppp",
       sourceNote:
-        "Public-line anchor: Public Papers of the Presidents, George H.W. Bush, 1989 volumes on GovInfo. Use the official text to frame UN, rule-of-law, environment, narcotics, and refugees themes, then locate speech drafts and policy clearance records.",
+        "Source: Public Papers: Bush, 1989, Book II, September 25, 1989. Published text. Speech drafts, clearance memoranda, and policy briefing papers remain to be located in Bush Library and Department of State IO files.",
       compilerUse:
         "Sets the administration's first UN global-issues baseline and helps identify speech-drafting files to request.",
       boundaryNotes:
@@ -371,7 +371,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Economic summit and environment files",
       sourceUrl: "https://catalog.archives.gov/search?q=Paris%20Economic%20Summit%20environment%20Bush",
       sourceNote:
-        "Source lead: Search Bush Library summit files, State OES records, and public summit communique files for Paris Economic Summit environmental commitments, July 1989.",
+        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files. File unit and item title not yet identified. Potential targets include Paris Economic Summit environmental commitments, briefing papers, decision memoranda, and follow-up records, July 1989.",
       compilerUse:
         "Possible starting point for the administration's global environment posture before UNCED negotiations.",
       boundaryNotes:
@@ -393,7 +393,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Atmospheric and ozone files",
       sourceUrl: "https://catalog.archives.gov/search?q=ozone%20Montreal%20Protocol%20Bush%201990",
       sourceNote:
-        "Source lead: Search NARA and Bush Library holdings for 1990 ozone, Montreal Protocol, Clean Air Act international, and atmospheric-policy files.",
+        "Source: Environmental Protection Agency files; Department of State, OES files; NSC environment files; Bush Library holdings. File unit and item title not yet identified. Potential targets include 1990 ozone, Montreal Protocol, Clean Air Act international, and atmospheric-policy records.",
       compilerUse:
         "Builds continuity between late Reagan environmental diplomacy and Bush-era climate negotiations.",
       boundaryNotes:
@@ -415,7 +415,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "African famine and humanitarian assistance files",
       sourceUrl: "https://catalog.archives.gov/search?q=African%20famine%20food%20aid%20Bush%201990",
       sourceNote:
-        "Source lead: Search African famine, food aid, disaster assistance, Horn of Africa, Sudan, Ethiopia, Somalia relief, USAID, State, and NSC humanitarian files for 1989-1992 policy decisions.",
+        "Source: USAID disaster assistance files; Department of State Africa and refugee files; NSC humanitarian files. File unit and item title not yet identified. Potential targets include African famine, food aid, Horn of Africa, Sudan, Ethiopia, Somalia relief, and 1989-1992 humanitarian policy decision records.",
       compilerUse:
         "Adapts the Volume XLI African Famine chapter precedent to the Bush-era humanitarian relief and famine-policy file search.",
       boundaryNotes:
@@ -437,7 +437,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Refugee and humanitarian assistance files",
       sourceUrl: "https://catalog.archives.gov/search?q=refugee%20policy%20Bush%201990%20UNHCR",
       sourceNote:
-        "Source lead: Search State refugee bureau, NSC humanitarian, and UNHCR meeting files for 1990 refugee admissions and emergency-relief policy memoranda.",
+        "Source: Department of State refugee bureau files; NSC humanitarian files; UNHCR meeting files. File unit and item title not yet identified. Potential targets include 1990 refugee admissions and emergency-relief policy memoranda.",
       compilerUse:
         "Helps define whether Volume XXIX should treat refugee policy thematically or only through regional crisis files.",
       boundaryNotes:
@@ -459,7 +459,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Democracy and election-observer files",
       sourceUrl: "https://catalog.archives.gov/search?q=Charter%20of%20Paris%20democracy%20Bush",
       sourceNote:
-        "Boundary lead: Search Charter of Paris, CSCE, democracy, and election-observer files for documents that frame global democracy policy rather than European security only.",
+        "Source: Department of State EUR files; NSC democracy files. File unit and item title not yet identified. Retain only records that use the Charter of Paris, CSCE, democracy, or election-observer issues to frame cross-regional democracy policy rather than European security only.",
       compilerUse:
         "Tests whether democratic norms deserve a global-issues chapter document or belong exclusively in Europe/Eastern Europe volumes.",
       boundaryNotes:
@@ -481,7 +481,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Refugee and humanitarian assistance files",
       sourceUrl: "https://catalog.archives.gov/search?q=Kurdish%20refugees%20Operation%20Provide%20Comfort%20Bush",
       sourceNote:
-        "Boundary lead: Search Kurdish refugee, Operation Provide Comfort, UNHCR, and humanitarian-relief files to distinguish Persian Gulf crisis documents from general humanitarian doctrine.",
+        "Source: NSC Persian Gulf files; NSC humanitarian files; Department of State refugee files. File unit and item title not yet identified. Use Kurdish refugee, Operation Provide Comfort, UNHCR, and humanitarian-relief records only when they illuminate general humanitarian doctrine rather than Persian Gulf crisis operations.",
       compilerUse:
         "Important test case for the volume's refugee/humanitarian boundaries.",
       boundaryNotes:
@@ -503,7 +503,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "UNCED and climate convention files",
       sourceUrl: "https://catalog.archives.gov/search?q=UNCED%20climate%20Bush%201991",
       sourceNote:
-        "Source lead: Search UNCED, climate convention, biodiversity, forests, and global warming files for 1991 policy memoranda and interagency decision papers.",
+        "Source: Department of State, OES files; Council on Environmental Quality files; NSC environment files. File unit and item title not yet identified. Potential targets include 1991 UNCED, climate convention, biodiversity, forests, global warming, interagency policy memoranda, and decision papers.",
       compilerUse:
         "Core chapter for the Rio Earth Summit preparation chronology.",
       boundaryNotes:
@@ -525,7 +525,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Public Papers and speech drafts",
       sourceUrl: "https://www.govinfo.gov/app/collection/ppp",
       sourceNote:
-        "Public-line anchor: Public Papers of the Presidents, George H.W. Bush, 1991 volumes on GovInfo. Use the official speech to drive searches for UN reform, collective security, and Security Council policy files.",
+        "Source: Public Papers: Bush, 1991, Book II, September 23, 1991. Published text. Speech drafts, clearance memoranda, and briefing papers on UN reform, collective security, and Security Council policy remain to be located.",
       compilerUse:
         "Public frame for post-Cold War UN governance and peacekeeping doctrine.",
       boundaryNotes:
@@ -547,7 +547,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Global health and population files",
       sourceUrl: "https://catalog.archives.gov/search?q=AIDS%20international%20health%20Bush%201991",
       sourceNote:
-        "Source lead: Search AIDS, HIV, WHO, international health, USAID health, and HHS international files for documents that treat global health as foreign policy.",
+        "Source: HHS international files; Department of State health files; USAID health files; WHO-facing records. File unit and item title not yet identified. Retain AIDS, HIV, WHO, and international-health documents that treat global health as foreign policy.",
       compilerUse:
         "Tests whether health diplomacy should be represented in Volume XXIX or only as assistance programming.",
       boundaryNotes:
@@ -569,7 +569,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "UNCED and climate convention files",
       sourceUrl: "https://catalog.archives.gov/search?q=Rio%20Earth%20Summit%20Bush%201992",
       sourceNote:
-        "Core source lead: Search Rio Earth Summit, UNCED, Framework Convention on Climate Change, biodiversity, forests, and President Bush June 1992 files across Bush Library, State OES, CEQ, and EPA holdings.",
+        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files; Environmental Protection Agency files. File unit and item title not yet identified. Core targets include Rio Earth Summit, UNCED, Framework Convention on Climate Change, biodiversity, forests, and President Bush June 1992 files.",
       compilerUse:
         "Likely anchor document set for the Global Climate Change and the Rio Summit chapter.",
       boundaryNotes:
@@ -591,7 +591,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "UN peacekeeping files",
       sourceUrl: "https://catalog.archives.gov/search?q=UN%20peacekeeping%20Bush%201992%20Somalia%20Yugoslavia",
       sourceNote:
-        "Boundary lead: Search UN peacekeeping, Agenda for Peace, Somalia, Yugoslavia, humanitarian intervention, and collective security files for global doctrine memoranda.",
+        "Source: Department of State IO files; NSC peacekeeping files. File unit and item title not yet identified. Retain UN peacekeeping, Agenda for Peace, Somalia, Yugoslavia, humanitarian intervention, and collective security documents only when they state global doctrine rather than crisis operations.",
       compilerUse:
         "Tests global UN peacekeeping doctrine against Somalia and Yugoslavia volume boundaries.",
       boundaryNotes:
@@ -613,7 +613,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Global health and population files",
       sourceUrl: "https://catalog.archives.gov/search?q=population%20family%20planning%20Bush%201992%20USAID",
       sourceNote:
-        "Source lead: Search population, family planning, UNFPA, USAID health, and development-assistance files for international policy decisions from 1989-1992.",
+        "Source: USAID files; Department of State files; HHS files; UNFPA-facing records. File unit and item title not yet identified. Potential targets include population, family planning, UNFPA, USAID health, and development-assistance policy decisions, 1989-1992.",
       compilerUse:
         "Identifies whether population policy was a global-issues topic for this administration.",
       boundaryNotes:
@@ -635,7 +635,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Whaling, biodiversity, and wildlife protection files",
       sourceUrl: "https://catalog.archives.gov/search?q=whaling%20biodiversity%20Bush%201992",
       sourceNote:
-        "Source lead: Search whaling, International Whaling Commission, biodiversity, wildlife protection, conservation, NOAA, Interior, and State OES file units for 1989-1992 policy decisions.",
+        "Source: Department of State OES conservation files; NOAA files; Department of the Interior international files. File unit and item title not yet identified. Potential targets include whaling, International Whaling Commission, biodiversity, wildlife protection, conservation, and 1989-1992 policy decision records.",
       compilerUse:
         "Carries forward the Volume XLI whaling-regulation precedent while testing whether Bush-era biodiversity files belong here or with the Rio chapter.",
       boundaryNotes:
@@ -657,7 +657,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Transnational commons files",
       sourceUrl: "https://catalog.archives.gov/search?q=Antarctica%20oceans%20Law%20of%20the%20Sea%20Bush",
       sourceNote:
-        "Source lead: Search Antarctica, oceans, Law of the Sea, polar affairs, NOAA, and OES file units for 1989-1992 international-law decisions.",
+        "Source: Department of State Legal Adviser files; Department of State OES oceans and polar files; NSC legal and treaty files; NOAA files. File unit and item title not yet identified. Potential targets include Antarctica, oceans, Law of the Sea, polar affairs, and 1989-1992 international-law decision records.",
       compilerUse:
         "Populates the commons and international-law chapter if the volume extends beyond UN, environment, and humanitarian issues.",
       boundaryNotes:
@@ -1232,6 +1232,7 @@ window.GLOBAL_ISSUES_DATA = {
   ],
   reviewChecklist: [
     "Promote only records with repository, collection, series, file-unit, item title, date, and persistent URL.",
+    "Draft source notes in FRUS order: repository; record group or collection; series, lot, file unit, or folder; item title; classification and drafting data when known.",
     "Separate public-line anchors from internal decision records.",
     "Tag every regional overlap before assigning a Volume XXIX chapter.",
     "Record no-document contact markers separately from candidate documents.",
