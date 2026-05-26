@@ -18,6 +18,7 @@
         <span>Global Issues Desk</span>
       </a>
       <nav aria-label="Primary navigation">
+        <a href="#chronology">Chronology</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -43,7 +44,7 @@
             subjects that cut across geographic and functional volumes.
           </p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#workbench">Open Workbench</a>
+            <a class="button primary" href="#chronology">Open Chronology</a>
             <a class="button secondary" href="#records">Browse Records</a>
             <a class="button ghost" href="https://history.state.gov/historicaldocuments/frus1989-92v29" rel="noreferrer">
               Official Volume Page
@@ -86,6 +87,38 @@
           <span id="stat-references">0</span>
           <p>public anchors</p>
         </div>
+      </section>
+
+      <section class="section chronology-section" id="chronology" aria-labelledby="chronology-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Declassified Document Chronology</p>
+            <h2 id="chronology-title">Chronology of Declassified, Public, and Source-Control Leads</h2>
+          </div>
+          <p class="section-note">
+            Date-first pass through public anchors, Presidential Daily Diary meeting and call leads,
+            and source-control records. Status labels distinguish item-level evidence from leads that
+            still need document requests or source-note promotion.
+          </p>
+        </div>
+        <div class="tools chronology-tools" role="search" aria-label="Filter chronology">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="chronology-search" type="search" placeholder="Search titles, people, source notes, repositories" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="chronology-lane"></select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="chronology-status"></select>
+          </label>
+          <button id="chronology-reset" type="button">Reset</button>
+          <button id="chronology-export" type="button">CSV</button>
+          <p id="chronology-summary" class="summary">Loading chronology...</p>
+        </div>
+        <div id="chronology-root" class="chronology-list" aria-live="polite"></div>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">

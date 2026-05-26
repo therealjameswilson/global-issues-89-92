@@ -6,6 +6,7 @@ const storageKeys = {
 };
 
 const state = {
+  visibleChronology: [],
   visibleRecords: [],
   visiblePersons: [],
   visiblePools: [],
@@ -275,8 +276,8 @@ function renderWorkbench() {
       {
         type: "button",
         onClick: () => {
-          setLaneFilter("#record-lane", lane.id);
-          scrollToId("#records");
+          setLaneFilter("#chronology-lane", lane.id);
+          scrollToId("#chronology");
         }
       },
       lane.shortName
@@ -354,8 +355,8 @@ function renderLanes() {
           {
             type: "button",
             onClick: () => {
-              setLaneFilter("#record-lane", lane.id);
-              scrollToId("#records");
+              setLaneFilter("#chronology-lane", lane.id);
+              scrollToId("#chronology");
             }
           },
           "View"
@@ -401,7 +402,90 @@ function renderAttention() {
   );
 }
 
+function currentChronologyFilters() {
+  return {
+    query: qs("#chronology-search")?.value || "",
+    lane: qs("#chronology-lane")?.value || "",
+    status: qs("#chronology-status")?.value || ""
+  };
+}
+
+function renderChronology() {
+  const filters = currentChronologyFilters();
+  const rows = data.records
+    .filter(
+      (record) =>
+        matchesQuery(record, filters.query) &&
+        (!filters.lane || record.laneId === filters.lane) &&
+        (!filters.status || record.status === filters.status)
+    )
+    .sort((a, b) => a.date.localeCompare(b.date) || laneName(a.laneId).localeCompare(laneName(b.laneId)));
+
+  state.visibleChronology = rows;
+
+  const summary = qs("#chronology-summary");
+  if (summary) {
+    const chapterText = filters.lane ? ` in ${laneName(filters.lane)}` : "";
+    summary.textContent = `Showing ${rows.length} of ${data.records.length} chronology items${chapterText}.`;
+  }
+
+  const root = qs("#chronology-root");
+  if (!root) return;
+  if (!rows.length) {
+    root.replaceChildren(make("p", { className: "empty", text: "No chronology items match the current filters." }));
+    return;
+  }
+
+  root.replaceChildren(...rows.map(renderChronologyItem));
+}
+
+function renderChronologyItem(record) {
+  const lane = laneFor(record.laneId);
+  return make("article", { className: "chronology-item", style: `--lane-color: ${lane.color}` }, [
+    make("div", { className: "chronology-date" }, [
+      make("strong", { text: formatDate(record.date) }),
+      make("span", { text: lane.shortName })
+    ]),
+    make("div", { className: "chronology-body" }, [
+      make("p", { className: "meta-line", text: `${record.type} - ${record.repository}` }),
+      make("h3", { text: record.title }),
+      make("div", { className: "tag-list" }, [
+        priorityPill(record.priority),
+        statusPill(record.status),
+        pill(lane.name),
+        ...record.tags.slice(0, 5).map((tag) => pill(tag))
+      ]),
+      make("p", {}, [make("strong", { text: "Compiler use: " }), record.compilerUse]),
+      make("p", {}, [make("strong", { text: "People: " }), record.people.join("; ")]),
+      make("p", { className: "source-note", text: record.sourceNote }),
+      make("div", { className: "small-actions" }, [
+        make("button", { type: "button", onClick: () => copyText(record.sourceNote, "Source note copied") }, "Copy Note"),
+        make("a", { className: "button ghost", href: record.sourceUrl, rel: "noreferrer" }, "Open Source"),
+        make(
+          "button",
+          {
+            type: "button",
+            onClick: () => {
+              setLaneFilter("#record-lane", record.laneId);
+              scrollToId("#records");
+            }
+          },
+          "Records"
+        )
+      ])
+    ])
+  ]);
+}
+
 function setupFilters() {
+  populateSelect(
+    qs("#chronology-lane"),
+    data.lanes.map((lane) => lane.id),
+    "All chapters",
+    laneName
+  );
+  populateSelect(qs("#chronology-status"), uniqueValues(data.records, "status"), "All statuses");
+
   populateSelect(
     qs("#record-lane"),
     data.lanes.map((lane) => lane.id),
@@ -444,18 +528,21 @@ function setupFilters() {
   );
   populateSelect(qs("#reference-kind"), uniqueValues(data.references, "kind"), "All kinds");
 
+  bindFilterGroup(["#chronology-search", "#chronology-lane", "#chronology-status"], renderChronology);
   bindFilterGroup(["#record-search", "#record-lane", "#record-type", "#record-priority", "#record-status", "#record-sort"], renderRecords);
   bindFilterGroup(["#person-search", "#person-lane"], renderPersons);
   bindFilterGroup(["#pool-search", "#pool-lane", "#pool-priority"], renderPools);
   bindFilterGroup(["#gap-search", "#gap-lane", "#gap-priority", "#gap-status"], renderGaps);
   bindFilterGroup(["#reference-search", "#reference-lane", "#reference-kind"], renderReferences);
 
+  qs("#chronology-reset")?.addEventListener("click", () => resetControls(["#chronology-search", "#chronology-lane", "#chronology-status"], renderChronology));
   qs("#record-reset")?.addEventListener("click", () => resetControls(["#record-search", "#record-lane", "#record-type", "#record-priority", "#record-status", "#record-sort"], renderRecords, { "#record-sort": "date" }));
   qs("#person-reset")?.addEventListener("click", () => resetControls(["#person-search", "#person-lane"], renderPersons));
   qs("#pool-reset")?.addEventListener("click", () => resetControls(["#pool-search", "#pool-lane", "#pool-priority"], renderPools));
   qs("#gap-reset")?.addEventListener("click", () => resetControls(["#gap-search", "#gap-lane", "#gap-priority", "#gap-status"], renderGaps));
   qs("#reference-reset")?.addEventListener("click", () => resetControls(["#reference-search", "#reference-lane", "#reference-kind"], renderReferences));
 
+  qs("#chronology-export")?.addEventListener("click", exportChronology);
   qs("#record-export")?.addEventListener("click", exportRecords);
   qs("#person-export")?.addEventListener("click", exportPersons);
   qs("#pool-export")?.addEventListener("click", exportPools);
@@ -916,6 +1003,22 @@ function exportRecords() {
   ]);
 }
 
+function exportChronology() {
+  downloadCsv("frus-v29-declassified-document-chronology.csv", state.visibleChronology, [
+    { label: "date", value: (row) => row.date },
+    { label: "title", value: (row) => row.title },
+    { label: "chapter", value: (row) => laneName(row.laneId) },
+    { label: "type", value: (row) => row.type },
+    { label: "status", value: (row) => row.status },
+    { label: "priority", value: (row) => row.priority },
+    { label: "people", value: (row) => row.people },
+    { label: "repository", value: (row) => row.repository },
+    { label: "source_url", value: (row) => row.sourceUrl },
+    { label: "source_note", value: (row) => row.sourceNote },
+    { label: "compiler_use", value: (row) => row.compilerUse }
+  ]);
+}
+
 function exportPersons() {
   downloadCsv("frus-v29-persons.csv", state.visiblePersons, [
     { label: "name", value: (row) => row.name },
@@ -986,6 +1089,7 @@ function init() {
   renderLanes();
   renderAttention();
   setupFilters();
+  renderChronology();
   renderRecords();
   renderPersons();
   renderPools();

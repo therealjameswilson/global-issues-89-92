@@ -12,6 +12,7 @@ published-volume mirror.
 ## What is included
 
 - volume status and source links
+- chronology-first pass through declassified/public records and source-control leads
 - working chapter planning for global issues topics
 - Volume XLI-inspired chapters for United Nations, Global Climate Change and
   the Rio Summit, Human Rights, Law of the Sea, African Famine and relief,

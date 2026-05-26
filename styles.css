@@ -431,6 +431,7 @@ dd {
 .panel,
 .lane-card,
 .attention-card,
+.chronology-item,
 .record-card,
 .person-card,
 .source-card,
@@ -639,6 +640,57 @@ dd {
   font-weight: 750;
   grid-column: 1 / -1;
   margin: 0;
+}
+
+.chronology-tools {
+  grid-template-columns: minmax(260px, 1.5fr) repeat(2, minmax(140px, 1fr)) auto auto;
+}
+
+.chronology-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.chronology-item {
+  border-left: 7px solid var(--lane-color, var(--green));
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(130px, 0.18fr) minmax(0, 1fr);
+  padding: 1rem;
+}
+
+.chronology-date {
+  display: grid;
+  gap: 0.4rem;
+  justify-items: start;
+}
+
+.chronology-date strong {
+  color: var(--green-dark);
+  font-size: 1rem;
+}
+
+.chronology-date span {
+  background: #e4f0ed;
+  border-radius: 999px;
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 0.25rem 0.55rem;
+}
+
+.chronology-body {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.chronology-body h3 {
+  font-size: 1.18rem;
+}
+
+.chronology-body p {
+  color: var(--muted);
+  margin-bottom: 0;
 }
 
 .record-list {
@@ -925,6 +977,10 @@ dd {
   }
 
   .record-card {
+    grid-template-columns: 1fr;
+  }
+
+  .chronology-item {
     grid-template-columns: 1fr;
   }
 
