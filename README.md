@@ -23,6 +23,7 @@ published-volume mirror.
 - public-reference and precedent layer
 - Bush Public Papers presidential-attention audit for the working chapters
 - NARA Scout query pack for archival follow-up
+- Presidential Daily Diary and Daily Backup source leads for pertinent meetings and calls
 - review queue with local browser state
 - CSV exports for visible records, gaps, source pools, persons, references, and review items
 - local ingest scratchpad for query packs and archival notes

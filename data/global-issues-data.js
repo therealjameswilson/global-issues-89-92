@@ -327,7 +327,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Presidential Memcon and Telcon Files",
       sourceUrl: "https://www.bush41library.gov/digital-research-room/about-textual-collections/memcons-and-telcons",
       sourceNote:
-        "Source: George H.W. Bush Presidential Library and Museum, Memcons and Telcons table, January 24, 1989 entry for Javier Perez de Cuellar, country UN, status No Memcon, NAID 428079887. No memorandum of conversation is listed; related briefing, schedule, or follow-up files remain to be located.",
+        "Source: George H.W. Bush Presidential Library and Museum, Memcons and Telcons table, January 24, 1989 entry for Javier Perez de Cuellar, country UN, status No Memcon, NAID 428079887. Related Presidential Daily Diary and Daily Backup file units are [Presidential Daily Diary] 1/24/1989, NAID 415889606, and [Presidential Daily Backup] 1/24/1989, NAID 415889607. No memorandum of conversation is listed; related briefing, schedule, or follow-up files remain to be located.",
       compilerUse:
         "Early UN relationship marker and control item for deciding whether the volume needs a UN leadership opening document.",
       boundaryNotes:
@@ -349,7 +349,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Public Papers and speech drafts",
       sourceUrl: "https://www.govinfo.gov/app/collection/ppp",
       sourceNote:
-        "Source: Public Papers: Bush, 1989, Book II, September 25, 1989. Published text. Speech drafts, clearance memoranda, and policy briefing papers remain to be located in Bush Library and Department of State IO files.",
+        "Source: Public Papers: Bush, 1989, Book II, September 25, 1989. Published text. Related scheduling file units are [Presidential Daily Diary] 9/25/1989, NAID 415890094, and [Presidential Daily Backup] 9/25/1989, NAID 415890095. Speech drafts, clearance memoranda, and policy briefing papers remain to be located in Bush Library and Department of State IO files.",
       compilerUse:
         "Sets the administration's first UN global-issues baseline and helps identify speech-drafting files to request.",
       boundaryNotes:
@@ -371,7 +371,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Economic summit and environment files",
       sourceUrl: "https://catalog.archives.gov/search?q=Paris%20Economic%20Summit%20environment%20Bush",
       sourceNote:
-        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files. File unit and item title not yet identified. Potential targets include Paris Economic Summit environmental commitments, briefing papers, decision memoranda, and follow-up records, July 1989.",
+        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files. Related scheduling file units are [Presidential Daily Diary] 7/16/1989 [EMPTY], NAID 415889952, and [Presidential Daily Backup] 7/16/1989, NAID 415889953. File unit and item title not yet identified for policy records. Potential targets include Paris Economic Summit environmental commitments, briefing papers, decision memoranda, and follow-up records, July 1989.",
       compilerUse:
         "Possible starting point for the administration's global environment posture before UNCED negotiations.",
       boundaryNotes:
@@ -468,6 +468,50 @@ window.GLOBAL_ISSUES_DATA = {
       verification: ["Check Europe volume assignment", "Search democracy-support files", "Read for cross-regional scope"]
     },
     {
+      id: "rec-1991-un-perez-de-cuellar-call",
+      date: "1991-02-08",
+      title: "Telephone call with Secretary-General Javier Perez de Cuellar",
+      type: "Daily diary call lead",
+      laneId: "un-governance",
+      priority: "High",
+      status: "Source lead",
+      people: ["George H. W. Bush", "Javier Perez de Cuellar", "Carlos Saul Menem"],
+      organizations: ["United Nations", "NSC"],
+      repository: "George H.W. Bush Presidential Library / NARA Catalog",
+      sourcePool: "Presidential Daily Diary and Daily Backup Materials",
+      sourceUrl: "https://catalog.archives.gov/id/186345",
+      sourceNote:
+        "Source: Bush Library, White House Office of Appointments and Scheduling Files, Presidential Daily Diary and Presidential Daily Backup Materials, President's Daily Diary Entry, February 8, 1991, NAID 186345. The catalog scope note records afternoon telephone calls with President Carlos Saul Menem of Argentina and Javier Perez de Cuellar, Secretary-General of the United Nations. The diary identifies contact timing and participants, not call summaries or meeting minutes.",
+      compilerUse:
+        "Concrete presidential call lead for UN leadership contact during the Gulf War period.",
+      boundaryNotes:
+        "Use as a control point for locating NSC, State IO, and any separate telcon or briefing files; do not treat the diary entry as the substantive call record.",
+      tags: ["UN", "Perez de Cuellar", "telephone call", "daily diary"],
+      verification: ["Open NAID 186345", "Search telcon files", "Search State IO Gulf War files"]
+    },
+    {
+      id: "rec-1991-arctic-refuge-meeting",
+      date: "1991-02-19",
+      title: "Meeting with Secretary of the Interior Manuel Lujan on the Arctic National Wildlife Refuge",
+      type: "Daily diary meeting lead",
+      laneId: "whaling-biodiversity",
+      priority: "Medium",
+      status: "Boundary review",
+      people: ["George H. W. Bush", "Manuel Lujan, Jr."],
+      organizations: ["Department of the Interior", "NSC", "Council on Environmental Quality"],
+      repository: "George H.W. Bush Presidential Library / NARA Catalog",
+      sourcePool: "Presidential Daily Diary and Daily Backup Materials",
+      sourceUrl: "https://catalog.archives.gov/id/186356",
+      sourceNote:
+        "Source: Bush Library, White House Office of Appointments and Scheduling Files, Presidential Daily Diary and Presidential Daily Backup Materials, President's Daily Diary Entry, February 19, 1991, NAID 186356. The catalog scope note records a meeting with Secretary of the Interior Manuel Lujan, Jr., to discuss opening the Arctic National Wildlife Refuge. The diary identifies the meeting, not a policy decision memorandum.",
+      compilerUse:
+        "Boundary lead for deciding whether Arctic refuge, wildlife, and conservation contacts are domestic-only or relevant to international conservation framing.",
+      boundaryNotes:
+        "Likely domestic unless linked to global biodiversity, wildlife protection, or Rio-related environmental diplomacy.",
+      tags: ["wildlife", "conservation", "Arctic refuge", "daily diary"],
+      verification: ["Open NAID 186356", "Search Interior files", "Check CEQ and Rio biodiversity files"]
+    },
+    {
       id: "rec-1991-kurdish-refugees",
       date: "1991-04-16",
       title: "Kurdish refugee emergency and humanitarian relief doctrine after the Gulf War",
@@ -525,7 +569,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Public Papers and speech drafts",
       sourceUrl: "https://www.govinfo.gov/app/collection/ppp",
       sourceNote:
-        "Source: Public Papers: Bush, 1991, Book II, September 23, 1991. Published text. Speech drafts, clearance memoranda, and briefing papers on UN reform, collective security, and Security Council policy remain to be located.",
+        "Source: Public Papers: Bush, 1991, Book II, September 23, 1991. Published text. Related scheduling file units are [Presidential Daily Diary] 9/23/1991, NAID 415891553, and [Presidential Daily Backup] 9/23/1991, NAID 415891554. Speech drafts, clearance memoranda, and briefing papers on UN reform, collective security, and Security Council policy remain to be located.",
       compilerUse:
         "Public frame for post-Cold War UN governance and peacekeeping doctrine.",
       boundaryNotes:
@@ -569,7 +613,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "UNCED and climate convention files",
       sourceUrl: "https://catalog.archives.gov/search?q=Rio%20Earth%20Summit%20Bush%201992",
       sourceNote:
-        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files; Environmental Protection Agency files. File unit and item title not yet identified. Core targets include Rio Earth Summit, UNCED, Framework Convention on Climate Change, biodiversity, forests, and President Bush June 1992 files.",
+        "Source: Bush Library, summit files; Department of State, OES files; Council on Environmental Quality files; Environmental Protection Agency files. Related scheduling file units include [Presidential Daily Diary] 5/12/1992, NAID 415892023, [Presidential Daily Backup] 5/12/1992, NAID 415892024, [Presidential Daily Diary] 6/12/1992, NAID 415892086, and [Presidential Daily Backup] 6/12/1992, NAID 415892087. File unit and item title not yet identified for policy records. Core targets include Rio Earth Summit, UNCED, Framework Convention on Climate Change, biodiversity, forests, and President Bush June 1992 files.",
       compilerUse:
         "Likely anchor document set for the Global Climate Change and the Rio Summit chapter.",
       boundaryNotes:
@@ -591,7 +635,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "UN peacekeeping files",
       sourceUrl: "https://catalog.archives.gov/search?q=UN%20peacekeeping%20Bush%201992%20Somalia%20Yugoslavia",
       sourceNote:
-        "Source: Department of State IO files; NSC peacekeeping files. File unit and item title not yet identified. Retain UN peacekeeping, Agenda for Peace, Somalia, Yugoslavia, humanitarian intervention, and collective security documents only when they state global doctrine rather than crisis operations.",
+        "Source: Department of State IO files; NSC peacekeeping files. Related scheduling file units include [Presidential Daily Diary] 9/21/1992, NAID 415892290, [Presidential Daily Backup] 9/21/1992, NAID 415892291, [Presidential Daily Diary] 12/04/1992, NAID 415892438, and [Presidential Daily Backup] 12/04/1992, NAID 415892439. File unit and item title not yet identified for policy records. Retain UN peacekeeping, Agenda for Peace, Somalia, Yugoslavia, humanitarian intervention, and collective security documents only when they state global doctrine rather than crisis operations.",
       compilerUse:
         "Tests global UN peacekeeping doctrine against Somalia and Yugoslavia volume boundaries.",
       boundaryNotes:
@@ -613,7 +657,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Global health and population files",
       sourceUrl: "https://catalog.archives.gov/search?q=population%20family%20planning%20Bush%201992%20USAID",
       sourceNote:
-        "Source: USAID files; Department of State files; HHS files; UNFPA-facing records. File unit and item title not yet identified. Potential targets include population, family planning, UNFPA, USAID health, and development-assistance policy decisions, 1989-1992.",
+        "Source: USAID files; Department of State files; HHS files; UNFPA-facing records. Related scheduling file units are [Presidential Daily Diary] 9/25/1992, NAID 415892298, and [Presidential Daily Backup] 9/25/1992, NAID 415892299. File unit and item title not yet identified for policy records. Potential targets include population, family planning, UNFPA, USAID health, and development-assistance policy decisions, 1989-1992.",
       compilerUse:
         "Identifies whether population policy was a global-issues topic for this administration.",
       boundaryNotes:
@@ -635,7 +679,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Whaling, biodiversity, and wildlife protection files",
       sourceUrl: "https://catalog.archives.gov/search?q=whaling%20biodiversity%20Bush%201992",
       sourceNote:
-        "Source: Department of State OES conservation files; NOAA files; Department of the Interior international files. File unit and item title not yet identified. Potential targets include whaling, International Whaling Commission, biodiversity, wildlife protection, conservation, and 1989-1992 policy decision records.",
+        "Source: Department of State OES conservation files; NOAA files; Department of the Interior international files. Related scheduling file units are [Presidential Daily Diary] 12/23/1992, NAID 415892476, and [Presidential Daily Backup] 12/23/1992, NAID 415892477. File unit and item title not yet identified for policy records. Potential targets include whaling, International Whaling Commission, biodiversity, wildlife protection, conservation, and 1989-1992 policy decision records.",
       compilerUse:
         "Carries forward the Volume XLI whaling-regulation precedent while testing whether Bush-era biodiversity files belong here or with the Rio chapter.",
       boundaryNotes:
@@ -657,7 +701,7 @@ window.GLOBAL_ISSUES_DATA = {
       sourcePool: "Transnational commons files",
       sourceUrl: "https://catalog.archives.gov/search?q=Antarctica%20oceans%20Law%20of%20the%20Sea%20Bush",
       sourceNote:
-        "Source: Department of State Legal Adviser files; Department of State OES oceans and polar files; NSC legal and treaty files; NOAA files. File unit and item title not yet identified. Potential targets include Antarctica, oceans, Law of the Sea, polar affairs, and 1989-1992 international-law decision records.",
+        "Source: Department of State Legal Adviser files; Department of State OES oceans and polar files; NSC legal and treaty files; NOAA files. Related scheduling file units are [Presidential Daily Diary] 2/14/1992, NAID 415891846, and [Presidential Daily Backup] 2/14/1992, NAID 415891847. File unit and item title not yet identified for policy records. Potential targets include Antarctica, oceans, Law of the Sea, polar affairs, and 1989-1992 international-law decision records.",
       compilerUse:
         "Populates the commons and international-law chapter if the volume extends beyond UN, environment, and humanitarian issues.",
       boundaryNotes:
@@ -678,6 +722,19 @@ window.GLOBAL_ISSUES_DATA = {
         "Search table and NARA series for UN, climate, Rio, ozone, famine, human rights, health, population, and whaling terms; export NAIDs with no-document markers separately.",
       terms: ["UN", "Perez de Cuellar", "environment", "refugees", "human rights", "climate"],
       url: "https://www.bush41library.gov/digital-research-room/about-textual-collections/memcons-and-telcons"
+    },
+    {
+      id: "pool-daily-diary-backup",
+      laneId: "un-governance",
+      name: "Presidential Daily Diary and Daily Backup Materials",
+      repository: "George H.W. Bush Presidential Library / NARA Catalog",
+      priority: "Critical",
+      coverage:
+        "NAID 186322, Presidential Daily Diary and Presidential Daily Backup Materials, 1989-1993. The series chronicles presidential meetings, events, trips, telephone calls, schedules, briefing memoranda, agendas, talking points, and telephone memoranda.",
+      nextAction:
+        "Use diary and backup file units to anchor dates, participants, and scheduling context for public statements, meetings, and calls; then locate separate memcons, telcons, briefing papers, and decision memoranda for substantive content.",
+      terms: ["daily diary", "daily backup", "telephone calls", "meetings", "schedules", "talking points"],
+      url: "https://catalog.archives.gov/id/186322"
     },
     {
       id: "pool-state-io",
@@ -1126,6 +1183,16 @@ window.GLOBAL_ISSUES_DATA = {
         "Searchable source for declassified presidential conversation rows and no-document contact markers."
     },
     {
+      id: "ref-bush-daily-diary",
+      date: "2026-05-25",
+      title: "Presidential Daily Diary and Presidential Daily Backup Materials",
+      kind: "Source series",
+      laneId: "un-governance",
+      url: "https://catalog.archives.gov/id/186322",
+      compilerUse:
+        "Series-level source for presidential meetings, calls, schedules, briefing memoranda, agendas, and talking points. Use for timing and participant control, then pair with separate substantive records."
+    },
+    {
       id: "ref-govinfo-ppp",
       date: "2026-05-23",
       title: "GovInfo Public Papers collection",
@@ -1259,6 +1326,11 @@ window.GLOBAL_ISSUES_DATA = {
       label: "Bush Library Memcons and Telcons",
       url: "https://www.bush41library.gov/digital-research-room/about-textual-collections/memcons-and-telcons",
       note: "Declassified presidential conversation table and NARA series links."
+    },
+    {
+      label: "Presidential Daily Diary and Daily Backup Materials",
+      url: "https://catalog.archives.gov/id/186322",
+      note: "NARA series for Bush presidential meetings, telephone calls, schedules, briefing memoranda, agendas, and talking points."
     },
     {
       label: "National Archives Catalog",
