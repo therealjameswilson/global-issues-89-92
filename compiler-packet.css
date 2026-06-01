@@ -1,0 +1,136 @@
+.packet-tools {
+  grid-template-columns: repeat(2, minmax(180px, 1fr)) auto auto;
+}
+
+.packet-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.packet-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.packet-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.packet-panel {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.packet-panel.wide {
+  grid-column: span 2;
+}
+
+.packet-panel.full {
+  grid-column: 1 / -1;
+}
+
+.packet-panel p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.packet-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.packet-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem;
+}
+
+.packet-item h4 {
+  font-size: 0.98rem;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.packet-item p {
+  font-size: 0.9rem;
+}
+
+.packet-item .source-note {
+  font-size: 0.86rem;
+}
+
+.packet-alert {
+  background: #fff8ed;
+  border: 1px solid #ecd5aa;
+  border-radius: var(--radius);
+  color: #704600;
+  font-weight: 750;
+  padding: 0.75rem;
+}
+
+.packet-standard {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.packet-standard li {
+  border-left-color: var(--gold);
+}
+
+.packet-markdown-panel {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.packet-markdown-panel summary {
+  color: var(--green-dark);
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.packet-markdown-panel textarea {
+  background: #fff;
+  border: 1px solid #c8d2cd;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.86rem;
+  margin-top: 0.85rem;
+  min-height: 280px;
+  padding: 0.8rem;
+  resize: vertical;
+  width: 100%;
+}
+
+@media (max-width: 1240px) {
+  .packet-grid,
+  .packet-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .packet-panel.wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .packet-tools,
+  .packet-grid,
+  .packet-metrics {
+    grid-template-columns: 1fr;
+  }
+}
