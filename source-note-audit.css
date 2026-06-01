@@ -1,0 +1,77 @@
+.source-note-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.source-note-actions {
+  margin-bottom: 1rem;
+}
+
+.source-note-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.source-note-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.source-note-card {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.36fr);
+  padding: 1rem;
+}
+
+.source-note-main,
+.source-note-side {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.source-note-main p,
+.source-note-side p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.source-note-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.source-note-check {
+  align-items: center;
+  background: #eef1eb;
+  border-radius: 999px;
+  color: #3f4b49;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 850;
+  min-height: 28px;
+  padding: 0.25rem 0.55rem;
+}
+
+.source-note-check.pass {
+  background: #e4f0ed;
+  color: var(--green-dark);
+}
+
+.source-note-check.fail {
+  background: #f6d8d1;
+  color: #7b271a;
+}
+
+@media (max-width: 900px) {
+  .source-note-metrics,
+  .source-note-card {
+    grid-template-columns: 1fr;
+  }
+}

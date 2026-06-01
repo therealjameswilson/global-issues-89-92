@@ -11,6 +11,7 @@
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="promotion.css" />
+    <link rel="stylesheet" href="source-note-audit.css" />
   </head>
   <body>
     <header class="site-header">
@@ -21,6 +22,7 @@
       <nav aria-label="Primary navigation">
         <a href="#chronology">Chronology</a>
         <a href="#promotion">Promotion</a>
+        <a href="#source-notes">Source Notes</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -140,6 +142,25 @@
           <button id="promotion-copy-critical" type="button">Copy Critical Requests</button>
         </div>
         <div id="promotion-root" class="promotion-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section source-note-section" id="source-notes" aria-labelledby="source-note-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Source-Note Control</p>
+            <h2 id="source-note-title">FRUS Source-Note Readiness Audit</h2>
+          </div>
+          <p class="section-note">
+            Checks every chronology item against the minimum source-note elements needed before a
+            lead can become a durable FRUS candidate: repository, collection or series, file unit or
+            item title, identifier, date, release status, and object URL.
+          </p>
+        </div>
+        <div class="button-row source-note-actions">
+          <button id="source-note-export" type="button">Export Audit CSV</button>
+          <button id="source-note-copy-open" type="button">Copy Open Source-Note Requests</button>
+        </div>
+        <div id="source-note-root" class="source-note-root" aria-live="polite"></div>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
@@ -417,5 +438,6 @@
     <script src="data/global-issues-data.js"></script>
     <script src="app.js"></script>
     <script src="promotion.js"></script>
+    <script src="source-note-audit.js"></script>
   </body>
 </html>
