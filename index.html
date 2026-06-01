@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css" />
     <link rel="stylesheet" href="compiler-packet.css" />
+    <link rel="stylesheet" href="pull-list.css" />
   </head>
   <body>
     <header class="site-header">
@@ -25,6 +26,7 @@
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
         <a href="#packet">Packet</a>
+        <a href="#pull-list">Pull List</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -198,6 +200,42 @@
           <summary>Markdown Preview</summary>
           <textarea id="packet-markdown" rows="12" readonly></textarea>
         </details>
+      </section>
+
+      <section class="section pull-list-section" id="pull-list" aria-labelledby="pull-list-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Archival Pull List</p>
+            <h2 id="pull-list-title">Repository Request Queue</h2>
+          </div>
+          <p class="section-note">
+            Converts chronology leads into grouped pull requests with extracted NAIDs,
+            repositories, source pools, source notes, verification steps, and next requested files.
+          </p>
+        </div>
+        <div class="tools pull-list-tools" role="search" aria-label="Filter archival pull list">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="pull-search" type="search" placeholder="Search titles, repositories, NAIDs, requests" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="pull-lane"></select>
+          </label>
+          <label>
+            <span>Request</span>
+            <select id="pull-kind"></select>
+          </label>
+          <label>
+            <span>Source Pool</span>
+            <select id="pull-pool"></select>
+          </label>
+          <button id="pull-reset" type="button">Reset</button>
+          <button id="pull-export" type="button">CSV</button>
+          <button id="pull-copy" type="button">Copy Requests</button>
+          <p id="pull-summary" class="summary">Loading pull list...</p>
+        </div>
+        <div id="pull-list-root" class="pull-list-root" aria-live="polite"></div>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
@@ -477,5 +515,6 @@
     <script src="promotion.js"></script>
     <script src="source-note-audit.js"></script>
     <script src="compiler-packet.js"></script>
+    <script src="pull-list.js"></script>
   </body>
 </html>

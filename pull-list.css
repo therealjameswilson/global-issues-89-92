@@ -1,0 +1,102 @@
+.pull-list-tools {
+  grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(150px, 1fr)) auto auto auto;
+}
+
+.pull-list-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.pull-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pull-group {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.pull-group-heading {
+  align-items: start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.pull-group-heading p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.pull-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pull-item {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.36fr);
+  padding: 1rem;
+}
+
+.pull-main,
+.pull-side {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.pull-main p,
+.pull-side p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.naid-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.naid-list code {
+  background: #eef3ef;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 850;
+  padding: 0.25rem 0.55rem;
+}
+
+@media (max-width: 1240px) {
+  .pull-list-tools {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .pull-metrics,
+  .pull-item {
+    grid-template-columns: 1fr;
+  }
+
+  .pull-group-heading {
+    display: grid;
+  }
+}
+
+@media (max-width: 680px) {
+  .pull-list-tools {
+    grid-template-columns: 1fr;
+  }
+}

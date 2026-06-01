@@ -16,6 +16,7 @@ published-volume mirror.
 - document-promotion queue for turning dated leads into FRUS-ready document requests
 - source-note readiness audit for repository, series, item, identifier, status, and URL control
 - chapter-level compiler packet builder with Markdown export and copy workflow
+- repository-grouped archival pull list with NAID extraction and copyable request text
 - working chapter planning for global issues topics
 - Volume XLI-inspired chapters for United Nations, Global Climate Change and
   the Rio Summit, Human Rights, Law of the Sea, African Famine and relief,
