@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css" />
+    <link rel="stylesheet" href="compiler-packet.css" />
   </head>
   <body>
     <header class="site-header">
@@ -23,6 +24,7 @@
         <a href="#chronology">Chronology</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
+        <a href="#packet">Packet</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -161,6 +163,41 @@
           <button id="source-note-copy-open" type="button">Copy Open Source-Note Requests</button>
         </div>
         <div id="source-note-root" class="source-note-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section packet-section" id="packet" aria-labelledby="packet-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Compiler Packet</p>
+            <h2 id="packet-title">Chapter Packet Builder</h2>
+          </div>
+          <p class="section-note">
+            Assembles a one-file working packet from the chronology, source-note audit,
+            promotion queue, public-attention pass, source pools, people, and open gaps.
+          </p>
+        </div>
+        <div class="tools packet-tools" role="search" aria-label="Build compiler packet">
+          <label>
+            <span>Chapter</span>
+            <select id="packet-lane"></select>
+          </label>
+          <label>
+            <span>Scope</span>
+            <select id="packet-scope">
+              <option value="all">All packet evidence</option>
+              <option value="priority">Critical and high priority</option>
+              <option value="action">Open action items</option>
+            </select>
+          </label>
+          <button id="packet-copy" type="button">Copy Packet</button>
+          <button id="packet-export" type="button">Export MD</button>
+          <p id="packet-summary" class="summary">Loading packet...</p>
+        </div>
+        <div id="packet-root" class="packet-root" aria-live="polite"></div>
+        <details class="packet-markdown-panel">
+          <summary>Markdown Preview</summary>
+          <textarea id="packet-markdown" rows="12" readonly></textarea>
+        </details>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
@@ -439,5 +476,6 @@
     <script src="app.js"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js"></script>
+    <script src="compiler-packet.js"></script>
   </body>
 </html>
