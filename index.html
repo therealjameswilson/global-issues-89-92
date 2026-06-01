@@ -10,6 +10,7 @@
     />
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="promotion.css" />
   </head>
   <body>
     <header class="site-header">
@@ -19,6 +20,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#chronology">Chronology</a>
+        <a href="#promotion">Promotion</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -45,7 +47,7 @@
           </p>
           <div class="hero-actions" aria-label="Primary actions">
             <a class="button primary" href="#chronology">Open Chronology</a>
-            <a class="button secondary" href="#records">Browse Records</a>
+            <a class="button secondary" href="#promotion">Promotion Queue</a>
             <a class="button ghost" href="https://history.state.gov/historicaldocuments/frus1989-92v29" rel="noreferrer">
               Official Volume Page
             </a>
@@ -119,6 +121,25 @@
           <p id="chronology-summary" class="summary">Loading chronology...</p>
         </div>
         <div id="chronology-root" class="chronology-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section promotion-section" id="promotion" aria-labelledby="promotion-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Document Promotion</p>
+            <h2 id="promotion-title">Next Actions for FRUS-Ready Documents</h2>
+          </div>
+          <p class="section-note">
+            Turns chronology entries into a working queue: request substantive records,
+            backfill public anchors, resolve boundary assignments, and promote source leads
+            only after source-note control is strong enough for FRUS selection.
+          </p>
+        </div>
+        <div class="button-row promotion-actions">
+          <button id="promotion-export" type="button">Export Promotion CSV</button>
+          <button id="promotion-copy-critical" type="button">Copy Critical Requests</button>
+        </div>
+        <div id="promotion-root" class="promotion-root" aria-live="polite"></div>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
@@ -395,5 +416,6 @@
 
     <script src="data/global-issues-data.js"></script>
     <script src="app.js"></script>
+    <script src="promotion.js"></script>
   </body>
 </html>
