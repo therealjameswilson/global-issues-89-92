@@ -13,6 +13,7 @@ published-volume mirror.
 
 - volume status and source links
 - chronology-first pass through declassified/public records and source-control leads
+- document-promotion queue for turning dated leads into FRUS-ready document requests
 - working chapter planning for global issues topics
 - Volume XLI-inspired chapters for United Nations, Global Climate Change and
   the Rio Summit, Human Rights, Law of the Sea, African Famine and relief,
@@ -38,6 +39,13 @@ python3 -m http.server 8000
 ```
 
 Then open `http://localhost:8000`.
+
+## Publication note
+
+This repository is private. GitHub rejected Pages publication for the current
+plan with `Your current plan does not support GitHub Pages for this repository`.
+The Pages workflow is kept manual-only so it can be run after the repository is
+made public or private Pages is enabled.
 
 ## Research reports
 
