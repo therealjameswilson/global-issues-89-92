@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="source-note-audit.css" />
     <link rel="stylesheet" href="compiler-packet.css" />
     <link rel="stylesheet" href="pull-list.css" />
+    <link rel="stylesheet" href="meeting-index.css" />
     <style id="compiler-network-style">
       .compiler-network {
         border-bottom: 1px solid rgba(31, 41, 51, 0.14);
@@ -96,6 +97,7 @@
         <a href="#source-notes">Source Notes</a>
         <a href="#packet">Packet</a>
         <a href="#pull-list">Pull List</a>
+        <a href="#meeting-index">Meetings/Calls</a>
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
@@ -111,10 +113,42 @@
     </header>
 
     <main id="top">
+      <section class="section chronology-section" id="chronology" aria-labelledby="chronology-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Declassified Document Chronology</p>
+            <h1 id="chronology-title">Chronology of Declassified, Public, and Source-Control Leads</h1>
+          </div>
+          <p class="section-note">
+            Date-first pass through public anchors, Presidential Daily Diary meeting and call leads,
+            and source-control records. Status labels distinguish item-level evidence from leads that
+            still need document requests or source-note promotion.
+          </p>
+        </div>
+        <div class="tools chronology-tools" role="search" aria-label="Filter chronology">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="chronology-search" type="search" placeholder="Search titles, people, source notes, repositories" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="chronology-lane"></select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="chronology-status"></select>
+          </label>
+          <button id="chronology-reset" type="button">Reset</button>
+          <button id="chronology-export" type="button">CSV</button>
+          <p id="chronology-summary" class="summary">Loading chronology...</p>
+        </div>
+        <div id="chronology-root" class="chronology-list" aria-live="polite"></div>
+      </section>
+
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="kicker">FRUS 1989-1992, Volume XXIX</p>
-          <h1 id="hero-title">Global Issues Compiler Assistant</h1>
+          <h2 id="hero-title">Global Issues Compiler Assistant</h2>
           <p class="lede">
             A starter workbench for a planned FRUS volume: working chapters, source-pool
             queues, public-line anchors, persons, gaps, and review controls for global
@@ -164,38 +198,6 @@
           <span id="stat-references">0</span>
           <p>public anchors</p>
         </div>
-      </section>
-
-      <section class="section chronology-section" id="chronology" aria-labelledby="chronology-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Declassified Document Chronology</p>
-            <h2 id="chronology-title">Chronology of Declassified, Public, and Source-Control Leads</h2>
-          </div>
-          <p class="section-note">
-            Date-first pass through public anchors, Presidential Daily Diary meeting and call leads,
-            and source-control records. Status labels distinguish item-level evidence from leads that
-            still need document requests or source-note promotion.
-          </p>
-        </div>
-        <div class="tools chronology-tools" role="search" aria-label="Filter chronology">
-          <label class="search-field">
-            <span>Search</span>
-            <input id="chronology-search" type="search" placeholder="Search titles, people, source notes, repositories" />
-          </label>
-          <label>
-            <span>Chapter</span>
-            <select id="chronology-lane"></select>
-          </label>
-          <label>
-            <span>Status</span>
-            <select id="chronology-status"></select>
-          </label>
-          <button id="chronology-reset" type="button">Reset</button>
-          <button id="chronology-export" type="button">CSV</button>
-          <p id="chronology-summary" class="summary">Loading chronology...</p>
-        </div>
-        <div id="chronology-root" class="chronology-list" aria-live="polite"></div>
       </section>
 
       <section class="section promotion-section" id="promotion" aria-labelledby="promotion-title">
@@ -305,6 +307,43 @@
           <p id="pull-summary" class="summary">Loading pull list...</p>
         </div>
         <div id="pull-list-root" class="pull-list-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section meeting-index-section" id="meeting-index" aria-labelledby="meeting-index-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Presidential Meetings and Calls</p>
+            <h2 id="meeting-index-title">Daily Diary and Backup Control Index</h2>
+          </div>
+          <p class="section-note">
+            Pulls Presidential Daily Diary and Daily Backup NAIDs out of the chronology so
+            meeting, call, schedule, briefing, agenda, talking-point, and follow-up files can
+            be requested without rereading every source note.
+          </p>
+        </div>
+        <div class="tools meeting-index-tools" role="search" aria-label="Filter meeting and call anchors">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="meeting-search" type="search" placeholder="Search dates, NAIDs, people, topics, follow-up requests" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="meeting-lane"></select>
+          </label>
+          <label>
+            <span>Anchor</span>
+            <select id="meeting-kind"></select>
+          </label>
+          <label>
+            <span>Material</span>
+            <select id="meeting-material"></select>
+          </label>
+          <button id="meeting-reset" type="button">Reset</button>
+          <button id="meeting-export" type="button">CSV</button>
+          <button id="meeting-copy" type="button">Copy Requests</button>
+          <p id="meeting-summary" class="summary">Loading meeting and call anchors...</p>
+        </div>
+        <div id="meeting-index-root" class="meeting-index-root" aria-live="polite"></div>
       </section>
 
       <section class="section workbench-section" id="workbench" aria-labelledby="workbench-title">
@@ -585,5 +624,6 @@
     <script src="source-note-audit.js"></script>
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
+    <script src="meeting-index.js"></script>
   </body>
 </html>

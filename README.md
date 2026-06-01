@@ -13,10 +13,12 @@ published-volume mirror.
 
 - volume status and source links
 - chronology-first pass through declassified/public records and source-control leads
+- declassified-document chronology as the first working section on the page
 - document-promotion queue for turning dated leads into FRUS-ready document requests
 - source-note readiness audit for repository, series, item, identifier, status, and URL control
 - chapter-level compiler packet builder with Markdown export and copy workflow
 - repository-grouped archival pull list with NAID extraction and copyable request text
+- Presidential Daily Diary and Daily Backup meeting/call control index with copyable follow-up requests
 - working chapter planning for global issues topics
 - Volume XLI-inspired chapters for United Nations, Global Climate Change and
   the Rio Summit, Human Rights, Law of the Sea, African Famine and relief,
@@ -28,7 +30,6 @@ published-volume mirror.
 - public-reference and precedent layer
 - Bush Public Papers presidential-attention audit for the working chapters
 - NARA Scout query pack for archival follow-up
-- Presidential Daily Diary and Daily Backup source leads for pertinent meetings and calls
 - review queue with local browser state
 - CSV exports for visible records, gaps, source pools, persons, references, and review items
 - local ingest scratchpad for query packs and archival notes
