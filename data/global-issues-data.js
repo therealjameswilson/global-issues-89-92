@@ -6,7 +6,7 @@ window.GLOBAL_ISSUES_DATA = {
     officialUrl: "https://history.state.gov/historicaldocuments/frus1989-92v29",
     status: "Planned",
     statusUrl: "https://history.state.gov/historicaldocuments/status-of-the-series",
-    statusChecked: "May 23, 2026",
+    statusChecked: "June 2, 2026",
     compilerMode: "Starter research workbench",
     caution:
       "Official HistoryAtState pages provide the volume title and status. Chapter structure and source leads on this page are compiler-facing research scaffolding."
@@ -1144,7 +1144,7 @@ window.GLOBAL_ISSUES_DATA = {
   references: [
     {
       id: "ref-frus-v29",
-      date: "2026-05-23",
+      date: "2026-06-02",
       title: "Official Volume XXIX page",
       kind: "Official status",
       laneId: "un-governance",
@@ -1154,7 +1154,7 @@ window.GLOBAL_ISSUES_DATA = {
     },
     {
       id: "ref-status-series",
-      date: "2026-05-23",
+      date: "2026-06-02",
       title: "Status of the FRUS Series",
       kind: "Official status",
       laneId: "un-governance",
@@ -1295,6 +1295,140 @@ window.GLOBAL_ISSUES_DATA = {
       url: "https://history.state.gov/historicaldocuments/status-of-the-series",
       status: "Planned",
       use: "Successor-era model for commons, environment, law, and technical transnational topics."
+    }
+  ],
+  adjacentVolumes: [
+    {
+      id: "adj-v01-public-diplomacy",
+      volume: "FRUS 1989-1992, Volume I, Foundations of Foreign Policy; Public Diplomacy",
+      shortTitle: "Vol. I Foundations/Public Diplomacy",
+      status: "Being Researched",
+      url: "https://history.state.gov/historicaldocuments/status-of-the-series",
+      laneIds: ["un-governance", "environment-science", "rights-democracy", "refugees-relief"],
+      overlapTopics: ["public speeches", "speech drafts", "public diplomacy", "presidential doctrine"],
+      risk: "Public-line anchors for UNGA, Rio, democracy, and humanitarian policy may belong with public diplomacy unless the selected document is an internal global-issues decision record.",
+      compilerAction:
+        "Use Public Papers only as anchors; request drafts, clearance memoranda, briefing books, and policy follow-up before deciding whether the internal record belongs here or in Volume I."
+    },
+    {
+      id: "adj-v07-yugoslavia",
+      volume: "FRUS 1989-1992, Volume VII, Yugoslavia",
+      shortTitle: "Vol. VII Yugoslavia",
+      status: "Being Cleared",
+      url: "https://history.state.gov/historicaldocuments/status-of-the-series",
+      laneIds: ["un-governance", "refugees-relief", "rights-democracy"],
+      overlapTopics: ["UN peacekeeping", "Balkans", "humanitarian intervention", "human rights"],
+      risk: "Peacekeeping and humanitarian-intervention records may be crisis documents unless they state general UN doctrine or cross-regional policy.",
+      compilerAction:
+        "Coordinate any Yugoslavia, Balkans, or peacekeeping hit before numbering; retain only documents whose main purpose is global UN doctrine, not crisis operations."
+    },
+    {
+      id: "adj-v10-european-security",
+      volume: "FRUS 1989-1992, Volume X, European Security, 1984-1992",
+      shortTitle: "Vol. X European Security",
+      status: "Being Cleared",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v10",
+      laneIds: ["rights-democracy", "commons-law", "un-governance"],
+      overlapTopics: ["CSCE", "Charter of Paris", "democratic norms", "international law"],
+      risk: "CSCE and Charter of Paris material can look like global democracy doctrine while functioning as European security architecture.",
+      compilerAction:
+        "Hold CSCE-related records until the compiler can show cross-regional rights or governance policy beyond European security implementation."
+    },
+    {
+      id: "adj-v11-v13-gulf",
+      volume: "FRUS 1989-1992, Volumes XI-XIII, Persian Gulf Crisis",
+      shortTitle: "Vols. XI-XIII Persian Gulf",
+      status: "Being Cleared",
+      url: "https://history.state.gov/historicaldocuments/status-of-the-series",
+      laneIds: ["un-governance", "refugees-relief"],
+      overlapTopics: ["Security Council", "sanctions", "Kurdish refugees", "Operation Provide Comfort"],
+      risk: "Security Council and Kurdish refugee records may belong in Persian Gulf crisis volumes unless they establish general UN, sanctions, or humanitarian-relief doctrine.",
+      compilerAction:
+        "Separate Gulf operation records from global doctrine; coordinate any Kurdish refugee or Security Council document before final Volume XXIX placement."
+    },
+    {
+      id: "adj-v19-v20-africa",
+      volume: "FRUS 1989-1992, Volumes XIX-XX, Southern Africa; North Africa and Sub-Saharan Africa",
+      shortTitle: "Vols. XIX-XX Africa",
+      status: "Mixed: Being Cleared / Being Researched",
+      url: "https://history.state.gov/historicaldocuments/status-of-the-series",
+      laneIds: ["refugees-relief", "rights-democracy", "health-population"],
+      overlapTopics: ["African famine", "Somalia", "humanitarian relief", "human rights"],
+      risk: "Famine, relief, health, and rights files may be regional Africa records unless they are about global assistance doctrine or multilateral policy.",
+      compilerAction:
+        "Tag each Africa-related hit as regional crisis, global humanitarian doctrine, health/population program, or rights standard before requesting or numbering."
+    },
+    {
+      id: "adj-v21-somalia",
+      volume: "FRUS 1989-1992, Volume XXI, Somalia, 1989-1994",
+      shortTitle: "Vol. XXI Somalia",
+      status: "Being Cleared",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v21",
+      laneIds: ["un-governance", "refugees-relief"],
+      overlapTopics: ["Somalia", "humanitarian intervention", "famine", "UN peacekeeping"],
+      risk: "Somalia is the highest-risk duplicate-selection boundary for late-1992 humanitarian and UN peacekeeping material.",
+      compilerAction:
+        "Keep operational Somalia records out; retain only records that define general humanitarian intervention or UN peacekeeping doctrine across crises."
+    },
+    {
+      id: "adj-v22-caribbean",
+      volume: "FRUS 1989-1992, Volume XXII, Cuba; Haiti; Caribbean",
+      shortTitle: "Vol. XXII Cuba/Haiti/Caribbean",
+      status: "Being Researched",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v22",
+      laneIds: ["refugees-relief", "rights-democracy"],
+      overlapTopics: ["migration", "asylum", "refugees", "democracy"],
+      risk: "Cuba, Haiti, and Caribbean migration records can distort a global refugee chapter if crisis-specific decisions are counted as general policy.",
+      compilerAction:
+        "Use Caribbean migration records only when they set general refugee, asylum, or migration doctrine; otherwise route them to the regional volume."
+    },
+    {
+      id: "adj-v26-national-security",
+      volume: "FRUS 1989-1992, Volume XXVI, National Security Policy",
+      shortTitle: "Vol. XXVI National Security Policy",
+      status: "Being Cleared",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v26",
+      laneIds: ["un-governance", "commons-law", "rights-democracy"],
+      overlapTopics: ["National Security Council", "collective security", "sanctions", "legal authorities"],
+      risk: "NSC doctrine, sanctions, and collective-security memoranda may be national-security architecture rather than a global-issues chapter document.",
+      compilerAction:
+        "Compare NSC records against Volume XXVI before selection; retain in Volume XXIX only when the global institution or transnational issue is primary."
+    },
+    {
+      id: "adj-v27-arms-control",
+      volume: "FRUS 1989-1992, Volume XXVII, Arms Control and Nonproliferation",
+      shortTitle: "Vol. XXVII Arms Control",
+      status: "Being Researched",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v27",
+      laneIds: ["commons-law", "un-governance"],
+      overlapTopics: ["outer space", "treaty law", "sanctions", "nonproliferation"],
+      risk: "International-law, sanctions, outer-space, or treaty records may be arms-control records if their main issue is security policy.",
+      compilerAction:
+        "Route arms-control-centered legal records to Volume XXVII; preserve only commons-law or UN procedural documents whose principal subject is global governance."
+    },
+    {
+      id: "adj-v28-counter",
+      volume: "FRUS 1989-1992, Volume XXVIII, Counternarcotics; Counterterrorism",
+      shortTitle: "Vol. XXVIII Counter Issues",
+      status: "Planned",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v28",
+      laneIds: ["un-governance", "rights-democracy"],
+      overlapTopics: ["sanctions", "terrorism", "human rights", "law enforcement cooperation"],
+      risk: "Sanctions and human-rights records can drift into counterterrorism or counternarcotics files if the operative policy issue is enforcement.",
+      compilerAction:
+        "Flag enforcement-driven sanctions records for Volume XXVIII; keep only global human-rights or UN-governance records where enforcement is secondary."
+    },
+    {
+      id: "adj-v30-economic",
+      volume: "FRUS 1989-1992, Volume XXX, Foreign Economic Policy",
+      shortTitle: "Vol. XXX Foreign Economic Policy",
+      status: "Being Researched",
+      url: "https://history.state.gov/historicaldocuments/frus1989-92v30",
+      laneIds: ["environment-science", "ozone-layer", "whaling-biodiversity"],
+      overlapTopics: ["G7", "Rio financing", "trade effects", "environmental economics"],
+      risk: "G7 environment and Rio financing records may belong in foreign economic policy if trade, finance, or economic burden-sharing is the main decision.",
+      compilerAction:
+        "Split environmental diplomacy from financing and trade issues; retain only records where climate, Rio, ozone, or conservation policy is the main question."
     }
   ],
   reviewChecklist: [

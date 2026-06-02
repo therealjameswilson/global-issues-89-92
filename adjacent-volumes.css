@@ -1,0 +1,142 @@
+.adjacent-tools {
+  grid-template-columns: minmax(260px, 1.35fr) repeat(3, minmax(160px, 0.55fr)) auto auto auto minmax(220px, 0.8fr);
+}
+
+.adjacent-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.adjacent-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.adjacent-group {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.adjacent-group-heading {
+  align-items: flex-start;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.adjacent-group-heading p {
+  color: var(--muted);
+  margin: 0.45rem 0 0;
+}
+
+.adjacent-grid {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.adjacent-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+  padding: 1rem;
+}
+
+.adjacent-card-main,
+.adjacent-side {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.adjacent-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.adjacent-status,
+.adjacent-urgency {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+  text-transform: uppercase;
+}
+
+.adjacent-status.being-cleared,
+.adjacent-urgency.high {
+  background: #f8e4d7;
+  border-color: #e9b89b;
+  color: #8d3c18;
+}
+
+.adjacent-status.being-researched,
+.adjacent-status.mixed-being-cleared-being-researched,
+.adjacent-urgency.medium {
+  background: #f7eed7;
+  border-color: #e4c978;
+  color: #755315;
+}
+
+.adjacent-status.planned,
+.adjacent-urgency.low {
+  background: #e6f0ef;
+  border-color: #bad6d2;
+  color: var(--green-dark);
+}
+
+.adjacent-risk,
+.adjacent-action {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  margin: 0;
+  padding: 0.75rem;
+}
+
+.adjacent-action {
+  background: #f6f7f4;
+  color: var(--ink);
+}
+
+@media (max-width: 1240px) {
+  .adjacent-tools {
+    grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(140px, 0.5fr));
+  }
+
+  .adjacent-tools button,
+  .adjacent-tools .summary {
+    grid-column: span 1;
+  }
+
+  .adjacent-metrics,
+  .adjacent-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .adjacent-tools,
+  .adjacent-metrics,
+  .adjacent-card {
+    grid-template-columns: 1fr;
+  }
+
+  .adjacent-group-heading {
+    flex-direction: column;
+  }
+}

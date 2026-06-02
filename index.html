@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="selection-docket.css" />
     <link rel="stylesheet" href="document-register.css" />
     <link rel="stylesheet" href="boundary-matrix.css" />
+    <link rel="stylesheet" href="adjacent-volumes.css?v=adjacent-volumes-20260602" />
     <link rel="stylesheet" href="compiler-packet.css" />
     <link rel="stylesheet" href="pull-list.css" />
     <link rel="stylesheet" href="meeting-index.css" />
@@ -137,6 +138,7 @@
         <a href="#selection">Selection</a>
         <a href="#register">Register</a>
         <a href="#boundaries">Boundaries</a>
+        <a href="#adjacent-volumes">Adjacent</a>
         <a href="#packet">Packet</a>
         <a href="#pull-list">Pull List</a>
         <a href="#meeting-index">Meetings/Calls</a>
@@ -534,6 +536,44 @@
           <p id="boundary-summary" class="summary">Loading boundary matrix...</p>
         </div>
         <div id="boundary-root" class="boundary-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section adjacent-section" id="adjacent-volumes" aria-labelledby="adjacent-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Adjacent Volumes</p>
+            <h2 id="adjacent-title">Adjacent Volume Coordination Board</h2>
+          </div>
+          <p class="section-note">
+            Translates the current HistoryAtState status landscape into boundary
+            work for Volume XXIX. Use it before numbering records that overlap
+            regional, functional, public-diplomacy, national-security, economic,
+            or counter-issue volumes.
+          </p>
+        </div>
+        <div class="tools adjacent-tools" role="search" aria-label="Filter adjacent volume coordination board">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="adjacent-search" type="search" placeholder="Search volumes, chapters, overlap topics, risks, actions" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="adjacent-lane"></select>
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="adjacent-status"></select>
+          </label>
+          <label>
+            <span>Gate</span>
+            <select id="adjacent-gate"></select>
+          </label>
+          <button id="adjacent-reset" type="button">Reset</button>
+          <button id="adjacent-export" type="button">CSV</button>
+          <button id="adjacent-copy" type="button">Copy Memos</button>
+          <p id="adjacent-summary" class="summary">Loading adjacent volume coordination...</p>
+        </div>
+        <div id="adjacent-root" class="adjacent-root" aria-live="polite"></div>
       </section>
 
       <section class="section packet-section" id="packet" aria-labelledby="packet-title">
@@ -954,7 +994,7 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script src="data/global-issues-data.js"></script>
+    <script src="data/global-issues-data.js?v=adjacent-volumes-20260602"></script>
     <script src="app.js"></script>
     <script src="coverage-matrix.js?v=coverage-matrix-20260602"></script>
     <script src="action-plan.js?v=action-plan-20260602"></script>
@@ -965,6 +1005,7 @@
     <script src="selection-docket.js"></script>
     <script src="document-register.js"></script>
     <script src="boundary-matrix.js"></script>
+    <script src="adjacent-volumes.js?v=adjacent-volumes-20260602"></script>
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
     <script src="meeting-index.js"></script>
