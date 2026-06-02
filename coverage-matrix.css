@@ -1,0 +1,171 @@
+.coverage-tools {
+  grid-template-columns: minmax(260px, 1.25fr) repeat(2, minmax(160px, 0.55fr)) auto auto auto minmax(220px, 0.8fr);
+}
+
+.coverage-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.coverage-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.coverage-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.coverage-row {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.34fr);
+  padding: 1rem;
+}
+
+.coverage-row-main,
+.coverage-row-side {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.coverage-row-heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.coverage-row-heading h3 {
+  margin: 0;
+}
+
+.coverage-year-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.coverage-cell {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.45rem;
+  min-height: 128px;
+  padding: 0.75rem;
+}
+
+.coverage-cell-top {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.coverage-cell-top strong {
+  font-size: 1.1rem;
+}
+
+.coverage-cell-top span,
+.coverage-cell-detail,
+.coverage-row-side p {
+  color: var(--muted);
+}
+
+.coverage-cell-status {
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.coverage-cell-detail,
+.coverage-action {
+  margin: 0;
+}
+
+.coverage-action {
+  border-left: 3px solid var(--lane-color, var(--green));
+  color: var(--muted);
+  padding-left: 0.7rem;
+}
+
+.coverage-status {
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 900;
+  min-height: 28px;
+  padding: 0.25rem 0.6rem;
+  white-space: nowrap;
+}
+
+.coverage-cell.missing-year,
+.coverage-status.missing-year {
+  background: #f7e0da;
+  color: #7b271a;
+}
+
+.coverage-cell.thin-year,
+.coverage-status.thin-year {
+  background: #f8edcd;
+  color: #6f4a00;
+}
+
+.coverage-cell.public-only-year,
+.coverage-status.public-only-year {
+  background: #e4eef6;
+  color: #22577a;
+}
+
+.coverage-cell.source-control-gap,
+.coverage-status.source-control-gap {
+  background: #efe5f4;
+  color: #5b3f7f;
+}
+
+.coverage-cell.boundary-sensitive,
+.coverage-status.boundary-sensitive {
+  background: #e9ecdf;
+  color: #4d5d2b;
+}
+
+.coverage-cell.seeded-year,
+.coverage-status.seeded-year {
+  background: #e4f0ed;
+  color: var(--green-dark);
+}
+
+@media (max-width: 1180px) {
+  .coverage-tools {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coverage-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coverage-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .coverage-tools,
+  .coverage-metrics,
+  .coverage-year-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .coverage-row-heading {
+    flex-direction: column;
+  }
+}

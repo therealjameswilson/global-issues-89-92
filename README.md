@@ -14,6 +14,7 @@ published-volume mirror.
 - volume status and source links
 - chronology-first pass through declassified/public records and source-control leads
 - declassified-document chronology as the first working section on the page
+- chapter-year coverage matrix for spotting thin, missing, public-only, and source-control-gap years
 - document-promotion queue for turning dated leads into FRUS-ready document requests
 - source-note readiness audit with FRUS-style draft targets, field checks, and CSV/exportable requests
 - release/declassification ledger separating public texts, no-document markers, diary controls, scope-note leads, and provisional searches

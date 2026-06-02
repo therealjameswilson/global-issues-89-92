@@ -10,6 +10,7 @@
     />
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="coverage-matrix.css?v=coverage-matrix-20260602" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css?v=source-note-style-20260602" />
     <link rel="stylesheet" href="release-ledger.css" />
@@ -125,6 +126,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#chronology">Chronology</a>
+        <a href="#coverage">Coverage</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
         <a href="#release">Release</a>
@@ -180,6 +182,39 @@
           <p id="chronology-summary" class="summary">Loading chronology...</p>
         </div>
         <div id="chronology-root" class="chronology-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section coverage-section" id="coverage" aria-labelledby="coverage-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Coverage Control</p>
+            <h2 id="coverage-title">Chapter-Year Coverage Matrix</h2>
+          </div>
+          <p class="section-note">
+            Audits the chronology by working chapter and year so thin periods, public-only
+            years, source-control gaps, and missing years are visible before archival pulls,
+            chapter packets, and final document-numbering decisions.
+          </p>
+        </div>
+        <div class="tools coverage-tools" role="search" aria-label="Filter chapter-year coverage matrix">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="coverage-search" type="search" placeholder="Search chapters, years, records, gaps, next actions" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="coverage-lane"></select>
+          </label>
+          <label>
+            <span>Coverage</span>
+            <select id="coverage-status"></select>
+          </label>
+          <button id="coverage-reset" type="button">Reset</button>
+          <button id="coverage-export" type="button">CSV</button>
+          <button id="coverage-copy" type="button">Copy Memos</button>
+          <p id="coverage-summary" class="summary">Loading coverage matrix...</p>
+        </div>
+        <div id="coverage-root" class="coverage-root" aria-live="polite"></div>
       </section>
 
       <section class="hero" aria-labelledby="hero-title">
@@ -846,6 +881,7 @@
 
     <script src="data/global-issues-data.js"></script>
     <script src="app.js"></script>
+    <script src="coverage-matrix.js?v=coverage-matrix-20260602"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js?v=source-note-style-20260602"></script>
     <script src="release-ledger.js"></script>
