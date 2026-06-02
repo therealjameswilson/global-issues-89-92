@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css?v=source-note-style-20260602" />
     <link rel="stylesheet" href="release-ledger.css" />
+    <link rel="stylesheet" href="scout-queue.css?v=scout-queue-20260602" />
     <link rel="stylesheet" href="selection-docket.css" />
     <link rel="stylesheet" href="document-register.css" />
     <link rel="stylesheet" href="boundary-matrix.css" />
@@ -136,6 +137,7 @@
         <a href="#workbench">Workbench</a>
         <a href="#lanes">Chapters</a>
         <a href="#attention">Attention</a>
+        <a href="#scout-queue">Scout</a>
         <a href="#records">Records</a>
         <a href="#persons">Persons</a>
         <a href="#source-pools">Source Pools</a>
@@ -575,6 +577,44 @@
         <div id="attention-root" class="attention-grid" aria-live="polite"></div>
       </section>
 
+      <section class="section scout-section" id="scout-queue" aria-labelledby="scout-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">NARA Scout</p>
+            <h2 id="scout-title">Archival Query Queue</h2>
+          </div>
+          <p class="section-note">
+            Converts chapter terms, public-attention anchors, and source-pool targets into
+            dated Bush 41 NARA Scout searches. Use this queue to rerun Scout with a personal
+            NARA Catalog API key, export promising file units, and feed the source-note,
+            release, and selection dockets.
+          </p>
+        </div>
+        <div class="tools scout-tools" role="search" aria-label="Filter NARA Scout query queue">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="scout-search" type="search" placeholder="Search chapters, source pools, query terms, next actions" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="scout-lane"></select>
+          </label>
+          <label>
+            <span>Kind</span>
+            <select id="scout-kind"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="scout-priority"></select>
+          </label>
+          <button id="scout-reset" type="button">Reset</button>
+          <button id="scout-export" type="button">CSV</button>
+          <button id="scout-copy" type="button">Copy Queries</button>
+          <p id="scout-summary" class="summary">Loading Scout query queue...</p>
+        </div>
+        <div id="scout-root" class="scout-root" aria-live="polite"></div>
+      </section>
+
       <section class="section records-section" id="records" aria-labelledby="records-title">
         <div class="section-heading">
           <div>
@@ -815,6 +855,7 @@
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
     <script src="meeting-index.js"></script>
+    <script src="scout-queue.js?v=scout-queue-20260602"></script>
     <script id="compiler-network-script">
       (() => {
         const button = document.querySelector("[data-compiler-handoff]");

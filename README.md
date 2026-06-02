@@ -33,7 +33,7 @@ published-volume mirror.
 - compiler gap tracker
 - public-reference and precedent layer
 - Bush Public Papers presidential-attention audit for the working chapters
-- NARA Scout query pack for archival follow-up
+- NARA Scout query queue and query pack for archival follow-up
 - review queue with local browser state
 - CSV exports for visible records, gaps, source pools, persons, references, and review items
 - local ingest scratchpad for query packs and archival notes
