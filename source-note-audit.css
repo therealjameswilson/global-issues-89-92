@@ -69,6 +69,42 @@
   color: #7b271a;
 }
 
+.frus-style-box {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.85rem;
+}
+
+.frus-style-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.frus-style-draft {
+  background: #f5f7f2;
+  border: 1px solid #d9e0d4;
+  border-radius: 8px;
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.75rem;
+  white-space: pre-wrap;
+}
+
+.frus-style-caution {
+  border-left: 3px solid var(--lane-color, var(--green));
+  padding-left: 0.65rem;
+}
+
 @media (max-width: 900px) {
   .source-note-metrics,
   .source-note-card {

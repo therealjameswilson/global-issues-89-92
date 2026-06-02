@@ -15,7 +15,7 @@ published-volume mirror.
 - chronology-first pass through declassified/public records and source-control leads
 - declassified-document chronology as the first working section on the page
 - document-promotion queue for turning dated leads into FRUS-ready document requests
-- source-note readiness audit for repository, series, item, identifier, status, and URL control
+- source-note readiness audit with FRUS-style draft targets, field checks, and CSV/exportable requests
 - release/declassification ledger separating public texts, no-document markers, diary controls, scope-note leads, and provisional searches
 - FRUS document-selection docket with ranked blockers, source-note field targets, CSV export, and copyable requests
 - provisional chapter-by-chapter document register with slot labels, numbering actions, CSV export, and copyable Markdown
@@ -50,10 +50,11 @@ Then open `http://localhost:8000`.
 
 ## Publication note
 
-This repository is private. GitHub rejected Pages publication for the current
-plan with `Your current plan does not support GitHub Pages for this repository`.
-The Pages workflow is kept manual-only so it can be run after the repository is
-made public or private Pages is enabled.
+The live compiler workspace is published at:
+
+https://therealjameswilson.github.io/global-issues-89-92/
+
+The `main` branch is also pushed to `gh-pages` when the static page is updated.
 
 ## Research reports
 

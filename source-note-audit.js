@@ -64,6 +64,7 @@
         const lane = laneFor(record.laneId);
         const checks = sourceNoteChecks(record);
         const missing = checks.filter((check) => !check.pass);
+        const style = sourceNoteStyle(record, missing);
         return {
           ...record,
           chapter: lane.name,
@@ -71,7 +72,11 @@
           checks,
           missing,
           score: checks.length - missing.length,
-          readiness: readinessLabel(record, missing)
+          readiness: readinessLabel(record, missing),
+          styleKind: style.kind,
+          styleCaution: style.caution,
+          styleDraft: style.draft,
+          requiredFields: style.requiredFields
         };
       })
       .sort(
@@ -138,6 +143,115 @@
     return "Needs source-note cleanup";
   }
 
+  function hasDailyDiary(record) {
+    return /Daily Diary|Daily Backup|Presidential Daily Diary and Daily Backup/i.test(
+      `${record.sourceNote || ""} ${record.sourcePool || ""} ${record.type || ""}`
+    );
+  }
+
+  function hasIdentifier(record) {
+    return /NAID\s+\d+|PPP-\d{4}|doc[-\w]*pg|catalog\.archives\.gov\/id\/\d+/i.test(
+      `${record.sourceNote || ""} ${record.sourceUrl || ""}`
+    );
+  }
+
+  function hasItemGap(record) {
+    return /file unit and item title not yet identified|catalog\.archives\.gov\/search/i.test(
+      `${record.sourceNote || ""} ${record.sourceUrl || ""}`
+    );
+  }
+
+  function recordControlLine(record) {
+    const repository = record.repository || "[repository]";
+    const pool = record.sourcePool || "[collection or series]";
+    return `${repository}, ${pool}`;
+  }
+
+  function sourceNoteStyle(record, missing) {
+    const note = record.sourceNote || "";
+    const fieldSet = new Set(missing.map((check) => check.label));
+    let kind = "Item-level candidate";
+    let caution = "Confirm classification, routing, drafting, clearance, and volume placement before final source-note drafting.";
+    let requiredFields = [
+      "classification or public-release status",
+      "drafting, clearance, approval, or routing details",
+      "final volume placement"
+    ];
+    let draft = [
+      `Source: ${recordControlLine(record)}, [box/container], [folder/file unit], [item title], ${formatDate(record.date)}.`,
+      "[Classification marking or public/declassification status]. [Drafted, cleared, approved, sent, or received details].",
+      hasIdentifier(record) ? "Identifier control: current lead contains a stable identifier; verify against the object record." : "Identifier control: [NAID, GovInfo id, or catalog object URL]."
+    ].join("\n");
+
+    if (record.status === "Public anchor" || /Published text|Public Papers|GovInfo/i.test(note)) {
+      kind = "Public anchor requiring internal pair";
+      caution = "Use the public text to control the public line; select the internal draft, clearance memorandum, briefing paper, or follow-up record if the volume needs a numbered document.";
+      requiredFields = [
+        "speech draft or clearance file",
+        "briefing paper or policy memorandum behind the public text",
+        "classification/release status of the internal record",
+        "drafting, clearance, and approval path"
+      ];
+      draft = [
+        `Source: ${record.repository || "Bush Library speech files / Department of State files"}, ${record.sourcePool || "[speech drafts or policy files]"}, [box/container], [folder/file unit], [draft, clearance memorandum, briefing paper, or follow-up record title], ${formatDate(record.date)}.`,
+        "[Classification marking or declassification/public-release status]. [Drafted, cleared, approved, or routed by offices/persons].",
+        "Public-line control: published text appears in Public Papers/GovInfo; do not use the published text as a substitute for the internal record."
+      ].join("\n");
+    } else if (record.status === "Needs document request" || /No Memcon|No memorandum of conversation|Contact marker/i.test(`${note} ${record.type || ""}`)) {
+      kind = "No-document contact marker";
+      caution = "The current note proves contact control, not a substantive FRUS document; request the matching telcon, memcon, briefing material, schedule backup, and follow-up files.";
+      requiredFields = [
+        "matching substantive telcon or memcon",
+        "briefing, schedule, or follow-up file",
+        "participants and contact timing",
+        "classification/release status of located record"
+      ];
+      draft = [
+        `Source: ${recordControlLine(record)}, [memcon/telcon table or contact-control item], ${formatDate(record.date)}.`,
+        "No memorandum of conversation is listed in the current control source. [If located: add substantive telcon/memcon title, classification, participants, and routing].",
+        "Use current NAID/table control only as a request trail until the substantive record is located."
+      ].join("\n");
+    } else if (hasDailyDiary(record) || /catalog scope note/i.test(note)) {
+      kind = "Diary or catalog-scope control";
+      caution = "Daily Diary, Daily Backup, and scope-note language can establish timing and participants, but they should not stand in for the underlying memorandum, briefing paper, agenda, talking points, or follow-up record.";
+      requiredFields = [
+        "underlying substantive file",
+        "schedule backup, agenda, talking points, or telephone memorandum",
+        "classification/release status",
+        "file unit, item title, and object identifier"
+      ];
+      draft = [
+        `Source: ${recordControlLine(record)}, [Presidential Daily Diary/Daily Backup file unit or underlying substantive file], ${formatDate(record.date)}.`,
+        "[Classification marking or release status]. [Meeting/call participants and substantive record type].",
+        "Diary/backup control: cite NAID and scope-note details as timing support; replace with the underlying substantive record if selected."
+      ].join("\n");
+    } else if (hasItemGap(record)) {
+      kind = "Search-level source lead";
+      caution = "The source wording is still at repository/search level; it needs item-level file control before a final FRUS note can be drafted.";
+      requiredFields = [
+        "repository and collection verified against object record",
+        "box/container or file unit",
+        "item title",
+        "stable NAID or object URL",
+        "classification/release status"
+      ];
+      draft = [
+        `Source: ${recordControlLine(record)}, [box/container], [folder/file unit], [item title], ${formatDate(record.date)}.`,
+        "[Classification marking or declassification/public-release status]. [Drafted, cleared, approved, sent, received, or routing details].",
+        "Current lead is search-level; replace all bracketed fields after item identification."
+      ].join("\n");
+    }
+
+    fieldSet.forEach((field) => requiredFields.push(field));
+
+    return {
+      kind,
+      caution,
+      draft,
+      requiredFields: [...new Set(requiredFields)]
+    };
+  }
+
   function renderAudit() {
     const root = qs("#source-note-root");
     if (!root) return;
@@ -175,7 +289,18 @@
         make("h3", { text: row.title }),
         make("div", { className: "tag-list" }, [priorityPill(row.priority), statusPill(row.status), pill(row.readiness)]),
         make("div", { className: "source-note-checks" }, row.checks.map(renderCheck)),
-        make("p", { className: "source-note", text: row.sourceNote })
+        make("p", { className: "source-note", text: row.sourceNote }),
+        make("div", { className: "frus-style-box" }, [
+          make("div", { className: "frus-style-heading" }, [
+            make("p", { className: "card-meta", text: "FRUS-Style Draft Target" }),
+            pill(row.styleKind)
+          ]),
+          make("pre", { className: "frus-style-draft", text: row.styleDraft }),
+          make("p", { className: "frus-style-caution" }, [
+            make("strong", { text: "Style caution: " }),
+            row.styleCaution
+          ])
+        ])
       ]),
       make("aside", { className: "source-note-side" }, [
         make("p", { className: "card-meta", text: "Missing / Next Source-Note Work" }),
@@ -186,6 +311,8 @@
             ? row.missing.map((check) => make("li", { text: `${check.label}: ${check.detail}` }))
             : [make("li", { text: "Minimum source-note control elements detected." })]
         ),
+        make("p", { className: "card-meta", text: "Fields to Confirm Before Final Note" }),
+        make("ul", { className: "compact-list" }, row.requiredFields.map((field) => make("li", { text: field }))),
         make("div", { className: "small-actions" }, [
           make("button", { type: "button", onClick: () => copyText(sourceNoteRequestText(row), "Source-note request copied") }, "Copy Request"),
           make("a", { className: "button ghost", href: row.sourceUrl, rel: "noreferrer" }, "Open Source")
@@ -207,6 +334,11 @@
       `Title: ${row.title}`,
       `Readiness: ${row.readiness}`,
       `Missing elements: ${missing}`,
+      `FRUS-style source-note posture: ${row.styleKind}`,
+      `Style caution: ${row.styleCaution}`,
+      `Fields to confirm: ${row.requiredFields.join("; ")}`,
+      "Draft target:",
+      row.styleDraft,
       `Repository: ${row.repository}`,
       `Current source note: ${row.sourceNote}`,
       `Object URL: ${row.sourceUrl}`,
@@ -263,8 +395,12 @@
       { label: "priority", value: (row) => row.priority },
       { label: "status", value: (row) => row.status },
       { label: "readiness", value: (row) => row.readiness },
+      { label: "frus_style_posture", value: (row) => row.styleKind },
       { label: "score", value: (row) => `${row.score}/${row.checks.length}` },
       { label: "missing", value: (row) => row.missing.map((check) => check.label) },
+      { label: "fields_to_confirm", value: (row) => row.requiredFields },
+      { label: "style_caution", value: (row) => row.styleCaution },
+      { label: "draft_target", value: (row) => row.styleDraft },
       { label: "source_note", value: (row) => row.sourceNote },
       { label: "source_url", value: (row) => row.sourceUrl }
     ]);
