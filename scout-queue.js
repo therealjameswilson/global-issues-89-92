@@ -2,36 +2,53 @@
   const data = window.GLOBAL_ISSUES_DATA;
   if (!data) return;
 
-  const lanes = new Map(data.lanes.map((lane) => [lane.id, lane]));
+  const laneById = new Map((data.lanes || []).map((lane) => [lane.id, lane]));
   const scoutBase = "https://therealjameswilson.github.io/nara-scout/";
   const excludedPools = new Set(["pool-precedents"]);
-  let allRows = [];
+  const current = {
+    query: "",
+    lane: "",
+    kind: "",
+    priority: ""
+  };
   let visibleRows = [];
 
-  const qs = (selector, root = document) => root.querySelector(selector);
-  const laneFor = (id) => lanes.get(id) || { id, name: "Unassigned", shortName: "Unassigned", color: "#5c6967" };
-  const laneName = (id) => laneFor(id).name;
-  const priorityRank = (priority) => ({ Critical: 0, High: 1, Medium: 2, Low: 3 })[priority] ?? 4;
+  function qs(selector, root = document) {
+    return root.querySelector(selector);
+  }
 
   function make(tag, attrs = {}, children = []) {
-    const node = document.createElement(tag);
+    const element = document.createElement(tag);
     for (const [key, value] of Object.entries(attrs)) {
       if (value === undefined || value === null) continue;
-      if (key === "className") node.className = value;
-      else if (key === "text") node.textContent = value;
-      else if (key === "value") node.value = value;
-      else if (key.startsWith("on") && typeof value === "function") node.addEventListener(key.slice(2).toLowerCase(), value);
-      else node.setAttribute(key, value);
+      if (key === "className") element.className = value;
+      else if (key === "text") element.textContent = value;
+      else if (key.startsWith("on") && typeof value === "function") element.addEventListener(key.slice(2).toLowerCase(), value);
+      else element.setAttribute(key, value);
     }
     for (const child of Array.isArray(children) ? children : [children]) {
       if (child === undefined || child === null) continue;
-      node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+      element.append(child instanceof Node ? child : document.createTextNode(String(child)));
     }
-    return node;
+    return element;
   }
 
-  function unique(values) {
-    return [...new Set(values.filter(Boolean))];
+  function laneFor(id) {
+    return laneById.get(id) || { id, name: "Unassigned", shortName: "Unassigned", color: "#5c6967" };
+  }
+
+  function priorityRank(priority) {
+    return { Critical: 0, High: 1, Medium: 2, Low: 3 }[priority] ?? 4;
+  }
+
+  function queryText(terms = []) {
+    return [...new Set(terms.filter(Boolean).map((term) => String(term).trim()).filter(Boolean))]
+      .map((term) => (/\s/.test(term) ? `"${term}"` : term))
+      .join(" OR ");
+  }
+
+  function scoutUrl(query) {
+    return `${scoutBase}#q=${encodeURIComponent(query)}&from=1989&to=1993&scope=bush41&perColl=25&perPage=50`;
   }
 
   function textIndex(value) {
@@ -41,258 +58,23 @@
     return String(value);
   }
 
-  function matches(row, query) {
-    return !query || textIndex(row).toLowerCase().includes(query.trim().toLowerCase());
-  }
-
-  function quoteTerm(term) {
-    const value = String(term || "").trim();
-    if (!value) return "";
-    if (/^".+"$/.test(value)) return value;
-    return /\s/.test(value) ? `"${value}"` : value;
-  }
-
-  function queryFromTerms(terms) {
-    return unique(terms.map(quoteTerm)).join(" OR ");
-  }
-
-  function scoutUrl(query) {
-    return `${scoutBase}#q=${encodeURIComponent(query)}&from=1989&to=1993&scope=bush41&perColl=25&perPage=50`;
-  }
-
-  function queryFromScoutUrl(url, fallbackTerms = []) {
-    try {
-      const hash = new URL(url).hash.replace(/^#/, "");
-      const parsed = new URLSearchParams(hash).get("q");
-      return parsed || queryFromTerms(fallbackTerms);
-    } catch (error) {
-      return queryFromTerms(fallbackTerms);
+  function copyText(text, message) {
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => showToast(message)).catch(() => fallbackCopy(text, message));
+    } else {
+      fallbackCopy(text, message);
     }
   }
 
-  function priorityForAttention(row, lane) {
-    const hasCriticalGap = data.gaps.some((gap) => gap.laneId === lane.id && gap.priority === "Critical");
-    if (hasCriticalGap) return "Critical";
-    if (/high/i.test(row.attention || "") || (row.strongHits || 0) >= 20) return "High";
-    return "Medium";
-  }
-
-  function poolsForLane(laneId) {
-    return data.sourcePools.filter((pool) => pool.laneId === laneId && !excludedPools.has(pool.id));
-  }
-
-  function gapsForLane(laneId) {
-    return data.gaps.filter((gap) => gap.laneId === laneId);
-  }
-
-  function recordsForLane(laneId) {
-    return data.records.filter((record) => record.laneId === laneId);
-  }
-
-  function buildRows() {
-    const chapterRows = data.publicAttention.map((attention) => {
-      const lane = laneFor(attention.laneId);
-      const pools = poolsForLane(lane.id);
-      const gaps = gapsForLane(lane.id);
-      const records = recordsForLane(lane.id);
-      const query = queryFromScoutUrl(attention.naraScoutUrl, lane.searchTerms || []);
-      return {
-        id: `topic-${lane.id}`,
-        kind: "Chapter topic query",
-        laneId: lane.id,
-        chapter: lane.name,
-        chapterShort: lane.shortName,
-        color: lane.color,
-        title: `${lane.name}: topic pass`,
-        priority: priorityForAttention(attention, lane),
-        query,
-        scoutUrl: attention.naraScoutUrl || scoutUrl(query),
-        attention: attention.attention,
-        directness: attention.directness,
-        anchor: attention.evidenceTitle,
-        sourcePools: pools.map((pool) => pool.name),
-        recordsRepresented: records.length,
-        gapCount: gaps.length,
-        apiNote: "If Scout returns an API limit error, enter a personal NARA Catalog API key in Scout settings and rerun.",
-        nextAction:
-          "Run the chapter query, export promising Bush Library file units, and compare hits against the presidential public-attention anchor.",
-        handoff:
-          "Feed exported file units into the source-note audit, release ledger, and selection docket; mark country-specific or operational hits for boundary review.",
-        boundary: lane.boundary
-      };
-    });
-
-    const poolRows = data.sourcePools
-      .filter((pool) => !excludedPools.has(pool.id))
-      .map((pool) => {
-        const lane = laneFor(pool.laneId);
-        const records = recordsForLane(pool.laneId);
-        const gaps = gapsForLane(pool.laneId);
-        const query = queryFromTerms(pool.terms || lane.searchTerms || []);
-        return {
-          id: `pool-${pool.id}`,
-          kind: "Source-pool query",
-          laneId: lane.id,
-          chapter: lane.name,
-          chapterShort: lane.shortName,
-          color: lane.color,
-          title: pool.name,
-          priority: pool.priority || "Medium",
-          query,
-          scoutUrl: scoutUrl(query),
-          attention: "",
-          directness: "",
-          anchor: pool.coverage,
-          sourcePools: [pool.name],
-          recordsRepresented: records.length,
-          gapCount: gaps.length,
-          apiNote: "Use Scout exports to replace search-level source wording with file-unit and item-level control.",
-          nextAction: pool.nextAction,
-          handoff:
-            "Capture title, NAID/object URL, repository, collection/series, date span, and any access or release notes for source-note drafting.",
-          boundary: lane.boundary
-        };
-      });
-
-    return [...chapterRows, ...poolRows].sort(
-      (a, b) =>
-        priorityRank(a.priority) - priorityRank(b.priority) ||
-        a.laneId.localeCompare(b.laneId) ||
-        a.kind.localeCompare(b.kind) ||
-        a.title.localeCompare(b.title)
-    );
-  }
-
-  function filters() {
-    return {
-      query: qs("#scout-search")?.value || "",
-      lane: qs("#scout-lane")?.value || "",
-      kind: qs("#scout-kind")?.value || "",
-      priority: qs("#scout-priority")?.value || ""
-    };
-  }
-
-  function fillSelect(select, values, allLabel, formatter = (value) => value) {
-    if (!select) return;
-    const current = select.value;
-    select.replaceChildren(make("option", { value: "", text: allLabel }));
-    values.forEach((value) => select.append(make("option", { value, text: formatter(value) })));
-    if (values.includes(current)) select.value = current;
-  }
-
-  function priorityPill(priority) {
-    return make("span", { className: `priority ${priority || ""}`.trim(), text: priority || "Priority TBD" });
-  }
-
-  function pill(text, className = "tag") {
-    return make("span", { className, text });
-  }
-
-  function render() {
-    const root = qs("#scout-root");
-    if (!root) return;
-    const current = filters();
-    visibleRows = allRows.filter(
-      (row) =>
-        matches(row, current.query) &&
-        (!current.lane || row.laneId === current.lane) &&
-        (!current.kind || row.kind === current.kind) &&
-        (!current.priority || row.priority === current.priority)
-    );
-
-    const summary = qs("#scout-summary");
-    if (summary) {
-      const chapter = current.lane ? ` in ${laneName(current.lane)}` : "";
-      summary.textContent = `Showing ${visibleRows.length} of ${allRows.length} NARA Scout queries${chapter}.`;
-    }
-
-    const topicCount = visibleRows.filter((row) => row.kind === "Chapter topic query").length;
-    const poolCount = visibleRows.filter((row) => row.kind === "Source-pool query").length;
-    const urgent = visibleRows.filter((row) => ["Critical", "High"].includes(row.priority)).length;
-    const chapters = new Set(visibleRows.map((row) => row.laneId)).size;
-
-    root.replaceChildren(
-      make("div", { className: "scout-metrics" }, [
-        metric(String(topicCount), "topic queries", "Chapter searches from the public-attention pass"),
-        metric(String(poolCount), "source-pool queries", "Repository and file-family searches"),
-        metric(String(urgent), "critical/high", "Run these first for source-note control"),
-        metric(String(chapters), "chapters visible", "Working chapters represented")
-      ]),
-      make("div", { className: "scout-grid" }, visibleRows.length ? visibleRows.map(renderCard) : [
-        make("p", { className: "empty", text: "No Scout queries match the current filters." })
-      ])
-    );
-  }
-
-  function metric(value, label, caption) {
-    return make("div", { className: "metric" }, [
-      make("strong", { text: value }),
-      make("span", { text: label }),
-      make("p", { text: caption })
-    ]);
-  }
-
-  function renderCard(row) {
-    return make("article", { className: "scout-card", style: `--lane-color: ${row.color}` }, [
-      make("div", { className: "scout-main" }, [
-        make("p", { className: "meta-line", text: `${row.kind} - ${row.chapterShort}` }),
-        make("h3", { text: row.title }),
-        make("div", { className: "tag-list" }, [priorityPill(row.priority), pill("1989-1993"), pill("Bush 41")]),
-        make("p", { className: "scout-query" }, [make("strong", { text: "Query: " }), row.query]),
-        make("p", {}, [make("strong", { text: "Next action: " }), row.nextAction]),
-        make("p", {}, [make("strong", { text: "Compiler handoff: " }), row.handoff]),
-        make("p", { className: "scout-boundary" }, [make("strong", { text: "Boundary guardrail: " }), row.boundary])
-      ]),
-      make("aside", { className: "scout-side" }, [
-        make("p", { className: "card-meta", text: "Run Details" }),
-        make("ul", { className: "compact-list" }, [
-          make("li", { text: "Scope: Bush 41" }),
-          make("li", { text: "Date range: 1989-1993" }),
-          make("li", { text: `Records in chapter seed set: ${row.recordsRepresented}` }),
-          make("li", { text: `Open chapter gaps: ${row.gapCount}` }),
-          make("li", { text: row.apiNote })
-        ]),
-        make("p", { className: "card-meta", text: "Source Pool / Anchor" }),
-        make("p", { text: row.anchor }),
-        make("div", { className: "small-actions" }, [
-          make("button", { type: "button", onClick: () => copyText(queryMemo(row), "Scout query copied") }, "Copy Query"),
-          make("a", { className: "button ghost", href: row.scoutUrl, rel: "noreferrer" }, "Open Scout")
-        ])
-      ])
-    ]);
-  }
-
-  function queryMemo(row) {
-    return [
-      "FRUS Volume XXIX NARA Scout query handoff",
-      `Chapter: ${row.chapter}`,
-      `Kind: ${row.kind}`,
-      `Priority: ${row.priority}`,
-      `Query: ${row.query}`,
-      "Scope: Bush 41",
-      "Date range: 1989-1993",
-      `Scout URL: ${row.scoutUrl}`,
-      `Source pool / public anchor: ${row.anchor}`,
-      `Next action: ${row.nextAction}`,
-      `Compiler handoff: ${row.handoff}`,
-      `Boundary guardrail: ${row.boundary}`,
-      "Capture from Scout export: title; NAID/object URL; repository; collection or series; date span; access/release note; why the hit is global rather than regional."
-    ].join("\n");
-  }
-
-  async function copyText(text, message = "Copied") {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (error) {
-      const textarea = make("textarea");
-      textarea.value = text;
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.append(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
-    }
+  function fallbackCopy(text, message) {
+    const textarea = make("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.append(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
     showToast(message);
   }
 
@@ -301,7 +83,7 @@
     if (!toast) return;
     toast.textContent = message;
     toast.classList.add("visible");
-    window.setTimeout(() => toast.classList.remove("visible"), 2200);
+    window.setTimeout(() => toast.classList.remove("visible"), 1800);
   }
 
   function csvEscape(value) {
@@ -309,10 +91,8 @@
     return `"${String(normalized).replaceAll('"', '""')}"`;
   }
 
-  function downloadCsv(filename, rows, columns) {
-    const header = columns.map((column) => csvEscape(column.label)).join(",");
-    const body = rows.map((row) => columns.map((column) => csvEscape(column.value(row))).join(",")).join("\n");
-    const blob = new Blob([`${header}\n${body}`], { type: "text/csv;charset=utf-8" });
+  function downloadText(filename, content) {
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = make("a", { href: url, download: filename });
     document.body.append(link);
@@ -321,47 +101,264 @@
     URL.revokeObjectURL(url);
   }
 
-  function exportRows() {
-    downloadCsv("frus-v29-nara-scout-query-queue.csv", visibleRows, [
-      { label: "chapter", value: (row) => row.chapter },
-      { label: "kind", value: (row) => row.kind },
-      { label: "priority", value: (row) => row.priority },
-      { label: "title", value: (row) => row.title },
-      { label: "query", value: (row) => row.query },
-      { label: "scout_url", value: (row) => row.scoutUrl },
-      { label: "source_pool_or_anchor", value: (row) => row.anchor },
-      { label: "next_action", value: (row) => row.nextAction },
-      { label: "compiler_handoff", value: (row) => row.handoff },
-      { label: "boundary_guardrail", value: (row) => row.boundary }
-    ]);
-  }
-
-  function bind() {
-    fillSelect(qs("#scout-lane"), data.lanes.map((lane) => lane.id), "All chapters", laneName);
-    fillSelect(qs("#scout-kind"), unique(allRows.map((row) => row.kind)).sort(), "All query types");
-    fillSelect(qs("#scout-priority"), unique(allRows.map((row) => row.priority)).sort((a, b) => priorityRank(a) - priorityRank(b)), "All priorities");
-    ["#scout-search", "#scout-lane", "#scout-kind", "#scout-priority"].forEach((selector) => {
-      qs(selector)?.addEventListener("input", render);
-      qs(selector)?.addEventListener("change", render);
-    });
-    qs("#scout-reset")?.addEventListener("click", () => {
-      ["#scout-search", "#scout-lane", "#scout-kind", "#scout-priority"].forEach((selector) => {
-        const input = qs(selector);
-        if (input) input.value = "";
+  function buildRows() {
+    const rows = [];
+    for (const lane of data.lanes || []) {
+      const query = queryText([...(lane.searchTerms || []), "Bush", "1989", "1992"]);
+      rows.push({
+        id: `lane-${lane.id}`,
+        laneId: lane.id,
+        kind: "Chapter terms",
+        priority: "High",
+        title: `${lane.shortName || lane.name} chapter query`,
+        query,
+        url: scoutUrl(query),
+        action: `Run the chapter search first, then route file units against: ${(lane.sourceTargets || []).join("; ")}.`,
+        note: lane.boundary || lane.description || "",
+        capture: "result count; top NAIDs; file units; item dates; source path; disposition"
       });
-      render();
-    });
-    qs("#scout-export")?.addEventListener("click", exportRows);
-    qs("#scout-copy")?.addEventListener("click", () =>
-      copyText(visibleRows.map(queryMemo).join("\n\n---\n\n"), "Visible Scout queries copied")
+    }
+
+    for (const item of data.publicAttention || []) {
+      const lane = laneFor(item.laneId);
+      const query = queryText([item.evidenceTitle, ...(lane.searchTerms || []).slice(0, 4)]);
+      rows.push({
+        id: `attention-${item.laneId}`,
+        laneId: item.laneId,
+        kind: "Public anchor",
+        priority: /high/i.test(item.attention || "") ? "Critical" : "High",
+        title: `${lane.shortName || lane.name} public-attention backtrace`,
+        query,
+        url: item.naraScoutUrl || scoutUrl(query),
+        action: "Backtrace the public statement to drafts, clearance memoranda, briefing books, and policy files.",
+        note: item.note || item.evidenceTitle || "",
+        capture: "public anchor; matching internal record; classification; source note; boundary decision"
+      });
+    }
+
+    for (const pool of (data.sourcePools || []).filter((row) => !excludedPools.has(row.id))) {
+      const query = queryText([...(pool.terms || []), pool.name, "Bush"]);
+      rows.push({
+        id: `pool-${pool.id}`,
+        laneId: pool.laneId,
+        kind: "Source pool",
+        priority: pool.priority || "Medium",
+        title: pool.name,
+        query,
+        url: scoutUrl(query),
+        action: pool.nextAction || "Run source-pool search and capture requestable identifiers.",
+        note: pool.coverage || pool.repository || "",
+        capture: "repository; file unit; item title; date span; restriction status; next request"
+      });
+    }
+
+    for (const record of (data.records || []).filter((row) => ["Critical", "High"].includes(row.priority))) {
+      const query = queryText([record.title, ...(record.people || []), ...(record.tags || [])].filter(Boolean).slice(0, 6));
+      rows.push({
+        id: `record-${record.id}`,
+        laneId: record.laneId,
+        kind: "Record follow-up",
+        priority: record.priority || "High",
+        title: record.title,
+        query,
+        url: scoutUrl(query),
+        action: "Use this lead to locate surrounding memoranda, attachments, no-document markers, and source-note controls.",
+        note: record.compilerUse || record.sourceNote || "",
+        capture: "related file units; adjacent records; attachments; date control; final source note"
+      });
+    }
+
+    return rows.sort(
+      (a, b) =>
+        priorityRank(a.priority) - priorityRank(b.priority) ||
+        a.kind.localeCompare(b.kind) ||
+        laneFor(a.laneId).name.localeCompare(laneFor(b.laneId).name) ||
+        a.title.localeCompare(b.title)
     );
   }
 
+  const allRows = buildRows();
+
+  function filteredRows() {
+    return allRows.filter((row) => {
+      if (current.query && !textIndex(row).toLowerCase().includes(current.query.toLowerCase())) return false;
+      if (current.lane && row.laneId !== current.lane) return false;
+      if (current.kind && row.kind !== current.kind) return false;
+      if (current.priority && row.priority !== current.priority) return false;
+      return true;
+    });
+  }
+
+  function metric(value, label, detail) {
+    return make("article", { className: "metric-card" }, [
+      make("strong", { text: value }),
+      make("span", { text: label }),
+      make("p", { text: detail })
+    ]);
+  }
+
+  function renderCard(row) {
+    const lane = laneFor(row.laneId);
+    return make("article", { className: "scout-card", style: `--lane-color: ${lane.color}` }, [
+      make("div", { className: "scout-card-main" }, [
+        make("div", { className: "tag-list" }, [
+          make("span", { className: "priority", text: row.priority }),
+          make("span", { className: "tag", text: row.kind }),
+          make("span", { className: "tag", text: lane.shortName || lane.name })
+        ]),
+        make("h4", { text: row.title }),
+        make("code", { className: "scout-query", text: row.query }),
+        make("p", { className: "scout-action", text: row.action })
+      ]),
+      make("aside", { className: "scout-card-side" }, [
+        make("p", { className: "scout-note", text: row.note }),
+        make("p", { className: "scout-note", text: `Capture: ${row.capture}` }),
+        make("div", { className: "scout-actions" }, [
+          make("button", { type: "button", onClick: () => copyText(row.query, "Scout query copied") }, "Copy Query"),
+          make("button", { type: "button", onClick: () => copyText(scoutMemo(row), "Scout packet copied") }, "Copy Packet"),
+          make("a", { className: "button ghost", href: row.url, rel: "noreferrer" }, "Open Scout")
+        ])
+      ])
+    ]);
+  }
+
+  function scoutMemo(row) {
+    const lane = laneFor(row.laneId);
+    return [
+      "FRUS Volume XXIX NARA Scout query packet",
+      `Chapter: ${lane.name}`,
+      `Kind: ${row.kind}`,
+      `Priority: ${row.priority}`,
+      `Title: ${row.title}`,
+      `Query: ${row.query}`,
+      `Scout URL: ${row.url}`,
+      `Next action: ${row.action}`,
+      `Capture fields: ${row.capture}`,
+      `Note: ${row.note}`
+    ].join("\n");
+  }
+
+  function render() {
+    const root = qs("#scout-root");
+    if (!root) return;
+    visibleRows = filteredRows();
+    const summary = qs("#scout-summary");
+    if (summary) summary.textContent = `Showing ${visibleRows.length} of ${allRows.length} Scout query packets.`;
+
+    const critical = visibleRows.filter((row) => row.priority === "Critical").length;
+    const poolRows = visibleRows.filter((row) => row.kind === "Source pool").length;
+    const publicRows = visibleRows.filter((row) => row.kind === "Public anchor").length;
+    const recordRows = visibleRows.filter((row) => row.kind === "Record follow-up").length;
+    const metrics = make("div", { className: "scout-metrics" }, [
+      metric(String(critical), "critical", "Public-anchor and source-pool searches to run first"),
+      metric(String(poolRows), "source pools", "Repository and collection lanes to harvest"),
+      metric(String(publicRows), "public anchors", "Published statements needing internal backtrace"),
+      metric(String(recordRows), "record follow-ups", "High-priority rows needing adjacent context")
+    ]);
+
+    const kindOrder = ["Public anchor", "Source pool", "Chapter terms", "Record follow-up"];
+    const groups = kindOrder
+      .map((kind) => visibleRows.filter((row) => row.kind === kind))
+      .filter((rows) => rows.length);
+
+    const groupNodes = groups.map((rows) =>
+      make("section", { className: "scout-group" }, [
+        make("div", { className: "scout-group-heading" }, [
+          make("div", {}, [
+            make("h3", { text: rows[0].kind }),
+            make("p", { text: groupNote(rows[0].kind) })
+          ]),
+          make("span", { className: "count-pill", text: `${rows.length} packets` })
+        ]),
+        make("div", { className: "scout-list" }, rows.map(renderCard))
+      ])
+    );
+
+    root.replaceChildren(metrics, ...groupNodes);
+    if (!visibleRows.length) root.append(make("p", { className: "empty", text: "No Scout packets match the current filters." }));
+  }
+
+  function groupNote(kind) {
+    if (kind === "Public anchor") return "Start from published presidential attention and locate internal drafting, clearance, and briefing trails.";
+    if (kind === "Source pool") return "Turn repository/source-pool intent into requestable file units and item-level source notes.";
+    if (kind === "Chapter terms") return "Broad chapter sweeps for finding new source families or confirming no-hit lanes.";
+    return "Follow up high-priority records with adjacent packet, attachment, and no-document-marker searches.";
+  }
+
+  function fillSelect(selector, values, label) {
+    const select = qs(selector);
+    if (!select) return;
+    select.replaceChildren(make("option", { value: "", text: label }));
+    for (const value of values) select.append(make("option", { value, text: value }));
+  }
+
+  function exportRows() {
+    const columns = [
+      ["priority", (row) => row.priority],
+      ["kind", (row) => row.kind],
+      ["chapter", (row) => laneFor(row.laneId).name],
+      ["title", (row) => row.title],
+      ["query", (row) => row.query],
+      ["scout_url", (row) => row.url],
+      ["next_action", (row) => row.action],
+      ["capture_fields", (row) => row.capture],
+      ["note", (row) => row.note]
+    ];
+    const header = columns.map(([label]) => csvEscape(label)).join(",");
+    const body = visibleRows.map((row) => columns.map(([, value]) => csvEscape(value(row))).join(",")).join("\n");
+    downloadText("frus-v29-nara-scout-query-queue.csv", `${header}\n${body}\n`);
+  }
+
+  function copyVisible() {
+    copyText(visibleRows.map(scoutMemo).join("\n\n---\n\n"), "Visible Scout packets copied");
+  }
+
   function init() {
-    allRows = buildRows();
-    bind();
+    fillSelect("#scout-lane", (data.lanes || []).map((lane) => lane.id), "All chapters");
+    const laneSelect = qs("#scout-lane");
+    if (laneSelect) {
+      for (const option of laneSelect.options) {
+        if (option.value) option.textContent = laneFor(option.value).shortName || laneFor(option.value).name;
+      }
+    }
+    fillSelect("#scout-kind", [...new Set(allRows.map((row) => row.kind))].sort(), "All kinds");
+    fillSelect("#scout-priority", [...new Set(allRows.map((row) => row.priority))].sort((a, b) => priorityRank(a) - priorityRank(b)), "All priorities");
+
+    qs("#scout-search")?.addEventListener("input", (event) => {
+      current.query = event.target.value.trim();
+      render();
+    });
+    qs("#scout-lane")?.addEventListener("change", (event) => {
+      current.lane = event.target.value;
+      render();
+    });
+    qs("#scout-kind")?.addEventListener("change", (event) => {
+      current.kind = event.target.value;
+      render();
+    });
+    qs("#scout-priority")?.addEventListener("change", (event) => {
+      current.priority = event.target.value;
+      render();
+    });
+    qs("#scout-reset")?.addEventListener("click", () => {
+      current.query = "";
+      current.lane = "";
+      current.kind = "";
+      current.priority = "";
+      for (const selector of ["#scout-search", "#scout-lane", "#scout-kind", "#scout-priority"]) {
+        const node = qs(selector);
+        if (node) node.value = "";
+      }
+      render();
+    });
+    qs("#scout-export")?.addEventListener("click", exportRows);
+    qs("#scout-copy")?.addEventListener("click", copyVisible);
     render();
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
