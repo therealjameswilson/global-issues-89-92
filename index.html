@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css" />
+    <link rel="stylesheet" href="release-ledger.css" />
     <link rel="stylesheet" href="selection-docket.css" />
     <link rel="stylesheet" href="document-register.css" />
     <link rel="stylesheet" href="boundary-matrix.css" />
@@ -125,6 +126,7 @@
         <a href="#chronology">Chronology</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
+        <a href="#release">Release</a>
         <a href="#selection">Selection</a>
         <a href="#register">Register</a>
         <a href="#boundaries">Boundaries</a>
@@ -269,6 +271,43 @@
           <button id="source-note-copy-open" type="button">Copy Open Source-Note Requests</button>
         </div>
         <div id="source-note-root" class="source-note-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section release-section" id="release" aria-labelledby="release-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Release Control</p>
+            <h2 id="release-title">Declassification and Public-Source Ledger</h2>
+          </div>
+          <p class="section-note">
+            Separates published public texts, no-document contact markers, Daily Diary controls,
+            catalog scope-note leads, provisional source searches, and records whose classification
+            or release status still needs confirmation before final FRUS source-note drafting.
+          </p>
+        </div>
+        <div class="tools release-tools" role="search" aria-label="Filter release and declassification ledger">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="release-search" type="search" placeholder="Search titles, source notes, release gaps, next actions" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="release-lane"></select>
+          </label>
+          <label>
+            <span>Posture</span>
+            <select id="release-posture"></select>
+          </label>
+          <label>
+            <span>Action</span>
+            <select id="release-action"></select>
+          </label>
+          <button id="release-reset" type="button">Reset</button>
+          <button id="release-export" type="button">CSV</button>
+          <button id="release-copy" type="button">Copy Memos</button>
+          <p id="release-summary" class="summary">Loading release ledger...</p>
+        </div>
+        <div id="release-root" class="release-root" aria-live="polite"></div>
       </section>
 
       <section class="section selection-section" id="selection" aria-labelledby="selection-title">
@@ -768,6 +807,7 @@
     <script src="app.js"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js"></script>
+    <script src="release-ledger.js"></script>
     <script src="selection-docket.js"></script>
     <script src="document-register.js"></script>
     <script src="boundary-matrix.js"></script>

@@ -16,6 +16,7 @@ published-volume mirror.
 - declassified-document chronology as the first working section on the page
 - document-promotion queue for turning dated leads into FRUS-ready document requests
 - source-note readiness audit for repository, series, item, identifier, status, and URL control
+- release/declassification ledger separating public texts, no-document markers, diary controls, scope-note leads, and provisional searches
 - FRUS document-selection docket with ranked blockers, source-note field targets, CSV export, and copyable requests
 - provisional chapter-by-chapter document register with slot labels, numbering actions, CSV export, and copyable Markdown
 - boundary matrix for routing leads between Volume XXIX and adjacent regional, domestic, or functional volumes
