@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css" />
     <link rel="stylesheet" href="selection-docket.css" />
+    <link rel="stylesheet" href="document-register.css" />
     <link rel="stylesheet" href="compiler-packet.css" />
     <link rel="stylesheet" href="pull-list.css" />
     <link rel="stylesheet" href="meeting-index.css" />
@@ -124,6 +125,7 @@
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
         <a href="#selection">Selection</a>
+        <a href="#register">Register</a>
         <a href="#packet">Packet</a>
         <a href="#pull-list">Pull List</a>
         <a href="#meeting-index">Meetings/Calls</a>
@@ -303,6 +305,44 @@
           <p id="selection-summary" class="summary">Loading selection docket...</p>
         </div>
         <div id="selection-root" class="selection-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section register-section" id="register" aria-labelledby="register-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Document Register</p>
+            <h2 id="register-title">Provisional Chapter Sequence</h2>
+          </div>
+          <p class="section-note">
+            Converts the chronology and selection docket into a chapter-by-chapter working
+            register. Slot labels are provisional: they help the compiler see coverage,
+            sequencing, public-anchor backfills, and holds before final FRUS document numbers
+            are assigned.
+          </p>
+        </div>
+        <div class="tools register-tools" role="search" aria-label="Filter provisional document register">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="register-search" type="search" placeholder="Search titles, people, source notes, actions" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="register-lane"></select>
+          </label>
+          <label>
+            <span>Disposition</span>
+            <select id="register-disposition"></select>
+          </label>
+          <label>
+            <span>Role</span>
+            <select id="register-role"></select>
+          </label>
+          <button id="register-reset" type="button">Reset</button>
+          <button id="register-export" type="button">CSV</button>
+          <button id="register-copy" type="button">Copy Register</button>
+          <p id="register-summary" class="summary">Loading document register...</p>
+        </div>
+        <div id="register-root" class="register-root" aria-live="polite"></div>
       </section>
 
       <section class="section packet-section" id="packet" aria-labelledby="packet-title">
@@ -690,6 +730,7 @@
     <script src="promotion.js"></script>
     <script src="source-note-audit.js"></script>
     <script src="selection-docket.js"></script>
+    <script src="document-register.js"></script>
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
     <script src="meeting-index.js"></script>
