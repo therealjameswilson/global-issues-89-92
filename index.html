@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="coverage-matrix.css?v=coverage-matrix-20260602" />
     <link rel="stylesheet" href="action-plan.css?v=action-plan-20260602" />
+    <link rel="stylesheet" href="readiness-dashboard.css?v=readiness-dashboard-20260602" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css?v=source-note-style-20260602" />
     <link rel="stylesheet" href="release-ledger.css" />
@@ -129,6 +130,7 @@
         <a href="#chronology">Chronology</a>
         <a href="#coverage">Coverage</a>
         <a href="#action-plan">Plan</a>
+        <a href="#readiness">Readiness</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
         <a href="#release">Release</a>
@@ -254,6 +256,40 @@
           <p id="action-plan-summary" class="summary">Loading action plan...</p>
         </div>
         <div id="action-plan-root" class="action-plan-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section readiness-section" id="readiness" aria-labelledby="readiness-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Chapter Readiness</p>
+            <h2 id="readiness-title">Selection Readiness Dashboard</h2>
+          </div>
+          <p class="section-note">
+            Scores each working chapter against coverage, public attention, source-note
+            control, release/declassification posture, source-pool support, and boundary
+            risk. Use it to decide which chapter can move toward close-read and which
+            needs more archival harvest first.
+          </p>
+        </div>
+        <div class="tools readiness-tools" role="search" aria-label="Filter chapter readiness dashboard">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="readiness-search" type="search" placeholder="Search chapters, blockers, next actions, source targets" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="readiness-lane"></select>
+          </label>
+          <label>
+            <span>Gate</span>
+            <select id="readiness-gate"></select>
+          </label>
+          <button id="readiness-reset" type="button">Reset</button>
+          <button id="readiness-export" type="button">CSV</button>
+          <button id="readiness-copy" type="button">Copy Briefs</button>
+          <p id="readiness-summary" class="summary">Loading readiness dashboard...</p>
+        </div>
+        <div id="readiness-root" class="readiness-root" aria-live="polite"></div>
       </section>
 
       <section class="hero" aria-labelledby="hero-title">
@@ -922,6 +958,7 @@
     <script src="app.js"></script>
     <script src="coverage-matrix.js?v=coverage-matrix-20260602"></script>
     <script src="action-plan.js?v=action-plan-20260602"></script>
+    <script src="readiness-dashboard.js?v=readiness-dashboard-20260602"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js?v=source-note-style-20260602"></script>
     <script src="release-ledger.js"></script>
