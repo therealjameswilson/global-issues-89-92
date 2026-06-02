@@ -18,6 +18,7 @@ published-volume mirror.
 - source-note readiness audit for repository, series, item, identifier, status, and URL control
 - FRUS document-selection docket with ranked blockers, source-note field targets, CSV export, and copyable requests
 - provisional chapter-by-chapter document register with slot labels, numbering actions, CSV export, and copyable Markdown
+- boundary matrix for routing leads between Volume XXIX and adjacent regional, domestic, or functional volumes
 - chapter-level compiler packet builder with Markdown export and copy workflow
 - repository-grouped archival pull list with NAID extraction and copyable request text
 - Presidential Daily Diary and Daily Backup meeting/call control index with copyable follow-up requests

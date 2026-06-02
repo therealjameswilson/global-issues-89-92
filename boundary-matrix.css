@@ -1,0 +1,124 @@
+.boundary-tools {
+  grid-template-columns: minmax(260px, 1.4fr) repeat(3, minmax(160px, 0.55fr)) auto auto auto minmax(220px, 0.8fr);
+}
+
+.boundary-root {
+  display: grid;
+  gap: 1rem;
+}
+
+.boundary-metrics {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.boundary-group {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.boundary-group-heading {
+  align-items: flex-start;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.boundary-group-heading p {
+  color: var(--muted);
+  margin: 0.45rem 0 0;
+  max-width: 62rem;
+}
+
+.boundary-list {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.boundary-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--lane-color, var(--green));
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  padding: 1rem;
+}
+
+.boundary-main,
+.boundary-side {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.boundary-card h4 {
+  font-size: 1.08rem;
+  margin-bottom: 0.45rem;
+}
+
+.boundary-decision-box {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.8rem;
+}
+
+.boundary-decision-box strong {
+  color: var(--green-dark);
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  margin-top: 0.25rem;
+}
+
+.boundary-rule,
+.boundary-note,
+.boundary-coordinate {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  margin: 0;
+  padding: 0.75rem;
+}
+
+.boundary-coordinate {
+  background: #f6f7f4;
+  color: var(--ink);
+}
+
+@media (max-width: 1240px) {
+  .boundary-tools {
+    grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(140px, 0.5fr));
+  }
+
+  .boundary-tools button,
+  .boundary-tools .summary {
+    grid-column: span 1;
+  }
+
+  .boundary-metrics,
+  .boundary-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .boundary-tools,
+  .boundary-metrics,
+  .boundary-card {
+    grid-template-columns: 1fr;
+  }
+
+  .boundary-group-heading {
+    flex-direction: column;
+  }
+}

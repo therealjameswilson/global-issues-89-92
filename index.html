@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="source-note-audit.css" />
     <link rel="stylesheet" href="selection-docket.css" />
     <link rel="stylesheet" href="document-register.css" />
+    <link rel="stylesheet" href="boundary-matrix.css" />
     <link rel="stylesheet" href="compiler-packet.css" />
     <link rel="stylesheet" href="pull-list.css" />
     <link rel="stylesheet" href="meeting-index.css" />
@@ -126,6 +127,7 @@
         <a href="#source-notes">Source Notes</a>
         <a href="#selection">Selection</a>
         <a href="#register">Register</a>
+        <a href="#boundaries">Boundaries</a>
         <a href="#packet">Packet</a>
         <a href="#pull-list">Pull List</a>
         <a href="#meeting-index">Meetings/Calls</a>
@@ -343,6 +345,43 @@
           <p id="register-summary" class="summary">Loading document register...</p>
         </div>
         <div id="register-root" class="register-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section boundary-section" id="boundaries" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Boundary Control</p>
+            <h2 id="boundary-title">Volume Placement Matrix</h2>
+          </div>
+          <p class="section-note">
+            Converts boundary notes into a coordination matrix for deciding which leads
+            belong in Volume XXIX, which require regional or functional volume review,
+            and which should be held until a substantive cross-regional policy document is located.
+          </p>
+        </div>
+        <div class="tools boundary-tools" role="search" aria-label="Filter volume placement matrix">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="boundary-search" type="search" placeholder="Search titles, chapters, adjacent volumes, boundary notes" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="boundary-lane"></select>
+          </label>
+          <label>
+            <span>Decision</span>
+            <select id="boundary-decision"></select>
+          </label>
+          <label>
+            <span>Overlap</span>
+            <select id="boundary-overlap"></select>
+          </label>
+          <button id="boundary-reset" type="button">Reset</button>
+          <button id="boundary-export" type="button">CSV</button>
+          <button id="boundary-copy" type="button">Copy Matrix</button>
+          <p id="boundary-summary" class="summary">Loading boundary matrix...</p>
+        </div>
+        <div id="boundary-root" class="boundary-root" aria-live="polite"></div>
       </section>
 
       <section class="section packet-section" id="packet" aria-labelledby="packet-title">
@@ -731,6 +770,7 @@
     <script src="source-note-audit.js"></script>
     <script src="selection-docket.js"></script>
     <script src="document-register.js"></script>
+    <script src="boundary-matrix.js"></script>
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
     <script src="meeting-index.js"></script>
