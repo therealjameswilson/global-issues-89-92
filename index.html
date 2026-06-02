@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css" />
+    <link rel="stylesheet" href="selection-docket.css" />
     <link rel="stylesheet" href="compiler-packet.css" />
     <link rel="stylesheet" href="pull-list.css" />
     <link rel="stylesheet" href="meeting-index.css" />
@@ -63,6 +64,32 @@
         border-color: #0b5cab;
         background: #edf6ff;
       }
+
+      .compiler-network__links button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        border: 1px solid #b8c7d9;
+        border-radius: 7px;
+        padding: 0 9px;
+        color: #1f2933;
+        background: #ffffff;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 900;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .compiler-network__links button:hover,
+      .compiler-network__links button:focus-visible {
+        border-color: #0b5cab;
+        background: #edf6ff;
+        outline: none;
+      }
+      .compiler-network__links button[data-copied="true"] {
+        border-color: #2f675f;
+        color: #2f675f;
+      }
       @media (max-width: 640px) {
         .compiler-network__inner {
           align-items: flex-start;
@@ -83,6 +110,7 @@
           <a href="https://history.state.gov/historicaldocuments/status-of-the-series" rel="noreferrer">FRUS Status</a>
           <a href="https://therealjameswilson.github.io/nara-scout/" rel="noreferrer">NARA Scout</a>
           <a href="https://therealjameswilson.github.io/strobe-talbott-foia/" rel="noreferrer">Strobe FOIA</a>
+          <button class="compiler-network__copy" type="button" data-compiler-handoff>Copy Handoff</button>
         </div>
       </div>
     </div>
@@ -95,6 +123,7 @@
         <a href="#chronology">Chronology</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
+        <a href="#selection">Selection</a>
         <a href="#packet">Packet</a>
         <a href="#pull-list">Pull List</a>
         <a href="#meeting-index">Meetings/Calls</a>
@@ -236,6 +265,44 @@
           <button id="source-note-copy-open" type="button">Copy Open Source-Note Requests</button>
         </div>
         <div id="source-note-root" class="source-note-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section selection-section" id="selection" aria-labelledby="selection-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Document Selection</p>
+            <h2 id="selection-title">FRUS Candidate Docket</h2>
+          </div>
+          <p class="section-note">
+            Ranks chronology leads by selection readiness, identifies the blocking issue,
+            and drafts conservative request text using FRUS-style source-note field targets:
+            repository, collection, file unit or item, identifier, date, classification or
+            release status, and routing context.
+          </p>
+        </div>
+        <div class="tools selection-tools" role="search" aria-label="Filter document selection docket">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="selection-search" type="search" placeholder="Search titles, people, source notes, blockers" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="selection-lane"></select>
+          </label>
+          <label>
+            <span>Tier</span>
+            <select id="selection-tier"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="selection-priority"></select>
+          </label>
+          <button id="selection-reset" type="button">Reset</button>
+          <button id="selection-export" type="button">CSV</button>
+          <button id="selection-copy" type="button">Copy Requests</button>
+          <p id="selection-summary" class="summary">Loading selection docket...</p>
+        </div>
+        <div id="selection-root" class="selection-root" aria-live="polite"></div>
       </section>
 
       <section class="section packet-section" id="packet" aria-labelledby="packet-title">
@@ -622,8 +689,59 @@
     <script src="app.js"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js"></script>
+    <script src="selection-docket.js"></script>
     <script src="compiler-packet.js"></script>
     <script src="pull-list.js"></script>
     <script src="meeting-index.js"></script>
+    <script id="compiler-network-script">
+      (() => {
+        const button = document.querySelector("[data-compiler-handoff]");
+        if (!button) return;
+
+        function fallbackCopy(text) {
+          const area = document.createElement("textarea");
+          area.value = text;
+          area.setAttribute("readonly", "");
+          area.style.position = "fixed";
+          area.style.left = "-9999px";
+          document.body.append(area);
+          area.select();
+          try { document.execCommand("copy"); } finally { area.remove(); }
+        }
+
+        function handoffText() {
+          const title = document.querySelector("h1")?.textContent.trim() || document.title || "FRUS compiler page";
+          return [
+            "# " + title,
+            "",
+            "Page: " + window.location.href,
+            "Compiler Assist: https://therealjameswilson.github.io/Compiler-Assist/",
+            "FRUS Status: https://history.state.gov/historicaldocuments/status-of-the-series",
+            "NARA Scout: https://therealjameswilson.github.io/nara-scout/",
+            "Strobe FOIA: https://therealjameswilson.github.io/strobe-talbott-foia/",
+            "",
+            "Use this note as the starting point for a pull request, source-note check, or compiler handoff."
+          ].join("\n");
+        }
+
+        button.addEventListener("click", async () => {
+          const text = handoffText();
+          try {
+            if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
+            else fallbackCopy(text);
+            button.textContent = "Copied";
+            button.dataset.copied = "true";
+            window.setTimeout(() => {
+              button.textContent = "Copy Handoff";
+              delete button.dataset.copied;
+            }, 1800);
+          } catch (error) {
+            fallbackCopy(text);
+            button.textContent = "Copied";
+            button.dataset.copied = "true";
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
