@@ -11,6 +11,7 @@
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="coverage-matrix.css?v=coverage-matrix-20260602" />
+    <link rel="stylesheet" href="action-plan.css?v=action-plan-20260602" />
     <link rel="stylesheet" href="promotion.css" />
     <link rel="stylesheet" href="source-note-audit.css?v=source-note-style-20260602" />
     <link rel="stylesheet" href="release-ledger.css" />
@@ -127,6 +128,7 @@
       <nav aria-label="Primary navigation">
         <a href="#chronology">Chronology</a>
         <a href="#coverage">Coverage</a>
+        <a href="#action-plan">Plan</a>
         <a href="#promotion">Promotion</a>
         <a href="#source-notes">Source Notes</a>
         <a href="#release">Release</a>
@@ -215,6 +217,43 @@
           <p id="coverage-summary" class="summary">Loading coverage matrix...</p>
         </div>
         <div id="coverage-root" class="coverage-root" aria-live="polite"></div>
+      </section>
+
+      <section class="section action-plan-section" id="action-plan" aria-labelledby="action-plan-title">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Compiler Work Plan</p>
+            <h2 id="action-plan-title">Ranked Next Actions</h2>
+          </div>
+          <p class="section-note">
+            Merges coverage gaps, critical compiler risks, source-pool harvests,
+            public-anchor backfills, boundary holds, and source-note blockers into a
+            single ranked worklist for the next archival pass.
+          </p>
+        </div>
+        <div class="tools action-plan-tools" role="search" aria-label="Filter compiler action plan">
+          <label class="search-field">
+            <span>Search</span>
+            <input id="action-plan-search" type="search" placeholder="Search actions, chapters, records, risks, source pools" />
+          </label>
+          <label>
+            <span>Chapter</span>
+            <select id="action-plan-lane"></select>
+          </label>
+          <label>
+            <span>Stage</span>
+            <select id="action-plan-stage"></select>
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="action-plan-priority"></select>
+          </label>
+          <button id="action-plan-reset" type="button">Reset</button>
+          <button id="action-plan-export" type="button">CSV</button>
+          <button id="action-plan-copy" type="button">Copy Plan</button>
+          <p id="action-plan-summary" class="summary">Loading action plan...</p>
+        </div>
+        <div id="action-plan-root" class="action-plan-root" aria-live="polite"></div>
       </section>
 
       <section class="hero" aria-labelledby="hero-title">
@@ -882,6 +921,7 @@
     <script src="data/global-issues-data.js"></script>
     <script src="app.js"></script>
     <script src="coverage-matrix.js?v=coverage-matrix-20260602"></script>
+    <script src="action-plan.js?v=action-plan-20260602"></script>
     <script src="promotion.js"></script>
     <script src="source-note-audit.js?v=source-note-style-20260602"></script>
     <script src="release-ledger.js"></script>
