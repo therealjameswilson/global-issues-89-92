@@ -247,6 +247,25 @@ h1 {
   max-width: 24ch;
 }
 
+.evidence-posture {
+  background: #f6f7f4;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  color: var(--muted);
+  margin: 1rem 0 1.1rem;
+  max-width: 76rem;
+  padding: 0.8rem 0.95rem;
+}
+
+.evidence-posture p {
+  margin: 0;
+}
+
+.evidence-posture strong {
+  color: var(--green-dark);
+}
+
 h2 {
   font-size: clamp(1.65rem, 2.8vw, 2.6rem);
   margin-bottom: 0;

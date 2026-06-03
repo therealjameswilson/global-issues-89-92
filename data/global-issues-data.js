@@ -7,9 +7,9 @@ window.GLOBAL_ISSUES_DATA = {
     status: "Planned",
     statusUrl: "https://history.state.gov/historicaldocuments/status-of-the-series",
     statusChecked: "June 2, 2026",
-    compilerMode: "Starter research workbench",
+    compilerMode: "Source-first compiler workbench",
     caution:
-      "Official HistoryAtState pages provide the volume title and status. Chapter structure and source leads on this page are compiler-facing research scaffolding."
+      "Official HistoryAtState pages provide the volume title and status. Chapter structure and source leads on this page are provisional scaffolding for human compiler review."
   },
   lanes: [
     {

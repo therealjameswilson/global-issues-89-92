@@ -1,4 +1,4 @@
-# FRUS 1989-1992 Volume XXIX Global Issues Assistant
+# FRUS 1989-1992 Volume XXIX Global Issues Evidence Workbench
 
 Static GitHub Pages compiler workspace for:
 
@@ -6,8 +6,8 @@ https://history.state.gov/historicaldocuments/frus1989-92v29
 
 The Office of the Historian page identifies the volume as *Foreign Relations of
 the United States, 1989-1992, Volume XXIX, Global Issues*. The status page lists
-it as `Planned`, so this repository is built as a starter workbench rather than a
-published-volume mirror.
+it as `Planned`, so this repository is built as a source-first workbench rather
+than a published-volume mirror.
 
 ## What is included
 
@@ -71,6 +71,6 @@ The `main` branch is also pushed to `gh-pages` when the static page is updated.
 ## Source caveat
 
 The data here is a compiler-facing seed set. It deliberately separates official
-FRUS status anchors from inferred source leads. Final inclusion, chapter
-placement, source-note wording, and declassification handling remain editorial
-decisions for the FRUS compiler.
+FRUS status anchors, public evidence, provisional source leads, and unresolved
+gaps. Final inclusion, chapter placement, source-note wording, and
+declassification handling remain editorial decisions for the FRUS compiler.
